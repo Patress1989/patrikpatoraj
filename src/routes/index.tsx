@@ -1,19 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { ModulesSection } from "@/components/ModulesSection";
+import { BonusesSection } from "@/components/BonusesSection";
+import { PricingSection } from "@/components/PricingSection";
+import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "AI Kurzy pre každého — Patrik Patoraj" },
+      { name: "description", content: "Naučte sa využívať umelú inteligenciu v bežnom živote, práci aj tvorbe. Online kurz s praktickými cvičeniami." },
+      { property: "og:title", content: "AI Kurzy pre každého — Patrik Patoraj" },
+      { property: "og:description", content: "Naučte sa využívať umelú inteligenciu v bežnom živote, práci aj tvorbe." },
+      { property: "og:type", content: "website" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <HeroSection />
+        <ModulesSection />
+        <BonusesSection />
+        <PricingSection />
+      </main>
+      <Footer />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
