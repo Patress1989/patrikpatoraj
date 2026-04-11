@@ -68,7 +68,7 @@ const modules = [
       "Vytvor si vlastného AI pomocníka",
       "Generuj nápady na darčeky a príspevky",
       "Uprav fotku, napíš text, vytvor plagát",
-      "Krátke výzvy: „Sprav to s AI"",
+      'Krátke výzvy: "Sprav to s AI"',
     ],
   },
 ];
