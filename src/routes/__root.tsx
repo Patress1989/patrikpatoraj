@@ -31,14 +31,16 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Patrik Patoraj" },
+      { name: "description", content: "AI kurzy pre každého" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Patrik Patoraj" },
+      { property: "og:description", content: "AI kurzy pre každého" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Patrik Patoraj" },
+      { name: "twitter:description", content: "AI kurzy pre každého" },
     ],
     links: [
       {
