@@ -10,7 +10,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground sm:flex-row sm:gap-6">
-          <span className="font-medium text-foreground">Patrik Patoraj</span>
+          <span className="font-medium text-foreground">Kontakty:</span>
           <a href="mailto:risali@patrikpatoraj.sk" className="flex items-center gap-1.5 transition-colors hover:text-primary">
             <Mail className="h-3.5 w-3.5" />
             risali@patrikpatoraj.sk
