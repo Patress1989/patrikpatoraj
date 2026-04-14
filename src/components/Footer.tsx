@@ -21,8 +21,14 @@ export function Footer() {
           </a>
         </div>
 
+        <div className="flex flex-col items-center gap-1 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">Risali s.r.o.</span>
+          <span>Bartošová Lehôtka 172, 967 01 Bartošová Lehôtka</span>
+          <span>IČO: 55708901 · DIČ: 2122069048</span>
+        </div>
+
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Patrik Patoraj. Všetky práva vyhradené.
+          © {new Date().getFullYear()} Risali s.r.o. Všetky práva vyhradené.
         </p>
       </div>
     </footer>
