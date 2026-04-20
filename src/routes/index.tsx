@@ -349,19 +349,19 @@ function Guarantee() {
 function Pricing() {
   const plans = [
     {
-      icon: Zap, name: "BASIC", tag: "Pre štart",
+      icon: Zap, name: "Základný", tag: "Pre štart",
       upfront: "25 €", final: "100 €", monthly: "10 €", delivery: "do 48 hodín",
-      features: ["10-stránkový web", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
+      features: ["6-stránkový web (Hlavný + 5 podstránok)", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
       highlight: false,
     },
     {
-      icon: Star, name: "STANDARD", tag: "Najobľúbenejšie",
+      icon: Star, name: "Štandardný", tag: "Najobľúbenejšie",
       upfront: "100 €", final: "500 €", monthly: "20 €", delivery: "do 7 dní",
       features: ["Multi-page web alebo malá appka", "Databáza Supabase", "CMS pre úpravy obsahu", "Pokročilé SEO + analytika", "Integrácia emailov / platby"],
       highlight: true,
     },
     {
-      icon: Crown, name: "PREMIUM", tag: "Pre firmy",
+      icon: Crown, name: "Prémiový", tag: "Pre firmy",
       upfront: "200 €", final: "Individuálna cena", monthly: "20 €", delivery: "do 30 dní",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
