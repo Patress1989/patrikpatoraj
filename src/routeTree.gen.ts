@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as KurzRouteImport } from './routes/kurz'
 import { Route as GdprRouteImport } from './routes/gdpr'
+import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
 
 const KurzRoute = KurzRouteImport.update({
@@ -23,6 +24,11 @@ const GdprRoute = GdprRouteImport.update({
   path: '/gdpr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FormularRoute = FormularRouteImport.update({
+  id: '/formular',
+  path: '/formular',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/formular': typeof FormularRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/formular': typeof FormularRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/formular': typeof FormularRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/gdpr' | '/kurz'
+  fullPaths: '/' | '/formular' | '/gdpr' | '/kurz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/gdpr' | '/kurz'
-  id: '__root__' | '/' | '/gdpr' | '/kurz'
+  to: '/' | '/formular' | '/gdpr' | '/kurz'
+  id: '__root__' | '/' | '/formular' | '/gdpr' | '/kurz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FormularRoute: typeof FormularRoute
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GdprRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/formular': {
+      id: '/formular'
+      path: '/formular'
+      fullPath: '/formular'
+      preLoaderRoute: typeof FormularRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FormularRoute: FormularRoute,
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
 }
