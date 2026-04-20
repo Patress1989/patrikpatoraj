@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as KurzRouteImport } from './routes/kurz'
 import { Route as GdprRouteImport } from './routes/gdpr'
+import { Route as FormularVyplnenyRouteImport } from './routes/formular-vyplneny'
 import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const KurzRoute = KurzRouteImport.update({
 const GdprRoute = GdprRouteImport.update({
   id: '/gdpr',
   path: '/gdpr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormularVyplnenyRoute = FormularVyplnenyRouteImport.update({
+  id: '/formular-vyplneny',
+  path: '/formular-vyplneny',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FormularRoute = FormularRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/formular': typeof FormularRoute
+  '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/formular': typeof FormularRoute
+  '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/formular': typeof FormularRoute
+  '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/formular' | '/gdpr' | '/kurz'
+  fullPaths: '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/formular' | '/gdpr' | '/kurz'
-  id: '__root__' | '/' | '/formular' | '/gdpr' | '/kurz'
+  to: '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
+  id: '__root__' | '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FormularRoute: typeof FormularRoute
+  FormularVyplnenyRoute: typeof FormularVyplnenyRoute
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/gdpr'
       fullPath: '/gdpr'
       preLoaderRoute: typeof GdprRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formular-vyplneny': {
+      id: '/formular-vyplneny'
+      path: '/formular-vyplneny'
+      fullPath: '/formular-vyplneny'
+      preLoaderRoute: typeof FormularVyplnenyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/formular': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FormularRoute: FormularRoute,
+  FormularVyplnenyRoute: FormularVyplnenyRoute,
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
 }
