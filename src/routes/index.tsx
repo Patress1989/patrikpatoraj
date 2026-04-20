@@ -55,7 +55,7 @@ function HomePage() {
 /* =================== 1. HERO + 2. SUBHEADLINE + 6. CTA #1 =================== */
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 py-0">
+    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 py-[12px]">
       <div className="pointer-events-none absolute inset-0 mesh-bg" />
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
 
