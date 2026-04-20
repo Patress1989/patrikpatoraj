@@ -398,7 +398,7 @@ function Pricing() {
                   <span className="text-sm text-muted-foreground">vopred</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold gradient-text">{p.final === "Individuálna cena" ? "" : "+ "}{p.final}</span>
+                  <span className="text-2xl font-bold gradient-text">{(p.final === "Individuálna cena" || p.final.startsWith("Od")) ? "" : "+ "}{p.final}</span>
                   <span className="text-sm text-muted-foreground">po odovzdaní</span>
                 </div>
                 <div className="text-xs text-muted-foreground">voliteľne {p.monthly}/mes. správa</div>
