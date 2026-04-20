@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export function SiteFooter() {
   return (
     <footer className="relative border-t border-white/5 bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+      <div className="mx-auto max-w-7xl px-6 py-[24px]">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="text-lg font-bold text-foreground">Patrik Patoraj</div>
