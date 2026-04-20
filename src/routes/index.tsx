@@ -402,6 +402,9 @@ function Pricing() {
                   <span className="text-sm text-muted-foreground">po odovzdaní</span>
                 </div>
                 <div className="text-xs text-muted-foreground">voliteľne {p.monthly}/mes. správa</div>
+                <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                  <Clock className="h-3 w-3" /> Dodanie {p.delivery}
+                </div>
               </div>
 
               <ul className="mt-6 space-y-2.5 border-t border-white/5 pt-6">
