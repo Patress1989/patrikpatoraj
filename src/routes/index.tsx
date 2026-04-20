@@ -436,7 +436,7 @@ function PriceAnchor() {
           Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € - 5 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">125 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
+          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">284 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
         </p>
         <Link to="/formular" className="btn-primary mt-8 inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
           Začať projekt <ArrowRight className="h-4 w-4" />
