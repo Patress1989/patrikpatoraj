@@ -281,7 +281,7 @@ function FormularPage() {
             )}
 
             {step === 3 && (
-              <Step title="Povedzte nám o projekte" subtitle="Povinná je len oblasť podnikania. Ostatné nám pomôžu, ale doplniť ich môžeme aj neskôr.">
+              <Step title="Povedzte nám o projekte" subtitle={<>Povinná je len oblasť podnikania. <br />Ostatné údaje mi pomôžu urobiť ukážku ZDARMA presne podľa Vaších predstáv, ale doplniť ich môžeme aj neskôr.</>}>
                 <Field icon={Briefcase} label="Oblasť podnikania" required error={errors.business_area}>
                   <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. Barber, Fitness tréner, Fyzioterapeut, Škôlka" className="input-field" autoFocus />
                 </Field>
@@ -462,7 +462,7 @@ function FormularPage() {
   );
 }
 
-function Step({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
+function Step({ title, subtitle, children }: { title: string; subtitle?: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="animate-fade-in">
       <h2 className="text-xl font-bold md:text-2xl">{title}</h2>
