@@ -282,10 +282,90 @@ function FormularPage() {
             )}
 
             {step === 3 && (
-              <Step title="Povedzte nám o projekte" subtitle="Stačí krátko. Detaily doladíme spolu.">
+              <Step title="Povedzte nám o projekte" subtitle="Povinná je len oblasť podnikania. Ostatné nám pomôžu, ale doplniť ich môžeme aj neskôr.">
                 <Field icon={Briefcase} label="Oblasť podnikania" required error={errors.business_area}>
-                  <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. fitness, e-shop, realitná kancelária" className="input-field" autoFocus />
+                  <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. Barber, Fitness tréner, Fyzioterapeut, Škôlka" className="input-field" autoFocus />
                 </Field>
+
+                <Field icon={Building2} label="Názov firmy / projektu" hint="Voliteľné">
+                  <input type="text" value={data.company_name} onChange={(e) => update("company_name", e.target.value)} placeholder="Napr. Risali s.r.o., StudioX, Barber Bratislava" className="input-field" />
+                </Field>
+
+                <Field icon={FileText} label="O čom je váš biznis?" hint="Voliteľné">
+                  <textarea
+                    value={data.business_description}
+                    onChange={(e) => update("business_description", e.target.value)}
+                    placeholder="Stručne popíšte, čo robíte a pre koho."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
+                <Field icon={ImagePlus} label="Vaše logo a fotky" hint="Voliteľné · max 10 fotiek, 5 MB / fotka">
+                  <p className="mb-2 text-xs text-muted-foreground">
+                    Ak nemáte vlastné, použijem kvalitné ilustračné obrázky.
+                  </p>
+                  <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 bg-white/5 px-4 py-6 text-center transition-colors hover:bg-white/10">
+                    {uploading ? (
+                      <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                    ) : (
+                      <Upload className="h-5 w-5 text-primary" />
+                    )}
+                    <span className="text-sm font-medium text-foreground">
+                      {uploading ? "Nahrávam..." : "Kliknite alebo presuňte fotky sem"}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {data.photo_urls.length}/{MAX_PHOTOS} · JPG, PNG, WEBP do 5 MB
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      className="hidden"
+                      disabled={uploading || data.photo_urls.length >= MAX_PHOTOS}
+                      onChange={(e) => { handleFiles(e.target.files); e.target.value = ""; }}
+                    />
+                  </label>
+                  {uploadError && <p className="mt-2 text-xs text-destructive">{uploadError}</p>}
+                  {data.photo_urls.length > 0 && (
+                    <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+                      {data.photo_urls.map((url) => (
+                        <div key={url} className="group relative aspect-square overflow-hidden rounded-lg border border-white/10 bg-white/5">
+                          <img src={url} alt="Nahraná fotka" className="h-full w-full object-cover" />
+                          <button
+                            type="button"
+                            onClick={() => removePhoto(url)}
+                            aria-label="Odstrániť fotku"
+                            className="absolute right-1 top-1 rounded-full bg-background/80 p-1 text-foreground opacity-0 transition-opacity hover:bg-destructive hover:text-destructive-foreground group-hover:opacity-100"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Field>
+
+                <Field icon={ListChecks} label="Zoznam služieb / Cenník" hint="Voliteľné">
+                  <textarea
+                    value={data.services_list}
+                    onChange={(e) => update("services_list", e.target.value)}
+                    placeholder="Čo presne chcete na webe ponúkať. Napr.: Strihanie 15€, Brada 10€, ..."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
+                <Field icon={Contact} label="Kontaktné údaje" hint="Voliteľné">
+                  <textarea
+                    value={data.contact_info}
+                    onChange={(e) => update("contact_info", e.target.value)}
+                    placeholder="Telefón, adresa, Instagram / Facebook, otváracie hodiny..."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
                 <Field icon={Palette} label="Preferované farby" hint="Voliteľné" error={errors.preferred_colors}>
                   <input type="text" value={data.preferred_colors} onChange={(e) => update("preferred_colors", e.target.value)} placeholder="Napr. modrá + biela, alebo HEX kód" className="input-field" />
                 </Field>
