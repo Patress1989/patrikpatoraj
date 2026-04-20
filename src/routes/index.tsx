@@ -644,7 +644,7 @@ function FAQ() {
     { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s platbami cez Stripe a správou objednávok." },
   ];
   return (
-    <section id="faq" className="relative py-20 md:py-28">
+    <section id="faq" className="relative py-20 md:py-[52px]">
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeader eyebrow="FAQ" title={<>Časté <span className="gradient-text">otázky</span></>} subtitle="Všetko, čo potrebujete vedieť pred začatím spolupráce." />
         <div className="mt-12 space-y-3">
@@ -695,10 +695,10 @@ function FinalCTA() {
 
 /* =================== Section helpers =================== */
 function Section({ eyebrow, title, subtitle, children }: {
-  eyebrow?: string; title?: React.ReactNode; subtitle?: string; children: React.ReactNode;
+  eyebrow?: string; title?: React.ReactNode; subtitle?: React.ReactNode; children: React.ReactNode;
 }) {
   return (
-    <section className="relative py-20 md:py-28">
+    <section className="relative py-20 md:py-[52px]">
       <div className="mx-auto max-w-6xl px-6">
         {(eyebrow || title) && <SectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} />}
         <div className={eyebrow || title ? "mt-12" : ""}>{children}</div>
@@ -707,7 +707,7 @@ function Section({ eyebrow, title, subtitle, children }: {
   );
 }
 
-function SectionHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title?: React.ReactNode; subtitle?: string }) {
+function SectionHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title?: React.ReactNode; subtitle?: React.ReactNode }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
       {eyebrow && (
@@ -716,7 +716,7 @@ function SectionHeader({ eyebrow, title, subtitle }: { eyebrow?: string; title?:
         </div>
       )}
       {title && <h2 className="text-3xl font-bold tracking-tight md:text-5xl">{title}</h2>}
-      {subtitle && <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">{subtitle}</p>}
+      {subtitle && <p className="mt-4 text-base text-muted-foreground md:text-lg">{subtitle}</p>}
     </div>
   );
 }
