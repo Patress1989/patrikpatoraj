@@ -55,7 +55,7 @@ function HomePage() {
 /* =================== 1. HERO + 2. SUBHEADLINE + 6. CTA #1 =================== */
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
+    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 py-0">
       <div className="pointer-events-none absolute inset-0 mesh-bg" />
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
 
@@ -113,7 +113,7 @@ function PainPoints() {
     { icon: Gauge, title: "Drahá údržba", text: "Každá zmena trvá týždne a stojí stovky eur. Web vás brzdí, namiesto toho aby vám pomáhal." },
   ];
   return (
-    <Section eyebrow="Problém" title={<>Prečo váš súčasný web <span className="gradient-text">nepredáva?</span></>} subtitle="Väčšina podnikateľov má web, ktorý vyzerá pekne — ale nerobí to, čo má. Tu je 5 najčastejších dôvodov.">
+    <Section eyebrow="Problém" title={<>Prečo váš súčasný web <span className="gradient-text">nepredáva?</span></>} subtitle={<>Väčšina podnikateľov má web, ktorý vyzerá pekne,<br />ale nerobí to, čo má. Tu je 5 najčastejších dôvodov.</>}>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {pains.map((p, i) => (
           <div key={i} className="glass group rounded-2xl p-6 transition-all hover:border-white/20">
@@ -132,7 +132,7 @@ function PainPoints() {
 /* =================== 4. SOLUTION =================== */
 function Solution() {
   return (
-    <section id="riesenie" className="relative py-20 md:py-28">
+    <section id="riesenie" className="relative py-20 md:py-[52px]">
       <div className="pointer-events-none absolute inset-0 mesh-bg opacity-50" />
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -197,7 +197,7 @@ function Proof() {
         {[
           { v: "5×", l: "Rýchlejší vývoj než klasická agentúra" },
           { v: "70 %", l: "Nižšia cena pri rovnakej kvalite" },
-          { v: "< 1 s", l: "Načítanie stránky na mobile" },
+          { v: "< 1 s", l: "Načítanie stránky na pc, tablete aj mobile" },
           { v: "100 %", l: "Vlastníctvo kódu po odovzdaní" },
         ].map((x) => (
           <div key={x.l} className="glass rounded-2xl p-6 text-center">
@@ -305,10 +305,10 @@ function Differentiation() {
   const rows = [
     ["Čas vývoja", "4 — 8 týždňov", "5 — 10 dní"],
     ["Cena", "1 500 € — 5 000 €", "od 125 €"],
-    ["Responzívnosť", "Často doplatková", "Vždy v cene"],
+    ["Základné SEO", "Často doplatková", "Vždy v cene"],
     ["Vlastníctvo kódu", "Často nie", "100 % vaše"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
-    ["AI integrácia", "Extra projekt", "V cene"],
+    ["AI integrácia", "Extra projekt", "Pripravený na integráciu v cene"],
   ];
   return (
     <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
@@ -356,20 +356,20 @@ function Pricing() {
     },
     {
       icon: Star, name: "STANDARD", tag: "Najobľúbenejšie",
-      upfront: "50 €", final: "500 €", monthly: "20 €",
+      upfront: "100 €", final: "500 €", monthly: "20 €",
       features: ["Multi-page web alebo malá appka", "Databáza Supabase", "CMS pre úpravy obsahu", "Pokročilé SEO + analytika", "Integrácia emailov / platby"],
       highlight: true,
     },
     {
       icon: Crown, name: "PREMIUM", tag: "Pre firmy",
-      upfront: "100 €", final: "Individuálna cena", monthly: "20 €",
+      upfront: "200 €", final: "Individuálna cena", monthly: "20 €",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
     },
   ];
 
   return (
-    <section id="balicky" className="relative py-20 md:py-28">
+    <section id="balicky" className="relative py-20 md:py-[52px]">
       <div className="pointer-events-none absolute inset-0 mesh-bg opacity-40" />
       <div className="relative mx-auto max-w-6xl px-6">
         <SectionHeader eyebrow="Balíčky" title={<>Cenovo dostupné riešenia pre <span className="gradient-text">každý projekt</span></>} subtitle="Transparentné ceny. Žiadne skryté poplatky." />
@@ -430,7 +430,7 @@ function PriceAnchor() {
       <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 text-center md:p-12">
         <div className="text-sm font-medium uppercase tracking-wider text-primary">Cenový rozdiel</div>
         <h2 className="mt-3 text-2xl font-bold md:text-4xl">
-          Bežný vývoj komplexných aplikácií stojí <span className="line-through text-muted-foreground">1 500 — 5 000 €</span>
+          Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € - 5 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">125 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
@@ -448,7 +448,7 @@ function Reviews() {
   const reviews = [
     { name: "Martin K.", role: "Zakladateľ startupu", text: "Za 10 dní sme mali kompletnú SaaS aplikáciu vrátane platieb. Agentúra nám dávala 4 mesiace a 12 000 €.", stars: 5 },
     { name: "Eva P.", role: "Marketing manažérka", text: "Nový web nám okamžite zdvihol konverzie o 40 %. Profesionálny prístup od prvého kontaktu.", stars: 5 },
-    { name: "Tomáš H.", role: "E-shop majiteľ", text: "Konečne web, ktorý sa načíta okamžite a vyzerá moderne. Patrik dodal presne to, čo som potreboval.", stars: 5 },
+    { name: "Lucia Andrášiová", role: "balonovysvet.eu", text: "Konečne web, ktorý sa načíta okamžite a vyzerá moderne. Patrik dodal presne to, čo som potreboval.", stars: 5 },
   ];
   return (
     <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
@@ -574,11 +574,14 @@ function Authority() {
             <input type="file" accept="image/*" onChange={handleUpload} className="sr-only" />
           </label>
           <div>
-            <p className="text-base leading-relaxed text-foreground md:text-lg">
-              Som Patrik — vývojár, lektor a Lovable expert. Posledné roky pomáham firmám aj startupom postaviť moderné weby a aplikácie, ktoré skutočne fungujú a predávajú.
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Moja misia je sprístupniť kvalitný digitálny produkt aj malým firmám — bez 5-ciferných faktúr a mesiacov čakania. Kombinujem skúsenosti s AI, automatizáciou a dizajnom.
+            <p className="text-base leading-relaxed text-foreground md:text-lg whitespace-pre-line">
+              {`Volám sa Patrik a v online svete sa pohybujem už viac ako 6 rokov. Počas pôsobenia ako externý dodávateľ pre veľkú firmu a správe webu pre rodinný biznis mojej manželky som na vlastnej koži pocítil frustráciu, ktorú zažíva väčšina podnikateľov.
+
+
+Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil Lovable, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.
+
+
+Moja efektivita nie je len teória – v priebehu jediného mesiaca som dokázal vytvoriť desiatky plne funkčných webov. Mojím cieľom je priniesť túto efektivitu aj vám.`}
             </p>
           </div>
         </div>
@@ -620,7 +623,7 @@ function Urgency() {
           Tento mesiac mám voľné už len <span className="gradient-text">3 miesta</span>
         </h3>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Pracujem maximálne s 5 klientmi paralelne, aby som garantoval kvalitu a rýchlosť. Rezervujte si miesto skôr, než ich obsadia iní.
+          Pracujem maximálne so 7 klientmi paralelne, aby som garantoval kvalitu a rýchlosť. Rezervujte si miesto skôr, než ich obsadia iní.
         </p>
         <Link to="/formular" className="btn-primary mt-7 inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
           Zarezervovať miesto <ArrowRight className="h-4 w-4" />
@@ -672,7 +675,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 /* =================== 21. FINAL CTA =================== */
 function FinalCTA() {
   return (
-    <section className="relative py-20 md:py-32">
+    <section className="relative py-20 md:py-[52px]">
       <div className="pointer-events-none absolute inset-0 mesh-bg" />
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
@@ -684,7 +687,7 @@ function FinalCTA() {
         <Link to="/formular" className="btn-primary mt-10 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold">
           Chcem ukážku zdarma <ArrowRight className="h-5 w-5" />
         </Link>
-        <p className="mt-4 text-xs text-muted-foreground">Odpoveď do 48 hodín · Bez platby vopred</p>
+        <p className="mt-4 text-xs text-muted-foreground">Odpoveď do 24 hodín · Bez platby vopred</p>
       </div>
     </section>
   );
