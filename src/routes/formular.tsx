@@ -172,10 +172,13 @@ function FormularPage() {
     setSubmitError(null);
 
     try {
+      const submissionId = crypto.randomUUID();
+
       // 1. Insert into DB
-      const { data: row, error: dbError } = await supabase
+      const { error: dbError } = await supabase
         .from("form_submissions")
         .insert({
+          id: submissionId,
           name: data.name,
           email: data.email,
           phone: data.phone,
@@ -188,16 +191,14 @@ function FormularPage() {
           existing_website: data.existing_website || null,
           photo_urls: data.photo_urls.length ? data.photo_urls : null,
           gdpr_consent: data.gdpr_consent,
-        })
-        .select("id")
-        .single();
+        });
 
       if (dbError) throw new Error(dbError.message);
 
       // 2. Trigger email (best-effort, don't block on failure)
       try {
         await supabase.functions.invoke("send-form-email", {
-          body: { submissionId: row.id, ...data },
+          body: { submissionId, ...data },
         });
       } catch (emailErr) {
         console.warn("Email send failed (submission saved):", emailErr);
