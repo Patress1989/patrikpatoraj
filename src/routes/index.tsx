@@ -108,7 +108,7 @@ function PainPoints() {
     { icon: Clock, title: "Pomalé načítanie", text: "Návštevníci odchádzajú skôr, než sa stránka stihne načítať. Strácate predaje každý deň." },
     { icon: Layout, title: "Zastaraný dizajn", text: "Web vyzerá ako z roku 2015. Klienti vás vnímajú ako neprofesionálov a idú ku konkurencii." },
     { icon: Target, title: "Nízka konverzia", text: "Návštevy sú, ale nikto nekupuje. Web nepredáva, len existuje." },
-    { icon: MessageSquare, title: "Žiadna integrácia", text: "Nefunguje s vašim CRM, e-shopom ani databázou. Robíte všetko ručne." },
+    { icon: MessageSquare, title: "Žiadna integrácia", text: "Nefunguje s vaším CRM, e-shopom ani databázou. Robíte všetko ručne." },
     { icon: Gauge, title: "Drahá údržba", text: "Každá zmena trvá týždne a stojí stovky eur. Web vás brzdí, namiesto toho aby vám pomáhal." },
   ];
   return (
@@ -177,7 +177,7 @@ function Solution() {
               </div>
               <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
                 <div className="text-xs font-medium text-muted-foreground">Priemerný čas dodania</div>
-                <div className="mt-1 text-3xl font-bold gradient-text">3 - 7 dní</div>
+                <div className="mt-1 text-3xl font-bold gradient-text">3 – 7 dní</div>
               </div>
             </div>
             <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-primary/20 blur-3xl -z-10" />
@@ -302,8 +302,8 @@ function Mechanism() {
 /* =================== 11. DIFFERENTIATION TABLE =================== */
 function Differentiation() {
   const rows = [
-    ["Čas vývoja", "4 - 8 týždňov", "3 - 7 dní"],
-    ["Cena", "1 500 € - 5000 €", "od 284 €"],
+    ["Čas vývoja", "4 – 8 týždňov", "3 – 7 dní"],
+    ["Cena", "1 500 € – 5 000 €", "od 284 €"],
     ["Základné SEO", "Často doplatková služba", "Vždy v cene"],
     ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
@@ -361,7 +361,7 @@ function Pricing() {
     },
     {
       icon: Crown, name: "Prémiový", tag: "Pre firmy",
-      upfront: "30 - 50 %", final: "Od 1500 €", monthly: "od 109 €", delivery: "do 30 dní",
+      upfront: "30 – 50 %", final: "Od 1 500 €", monthly: "od 109 €", delivery: "do 30 dní",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
     },
@@ -432,7 +432,7 @@ function PriceAnchor() {
       <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 text-center md:p-12">
         <div className="text-sm font-medium uppercase tracking-wider text-primary">Cenový rozdiel</div>
         <h2 className="mt-3 text-2xl font-bold md:text-4xl">
-          Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € - 5 000 €</span>
+          Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € – 5 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">284 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
@@ -450,7 +450,7 @@ function Reviews() {
   const reviews = [
     { name: "Martin K.", role: "Zakladateľ startupu", text: "Za 10 dní sme mali kompletnú SaaS aplikáciu vrátane platieb. Agentúra nám dávala 4 mesiace a 12 000 €.", stars: 5 },
     { name: "Eva P.", role: "Marketing manažérka", text: "Nový web nám okamžite zdvihol konverzie o 40 %. Profesionálny prístup od prvého kontaktu.", stars: 5 },
-    { name: "Lucia Andrášiová", role: "balonovysvet.eu", text: "Konečne web, ktorý sa načíta okamžite a vyzerá moderne. Patrik dodal presne to, čo som potreboval.", stars: 5 },
+    { name: "Lucia Andrášiová", role: "balonovysvet.eu", text: "Konečne web, ktorý sa načíta okamžite a vyzerá moderne. Patrik dodal presne to, čo som potrebovala.", stars: 5 },
   ];
   return (
     <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
