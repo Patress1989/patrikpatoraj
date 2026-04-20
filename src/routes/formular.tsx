@@ -63,8 +63,8 @@ type FormData = {
 };
 
 function FormularPage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -203,15 +203,14 @@ function FormularPage() {
         console.warn("Email send failed (submission saved):", emailErr);
       }
 
-      setSubmitted(true);
+      navigate({ to: "/formular-vyplneny" });
+      return;
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Nastala neočakávaná chyba");
     } finally {
       setSubmitting(false);
     }
   };
-
-  if (submitted) return <ThankYou />;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
