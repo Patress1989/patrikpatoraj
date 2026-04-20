@@ -180,8 +180,13 @@ function FormularPage() {
           email: data.email,
           phone: data.phone,
           business_area: data.business_area,
+          company_name: data.company_name || null,
+          business_description: data.business_description || null,
+          services_list: data.services_list || null,
+          contact_info: data.contact_info || null,
           preferred_colors: data.preferred_colors || null,
           existing_website: data.existing_website || null,
+          photo_urls: data.photo_urls.length ? data.photo_urls : null,
           gdpr_consent: data.gdpr_consent,
         })
         .select("id")
