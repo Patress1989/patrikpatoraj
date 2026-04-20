@@ -276,6 +276,9 @@ function CRMPage() {
         <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Detail formulára</DialogTitle>
+            <DialogDescription>
+              Kompletné informácie z odoslaného formulára.
+            </DialogDescription>
           </DialogHeader>
           {selected && (
             <div className="space-y-3 text-sm">
