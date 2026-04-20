@@ -349,20 +349,20 @@ function Guarantee() {
 function Pricing() {
   const plans = [
     {
-      icon: Zap, name: "Základný", tag: "Pre štart",
-      upfront: "25 €", final: "100 €", monthly: "10 €", delivery: "do 48 hodín",
+      icon: Zap, name: "Štart", tag: "Pre začínajúcich",
+      upfront: "35 €", final: "249 €", monthly: "29 €", delivery: "do 48 hodín",
       features: ["6-stránkový web (Hlavný + 5 podstránok)", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
       highlight: false,
     },
     {
-      icon: Star, name: "Štandardný", tag: "Najobľúbenejšie",
-      upfront: "100 €", final: "500 €", monthly: "20 €", delivery: "do 7 dní",
+      icon: Star, name: "Biznis", tag: "Najobľúbenejšie",
+      upfront: "210 €", final: "790 €", monthly: "59 €", delivery: "do 7 dní",
       features: ["Multi-page web alebo malá appka", "Databáza Supabase", "CMS pre úpravy obsahu", "Pokročilé SEO + analytika", "Integrácia emailov / platby"],
       highlight: true,
     },
     {
       icon: Crown, name: "Prémiový", tag: "Pre firmy",
-      upfront: "200 €", final: "Individuálna cena", monthly: "20 €", delivery: "do 30 dní",
+      upfront: "30 - 50 %", final: "Od 1500 €", monthly: "od 109 €", delivery: "do 30 dní",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
     },
@@ -398,7 +398,7 @@ function Pricing() {
                   <span className="text-sm text-muted-foreground">vopred</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold gradient-text">{p.final === "Individuálna cena" ? "" : "+ "}{p.final}</span>
+                  <span className="text-2xl font-bold gradient-text">{(p.final === "Individuálna cena" || p.final.startsWith("Od")) ? "" : "+ "}{p.final}</span>
                   <span className="text-sm text-muted-foreground">po odovzdaní</span>
                 </div>
                 <div className="text-xs text-muted-foreground">voliteľne {p.monthly}/mes. správa</div>
