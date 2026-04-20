@@ -17,6 +17,9 @@ export type Database = {
       form_submissions: {
         Row: {
           business_area: string
+          business_description: string | null
+          company_name: string | null
+          contact_info: string | null
           created_at: string
           email: string
           email_error: string | null
@@ -26,11 +29,16 @@ export type Database = {
           id: string
           name: string
           phone: string
+          photo_urls: string[] | null
           preferred_colors: string | null
+          services_list: string | null
           updated_at: string
         }
         Insert: {
           business_area: string
+          business_description?: string | null
+          company_name?: string | null
+          contact_info?: string | null
           created_at?: string
           email: string
           email_error?: string | null
@@ -40,11 +48,16 @@ export type Database = {
           id?: string
           name: string
           phone: string
+          photo_urls?: string[] | null
           preferred_colors?: string | null
+          services_list?: string | null
           updated_at?: string
         }
         Update: {
           business_area?: string
+          business_description?: string | null
+          company_name?: string | null
+          contact_info?: string | null
           created_at?: string
           email?: string
           email_error?: string | null
@@ -54,7 +67,9 @@ export type Database = {
           id?: string
           name?: string
           phone?: string
+          photo_urls?: string[] | null
           preferred_colors?: string | null
+          services_list?: string | null
           updated_at?: string
         }
         Relationships: []

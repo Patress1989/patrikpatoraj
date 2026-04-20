@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, PartyPopper } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, PartyPopper, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/formular")({
   head: () => ({
@@ -35,6 +35,10 @@ const schemas = {
   }),
   step3: z.object({
     business_area: z.string().trim().min(2, "Zadajte aspoň 2 znaky").max(200),
+    company_name: z.string().trim().max(200).optional().or(z.literal("")),
+    business_description: z.string().trim().max(1000).optional().or(z.literal("")),
+    services_list: z.string().trim().max(2000).optional().or(z.literal("")),
+    contact_info: z.string().trim().max(1000).optional().or(z.literal("")),
     preferred_colors: z.string().trim().max(200).optional().or(z.literal("")),
     existing_website: z.string().trim().max(255).optional().or(z.literal("")),
   }),
@@ -48,8 +52,13 @@ type FormData = {
   email: string;
   phone: string;
   business_area: string;
+  company_name: string;
+  business_description: string;
+  services_list: string;
+  contact_info: string;
   preferred_colors: string;
   existing_website: string;
+  photo_urls: string[];
   gdpr_consent: boolean;
 };
 
@@ -59,8 +68,15 @@ function FormularPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>({
-    name: "", email: "", phone: "", business_area: "", preferred_colors: "", existing_website: "", gdpr_consent: false,
+    name: "", email: "", phone: "",
+    business_area: "", company_name: "", business_description: "",
+    services_list: "", contact_info: "",
+    preferred_colors: "", existing_website: "",
+    photo_urls: [],
+    gdpr_consent: false,
   });
 
   const update = <K extends keyof FormData>(k: K, v: FormData[K]) => {
@@ -68,11 +84,69 @@ function FormularPage() {
     setErrors((e) => ({ ...e, [k]: "" }));
   };
 
+  const MAX_PHOTOS = 10;
+  const MAX_SIZE = 5 * 1024 * 1024;
+
+  const handleFiles = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploadError(null);
+
+    const remaining = MAX_PHOTOS - data.photo_urls.length;
+    if (remaining <= 0) {
+      setUploadError(`Maximálne ${MAX_PHOTOS} fotiek.`);
+      return;
+    }
+    const toUpload = Array.from(files).slice(0, remaining);
+
+    for (const f of toUpload) {
+      if (!f.type.startsWith("image/")) {
+        setUploadError("Povolené sú len obrázky.");
+        return;
+      }
+      if (f.size > MAX_SIZE) {
+        setUploadError(`Súbor "${f.name}" presahuje 5 MB.`);
+        return;
+      }
+    }
+
+    setUploading(true);
+    try {
+      const uploaded: string[] = [];
+      for (const file of toUpload) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const path = `${crypto.randomUUID()}.${ext}`;
+        const { error: upErr } = await supabase.storage
+          .from("project-photos")
+          .upload(path, file, { contentType: file.type, upsert: false });
+        if (upErr) throw upErr;
+        const { data: pub } = supabase.storage.from("project-photos").getPublicUrl(path);
+        uploaded.push(pub.publicUrl);
+      }
+      setData((d) => ({ ...d, photo_urls: [...d.photo_urls, ...uploaded] }));
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Nahrávanie zlyhalo");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removePhoto = (url: string) => {
+    setData((d) => ({ ...d, photo_urls: d.photo_urls.filter((u) => u !== url) }));
+  };
+
   const validateStep = (s: number): boolean => {
     let result;
     if (s === 1) result = schemas.step1.safeParse({ name: data.name });
     else if (s === 2) result = schemas.step2.safeParse({ email: data.email, phone: data.phone });
-    else if (s === 3) result = schemas.step3.safeParse({ business_area: data.business_area, preferred_colors: data.preferred_colors, existing_website: data.existing_website });
+    else if (s === 3) result = schemas.step3.safeParse({
+      business_area: data.business_area,
+      company_name: data.company_name,
+      business_description: data.business_description,
+      services_list: data.services_list,
+      contact_info: data.contact_info,
+      preferred_colors: data.preferred_colors,
+      existing_website: data.existing_website,
+    });
     else result = schemas.step4.safeParse({ gdpr_consent: data.gdpr_consent });
 
     if (!result.success) {
@@ -106,8 +180,13 @@ function FormularPage() {
           email: data.email,
           phone: data.phone,
           business_area: data.business_area,
+          company_name: data.company_name || null,
+          business_description: data.business_description || null,
+          services_list: data.services_list || null,
+          contact_info: data.contact_info || null,
           preferred_colors: data.preferred_colors || null,
           existing_website: data.existing_website || null,
+          photo_urls: data.photo_urls.length ? data.photo_urls : null,
           gdpr_consent: data.gdpr_consent,
         })
         .select("id")
@@ -203,10 +282,90 @@ function FormularPage() {
             )}
 
             {step === 3 && (
-              <Step title="Povedzte nám o projekte" subtitle="Stačí krátko. Detaily doladíme spolu.">
+              <Step title="Povedzte nám o projekte" subtitle="Povinná je len oblasť podnikania. Ostatné nám pomôžu, ale doplniť ich môžeme aj neskôr.">
                 <Field icon={Briefcase} label="Oblasť podnikania" required error={errors.business_area}>
-                  <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. fitness, e-shop, realitná kancelária" className="input-field" autoFocus />
+                  <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. Barber, Fitness tréner, Fyzioterapeut, Škôlka" className="input-field" autoFocus />
                 </Field>
+
+                <Field icon={Building2} label="Názov firmy / projektu" hint="Voliteľné">
+                  <input type="text" value={data.company_name} onChange={(e) => update("company_name", e.target.value)} placeholder="Napr. Risali s.r.o., StudioX, Barber Bratislava" className="input-field" />
+                </Field>
+
+                <Field icon={FileText} label="O čom je váš biznis?" hint="Voliteľné">
+                  <textarea
+                    value={data.business_description}
+                    onChange={(e) => update("business_description", e.target.value)}
+                    placeholder="Stručne popíšte, čo robíte a pre koho."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
+                <Field icon={ImagePlus} label="Vaše logo a fotky" hint="Voliteľné · max 10 fotiek, 5 MB / fotka">
+                  <p className="mb-2 text-xs text-muted-foreground">
+                    Ak nemáte vlastné, použijem kvalitné ilustračné obrázky.
+                  </p>
+                  <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 bg-white/5 px-4 py-6 text-center transition-colors hover:bg-white/10">
+                    {uploading ? (
+                      <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                    ) : (
+                      <Upload className="h-5 w-5 text-primary" />
+                    )}
+                    <span className="text-sm font-medium text-foreground">
+                      {uploading ? "Nahrávam..." : "Kliknite alebo presuňte fotky sem"}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {data.photo_urls.length}/{MAX_PHOTOS} · JPG, PNG, WEBP do 5 MB
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      className="hidden"
+                      disabled={uploading || data.photo_urls.length >= MAX_PHOTOS}
+                      onChange={(e) => { handleFiles(e.target.files); e.target.value = ""; }}
+                    />
+                  </label>
+                  {uploadError && <p className="mt-2 text-xs text-destructive">{uploadError}</p>}
+                  {data.photo_urls.length > 0 && (
+                    <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+                      {data.photo_urls.map((url) => (
+                        <div key={url} className="group relative aspect-square overflow-hidden rounded-lg border border-white/10 bg-white/5">
+                          <img src={url} alt="Nahraná fotka" className="h-full w-full object-cover" />
+                          <button
+                            type="button"
+                            onClick={() => removePhoto(url)}
+                            aria-label="Odstrániť fotku"
+                            className="absolute right-1 top-1 rounded-full bg-background/80 p-1 text-foreground opacity-0 transition-opacity hover:bg-destructive hover:text-destructive-foreground group-hover:opacity-100"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Field>
+
+                <Field icon={ListChecks} label="Zoznam služieb / Cenník" hint="Voliteľné">
+                  <textarea
+                    value={data.services_list}
+                    onChange={(e) => update("services_list", e.target.value)}
+                    placeholder="Čo presne chcete na webe ponúkať. Napr.: Strihanie 15€, Brada 10€, ..."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
+                <Field icon={Contact} label="Kontaktné údaje" hint="Voliteľné">
+                  <textarea
+                    value={data.contact_info}
+                    onChange={(e) => update("contact_info", e.target.value)}
+                    placeholder="Telefón, adresa, Instagram / Facebook, otváracie hodiny..."
+                    className="input-field min-h-[90px] resize-y"
+                    rows={3}
+                  />
+                </Field>
+
                 <Field icon={Palette} label="Preferované farby" hint="Voliteľné" error={errors.preferred_colors}>
                   <input type="text" value={data.preferred_colors} onChange={(e) => update("preferred_colors", e.target.value)} placeholder="Napr. modrá + biela, alebo HEX kód" className="input-field" />
                 </Field>
