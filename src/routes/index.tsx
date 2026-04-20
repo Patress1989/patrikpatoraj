@@ -448,9 +448,9 @@ function PriceAnchor() {
 /* =================== 16. REVIEWS =================== */
 function Reviews() {
   const reviews = [
-    { name: "Martin K.", role: "Zakladateľ startupu", text: "Za 10 dní sme mali kompletnú SaaS aplikáciu vrátane platieb. Agentúra nám dávala 4 mesiace a 12 000 €.", stars: 5 },
-    { name: "Eva P.", role: "Marketing manažérka", text: "Nový web nám okamžite zdvihol konverzie o 40 %. Profesionálny prístup od prvého kontaktu.", stars: 5 },
-    { name: "Lucia Andrášiová", role: "balonovysvet.eu", text: "Konečne web, ktorý sa načíta okamžite a vyzerá moderne. Patrik dodal presne to, čo som potrebovala.", stars: 5 },
+    { name: "Martin K.", role: "Majiteľ výrobnej firmy", text: "Patrik nám vytvoril vizuálny konfigurátor z reálnych fotiek, ktorý klientom okamžite vypočíta cenu a vygeneruje PDF ponuku. Naša efektivita pri nacenovaní stúpla o 300 % – ušetrený čas, ktorý sme predtým trávili manuálnou prácou, je pre firmu kľúčový.", stars: 5 },
+    { name: "Jana S.", role: "Business Development Manager", text: "Okrem moderného webu máme konečne poriadok v dopytoch vďaka vlastnému CRM systému. Automatizované e-maily klientom a jednoduchý export kontaktov nám šetria hodiny administratívy týždenne. Profesionálne riešenie, ktoré v podstate predáva za nás.", stars: 5 },
+    { name: "Lucia Patorajová Andrášiová", role: "Majiteľka eventovej agentúry", text: "Náš starý web bol pomalý a na mobiloch sa takmer nedal používať, kvôli čomu sme strácali dopyty. Patrik vytvoril bleskovú stránku, ktorá sa načíta pod sekundu. Odvtedy, čo je web online, vidíme, že ľudia na ňom trávia viac času a miera okamžitých odchodov (bounce rate) výrazne klesla. Moderný dizajn bol už len čerešničkou na torte.", stars: 5 },
   ];
   return (
     <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
