@@ -55,12 +55,260 @@ function HomePage() {
 /* =================== 1. HERO + 2. SUBHEADLINE + 6. CTA #1 =================== */
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 py-[12px]">
-...
+    <section className="relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 py-0">
+      <div className="pointer-events-none absolute inset-0 mesh-bg" />
+      <div className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
+
+      <div className="relative mx-auto max-w-5xl px-6 text-center">
+        <div className="animate-fade-in mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-md">
+          <Sparkles className="h-3.5 w-3.5 text-primary" />
+          Lovable Expert · Voľné kapacity tento mesiac
+        </div>
+
+        <h1 className="animate-fade-up text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+          Moderný responzívny web na mieru,<br className="hidden md:block" />
+          ktorý mení návštevníkov na <span className="gradient-text">platiacich klientov.</span>
+        </h1>
+
+        <p className="animate-fade-up delay-100 mx-auto mt-7 max-w-2xl text-lg text-muted-foreground md:text-xl">
+          Využívam silu umelej inteligencie a platformy <span className="text-foreground font-semibold">Lovable</span> na doručenie komplexných webových riešení a startupových aplikácií v rekordnom čase.
+        </p>
+
+        <div className="animate-fade-up delay-200 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link to="/formular" className="btn-primary group inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
+            Chcem ukážku zdarma
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <a href="#balicky" className="glass inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-medium text-foreground hover:bg-white/10">
+            Pozrieť balíčky
+          </a>
+        </div>
+
+        <div className="animate-fade-up delay-300 mt-14 grid grid-cols-3 gap-4 border-t border-white/5 pt-8 text-center">
+          <Stat value="5×" label="Rýchlejší vývoj" />
+          <Stat value="100%" label="Responzívne" />
+          <Stat value="24 h" label="Prvá ukážka" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <div className="text-2xl font-bold text-foreground md:text-3xl">{value}</div>
+      <div className="mt-1 text-xs text-muted-foreground md:text-sm">{label}</div>
+    </div>
+  );
+}
+
+/* =================== 3. PAIN POINTS =================== */
+function PainPoints() {
+  const pains = [
+    { icon: Clock, title: "Pomalé načítanie", text: "Návštevníci odchádzajú skôr, než sa stránka stihne načítať. Strácate predaje každý deň." },
+    { icon: Layout, title: "Zastaraný dizajn", text: "Web vyzerá ako z roku 2015. Klienti vás vnímajú ako neprofesionálov a idú ku konkurencii." },
+    { icon: Target, title: "Nízka konverzia", text: "Návštevy sú, ale nikto nekupuje. Web nepredáva, len existuje." },
+    { icon: MessageSquare, title: "Žiadna integrácia", text: "Nefunguje s vašim CRM, e-shopom ani databázou. Robíte všetko ručne." },
+    { icon: Gauge, title: "Drahá údržba", text: "Každá zmena trvá týždne a stojí stovky eur. Web vás brzdí, namiesto toho aby vám pomáhal." },
+  ];
+  return (
+    <Section eyebrow="Problém" title={<>Prečo váš súčasný web <span className="gradient-text">nepredáva?</span></>} subtitle={<>Väčšina podnikateľov má web, ktorý vyzerá pekne,<br />ale nerobí to, čo má. Tu je 5 najčastejších dôvodov.</>}>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {pains.map((p, i) => (
+          <div key={i} className="glass group rounded-2xl p-6 transition-all hover:border-white/20">
+            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-destructive/15 text-destructive">
+              <p.icon className="h-5 w-5" />
+            </div>
+            <h3 className="text-base font-semibold text-foreground">{p.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 4. SOLUTION =================== */
+function Solution() {
+  return (
+    <section id="riesenie" className="relative py-20 md:py-[52px]">
+      <div className="pointer-events-none absolute inset-0 mesh-bg opacity-50" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="animate-fade-up">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              <Zap className="h-3 w-3" /> Naše riešenie
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+              <span className="gradient-text">Lovable</span> — moderný spôsob tvorby webov a aplikácií
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Lovable je platforma novej generácie, ktorá spája rýchlosť umelej inteligencie s kvalitou a flexibilitou ručného kódovania. Žiadne šablóny, žiadne kompromisy — iba čistý kód postavený na mieru vašej značke.
+            </p>
+            <ul className="mt-7 space-y-3">
+              {[
+                "Plne responzívne weby a aplikácie",
+                "Vlastná databáza a backend (Supabase)",
+                "Integrácie s AI, platbami, emailmi",
+                "Optimalizácia pre rýchlosť a SEO",
+              ].map((t) => (
+                <li key={t} className="flex items-center gap-3 text-sm text-foreground">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20"><Check className="h-3 w-3 text-primary" /></span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="animate-fade-up delay-100 relative">
+            <div className="glass-strong relative rounded-3xl p-8">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: Code2, label: "React + TS" },
+                  { icon: Database, label: "Supabase DB" },
+                  { icon: Brain, label: "AI Gateway" },
+                  { icon: Layers, label: "Edge funkcie" },
+                ].map((x) => (
+                  <div key={x.label} className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center">
+                    <x.icon className="mx-auto h-6 w-6 text-primary" />
+                    <div className="mt-2 text-xs font-medium text-foreground">{x.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
+                <div className="text-xs font-medium text-muted-foreground">Priemerný čas dodania</div>
+                <div className="mt-1 text-3xl font-bold gradient-text">5 - 10 dní</div>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-primary/20 blur-3xl -z-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =================== 5. PROOF / NUMBERS =================== */
+function Proof() {
+  return (
+    <Section eyebrow="Dôkaz" title={<>Čísla, ktoré <span className="gradient-text">hovoria za seba</span></>}>
+      <div className="grid gap-5 md:grid-cols-4">
+        {[
+          { v: "5×", l: "Rýchlejší vývoj než klasická agentúra" },
+          { v: "70 %", l: "Nižšia cena pri rovnakej kvalite" },
+          { v: "< 1 s", l: "Načítanie stránky na pc, tablete aj mobile" },
+          { v: "100 %", l: "Vlastníctvo kódu po odovzdaní" },
+        ].map((x) => (
+          <div key={x.l} className="glass rounded-2xl p-6 text-center">
+            <div className="text-4xl font-extrabold gradient-text md:text-5xl">{x.v}</div>
+            <div className="mt-3 text-sm text-muted-foreground">{x.l}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <Link to="/formular" className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
+          Chcem ukážku zdarma <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 7. DESIRED OUTCOME =================== */
+function DesiredOutcome() {
+  return (
+    <Section eyebrow="Výsledok" title={<>Predstavte si web, ktorý <span className="gradient-text">pracuje za vás</span></>}>
+      <div className="grid gap-5 md:grid-cols-3">
+        {[
+          { icon: Rocket, title: "Automatizovaný predaj", text: "Nový klient prichádza, číta, presviedča sa a kupuje — bez vašej účasti." },
+          { icon: Award, title: "Profesionálna značka", text: "Web vyzerá ako od top agentúry. Zvyšuje vašu autoritu a dôveryhodnosť na prvý pohľad." },
+          { icon: Workflow, title: "Plne integrovaný systém", text: "Formuláre, platby, emaily a databáza spolupracujú ako jeden celok. Žiadne ručné prepisovanie." },
+        ].map((x) => (
+          <div key={x.title} className="glass rounded-2xl p-6">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15"><x.icon className="h-6 w-6 text-primary" /></div>
+            <h3 className="text-lg font-semibold">{x.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{x.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 8. CAPABILITIES =================== */
+function Capabilities() {
+  const items = [
+    { icon: Layout, title: "Full-stack aplikácie", text: "Komplexné webové aplikácie s frontendom, backendom aj databázou." },
+    { icon: Rocket, title: "SaaS riešenia", text: "Predplatné, používateľské účty, dashboardy — všetko pripravené." },
+    { icon: Database, title: "Supabase databázy", text: "Bezpečné dáta, autentifikácia a real-time funkcie." },
+    { icon: Sparkles, title: "Pokročilé UI/UX", text: "Moderné, prístupné a konverzne optimalizované rozhranie." },
+    { icon: Workflow, title: "Automatizácia", text: "Edge funkcie, webhooky, integrácie s Stripe, Resend, OpenAI." },
+    { icon: Shield, title: "Správa & údržba", text: "Mesačná podpora, aktualizácie a rýchle úpravy obsahu." },
+  ];
+  return (
+    <Section eyebrow="Čo viem postaviť" title={<>Komplexné riešenia <span className="gradient-text">od A po Z</span></>}>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {items.map((x) => (
+          <div key={x.title} className="glass rounded-2xl p-6 transition-all hover:bg-white/[0.07]">
+            <x.icon className="h-7 w-7 text-primary" />
+            <h3 className="mt-4 text-base font-semibold">{x.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{x.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 9. UNIQUENESS =================== */
+function Uniqueness() {
+  return (
+    <Section eyebrow="Prečo práve ja" title={<>Maximálna efektivita vďaka <span className="gradient-text">Lovable</span></>}>
+      <div className="glass-strong mx-auto max-w-3xl rounded-3xl p-8 md:p-12 text-center">
+        <Quote className="mx-auto h-10 w-10 text-primary" />
+        <p className="mt-6 text-lg leading-relaxed text-foreground md:text-xl">
+          Bežný vývojár stavia ručne týždne. Agentúra účtuje tisíce eur a meškania.
+          <br className="hidden md:block" />
+          <span className="gradient-text font-semibold">Ja kombinujem AI + Lovable + 6 rokov skúseností</span> a doručujem profesionálne riešenia za zlomok ceny a času.
+        </p>
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 10. MECHANISM (3 STEPS) =================== */
+function Mechanism() {
+  const steps = [
+    { n: "01", title: "Ukážka zdarma", text: "Vyplníte formulár, do 24 h dostanete ukážku konceptu a cenovú ponuku." },
+    { n: "02", title: "Vývoj", text: "Po schválení a symbolickej zálohe začnem stavať. Priebežne zdieľam pokrok." },
+    { n: "03", title: "Odovzdanie", text: "Web spustím, doplatíte zvyšnú sumu, dostávate plný prístup ku kódu aj projektu." },
+  ];
+  return (
+    <Section eyebrow="Ako to funguje" title={<>Jednoduchý <span className="gradient-text">3-krokový proces</span></>}>
+      <div className="grid gap-5 md:grid-cols-3">
+        {steps.map((s) => (
+          <div key={s.n} className="glass relative rounded-2xl p-6">
+            <div className="text-5xl font-extrabold gradient-text">{s.n}</div>
+            <h3 className="mt-3 text-lg font-semibold">{s.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* =================== 11. DIFFERENTIATION TABLE =================== */
+function Differentiation() {
+  const rows = [
+    ["Čas vývoja", "4 — 8 týždňov", "5 — 10 dní"],
+    ["Cena", "1 500 € — 5 000 €", "od 125 €"],
     ["Základné SEO", "Často doplatková", "Vždy v cene"],
-    ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
+    ["Vlastníctvo kódu", "Často nie", "100 % vaše"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
-    ["Návratnosť investície", "Mesiace až roky", "Týždne až mesiace"],
+    ["AI integrácia", "Extra projekt", "Pripravený na integráciu v cene"],
   ];
   return (
     <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
