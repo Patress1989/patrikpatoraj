@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, PartyPopper, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/formular")({
   head: () => ({
@@ -63,8 +63,8 @@ type FormData = {
 };
 
 function FormularPage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -203,15 +203,14 @@ function FormularPage() {
         console.warn("Email send failed (submission saved):", emailErr);
       }
 
-      setSubmitted(true);
+      navigate({ to: "/formular-vyplneny" });
+      return;
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Nastala neočakávaná chyba");
     } finally {
       setSubmitting(false);
     }
   };
-
-  if (submitted) return <ThankYou />;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -500,35 +499,3 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-function ThankYou() {
-  const navigate = useNavigate();
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
-      <main className="flex min-h-screen items-center justify-center px-6 pt-32 pb-20">
-        <div className="animate-fade-up text-center">
-          <div className="relative mx-auto flex h-24 w-24 items-center justify-center">
-            <div className="absolute inset-0 animate-pulse-glow rounded-full bg-primary/30 blur-2xl" />
-            <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-violet-500 shadow-2xl shadow-primary/40">
-              <PartyPopper className="h-12 w-12 text-white" />
-            </div>
-          </div>
-
-          <h1 className="mt-8 text-3xl font-extrabold md:text-5xl">
-            Ďakujeme! <span className="gradient-text">Máme to.</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
-            Váš dopyt sme úspešne prijali. Do <strong className="text-foreground">48 hodín</strong> vám pošlem na e-mail ukážku konceptu a cenovú ponuku.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button onClick={() => navigate({ to: "/" })} className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold">
-              Späť na hlavnú stránku
-            </button>
-          </div>
-        </div>
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
