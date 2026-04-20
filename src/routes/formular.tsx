@@ -224,7 +224,7 @@ function FormularPage() {
             </div>
             <h1 className="text-3xl font-bold md:text-4xl">Pár otázok a pustíme sa do toho</h1>
             <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-              Vyplnenie zaberie 1 minútu. Do 48 hodín vám pošleme ukážku konceptu a cenovú ponuku.
+              Vyplnenie zaberie 2 minúty. Do 24 hodín vám pošleme ukážku konceptu a cenovú ponuku.
             </p>
           </div>
 
