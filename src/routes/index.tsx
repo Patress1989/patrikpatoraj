@@ -306,9 +306,9 @@ function Differentiation() {
     ["Čas vývoja", "4 — 8 týždňov", "5 — 10 dní"],
     ["Cena", "1 500 € — 5 000 €", "od 125 €"],
     ["Základné SEO", "Často doplatková", "Vždy v cene"],
-    ["Vlastníctvo kódu", "Často nie", "100 % vaše"],
+    ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
-    ["AI integrácia", "Extra projekt", "Pripravený na integráciu v cene"],
+    ["Návratnosť investície", "Mesiace až roky", "Týždne až mesiace"],
   ];
   return (
     <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
