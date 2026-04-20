@@ -533,13 +533,46 @@ function Bonuses() {
 
 /* =================== 19. AUTHORITY =================== */
 function Authority() {
+  const [photo, setPhoto] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem("authority-photo");
+  });
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Fotka musí mať maximálne 5 MB.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setPhoto(result);
+      try {
+        localStorage.setItem("authority-photo", result);
+      } catch {
+        // storage full — ignore
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <Section eyebrow="O mne" title={<>Patrik Patoraj — <span className="gradient-text">Lovable Expert</span></>}>
       <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 md:p-12">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
-          <div className="mx-auto h-32 w-32 shrink-0 rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40 flex items-center justify-center text-5xl font-bold text-white">
-            PP
-          </div>
+          <label className="group relative mx-auto block h-32 w-32 shrink-0 cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40">
+            {photo ? (
+              <img src={photo} alt="Patrik Patoraj" className="h-full w-full object-cover" />
+            ) : (
+              <span className="flex h-full w-full items-center justify-center text-5xl font-bold text-white">PP</span>
+            )}
+            <span className="absolute inset-0 flex items-center justify-center bg-black/60 text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
+              {photo ? "Zmeniť fotku" : "Nahrať fotku"}
+            </span>
+            <input type="file" accept="image/*" onChange={handleUpload} className="sr-only" />
+          </label>
           <div>
             <p className="text-base leading-relaxed text-foreground md:text-lg">
               Som Patrik — vývojár, lektor a Lovable expert. Posledné roky pomáham firmám aj startupom postaviť moderné weby a aplikácie, ktoré skutočne fungujú a predávajú.
