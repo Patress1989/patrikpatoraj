@@ -14,6 +14,8 @@ import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as FormularVyplnenyRouteImport } from './routes/formular-vyplneny'
 import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminCrmLoginRouteImport } from './routes/admin.crm-login'
+import { Route as AdminCrmRouteImport } from './routes/admin.crm'
 
 const KurzRoute = KurzRouteImport.update({
   id: '/kurz',
@@ -40,6 +42,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminCrmLoginRoute = AdminCrmLoginRouteImport.update({
+  id: '/admin/crm-login',
+  path: '/admin/crm-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCrmRoute = AdminCrmRouteImport.update({
+  id: '/admin/crm',
+  path: '/admin/crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +59,8 @@ export interface FileRoutesByFullPath {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/admin/crm': typeof AdminCrmRoute
+  '/admin/crm-login': typeof AdminCrmLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/admin/crm': typeof AdminCrmRoute
+  '/admin/crm-login': typeof AdminCrmLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +78,37 @@ export interface FileRoutesById {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/admin/crm': typeof AdminCrmRoute
+  '/admin/crm-login': typeof AdminCrmLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
+  fullPaths:
+    | '/'
+    | '/formular'
+    | '/formular-vyplneny'
+    | '/gdpr'
+    | '/kurz'
+    | '/admin/crm'
+    | '/admin/crm-login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
-  id: '__root__' | '/' | '/formular' | '/formular-vyplneny' | '/gdpr' | '/kurz'
+  to:
+    | '/'
+    | '/formular'
+    | '/formular-vyplneny'
+    | '/gdpr'
+    | '/kurz'
+    | '/admin/crm'
+    | '/admin/crm-login'
+  id:
+    | '__root__'
+    | '/'
+    | '/formular'
+    | '/formular-vyplneny'
+    | '/gdpr'
+    | '/kurz'
+    | '/admin/crm'
+    | '/admin/crm-login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +117,8 @@ export interface RootRouteChildren {
   FormularVyplnenyRoute: typeof FormularVyplnenyRoute
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
+  AdminCrmRoute: typeof AdminCrmRoute
+  AdminCrmLoginRoute: typeof AdminCrmLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +158,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/crm-login': {
+      id: '/admin/crm-login'
+      path: '/admin/crm-login'
+      fullPath: '/admin/crm-login'
+      preLoaderRoute: typeof AdminCrmLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/crm': {
+      id: '/admin/crm'
+      path: '/admin/crm'
+      fullPath: '/admin/crm'
+      preLoaderRoute: typeof AdminCrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +181,8 @@ const rootRouteChildren: RootRouteChildren = {
   FormularVyplnenyRoute: FormularVyplnenyRoute,
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
+  AdminCrmRoute: AdminCrmRoute,
+  AdminCrmLoginRoute: AdminCrmLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
