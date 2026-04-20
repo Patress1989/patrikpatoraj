@@ -39,7 +39,6 @@ function HomePage() {
         <Pricing />
         <PriceAnchor />
         <Reviews />
-        <CaseStudies />
         <Bonuses />
         <Authority />
         <TargetAudience />
@@ -470,38 +469,6 @@ function Reviews() {
                 <div className="text-sm font-semibold text-foreground">{r.name}</div>
                 <div className="text-xs text-muted-foreground">{r.role}</div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* =================== 17. CASE STUDIES =================== */
-function CaseStudies() {
-  const cases = [
-    { title: "FitnessHub SaaS", tag: "SaaS · 14 dní", grad: "from-blue-500/30 to-cyan-500/30" },
-    { title: "Realitná agentúra Pro", tag: "Web · 7 dní", grad: "from-violet-500/30 to-blue-500/30" },
-    { title: "AI Recipe Generator", tag: "AI App · 10 dní", grad: "from-cyan-500/30 to-violet-500/30" },
-    { title: "Booking systém kaviarne", tag: "App · 12 dní", grad: "from-blue-500/30 to-violet-500/30" },
-    { title: "E-shop pre značku oblečenia", tag: "E-commerce · 14 dní", grad: "from-violet-500/30 to-cyan-500/30" },
-    { title: "Portál pre konferenciu", tag: "Web · 5 dní", grad: "from-cyan-500/30 to-blue-500/30" },
-  ];
-  return (
-    <Section eyebrow="Ukážky prác" title={<>Realizované <span className="gradient-text">projekty</span></>} subtitle="Ukážkové portfólio">
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {cases.map((c) => (
-          <div key={c.title} className="group glass overflow-hidden rounded-2xl">
-            <div className={`relative aspect-[4/3] bg-gradient-to-br ${c.grad}`}>
-              <div className="absolute inset-0 grid-pattern opacity-30" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Sparkles className="h-12 w-12 text-white/40 transition-transform group-hover:scale-110" />
-              </div>
-            </div>
-            <div className="p-5">
-              <div className="text-xs font-medium text-primary">{c.tag}</div>
-              <div className="mt-1 text-base font-semibold text-foreground">{c.title}</div>
             </div>
           </div>
         ))}
