@@ -20,7 +20,6 @@ export function SiteHeader() {
             <a href="#riesenie" className="text-muted-foreground transition-colors hover:text-foreground">Riešenie</a>
             <a href="#balicky" className="text-muted-foreground transition-colors hover:text-foreground">Balíčky</a>
             <a href="#faq" className="text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
-            <Link to="/kurz" className="text-muted-foreground transition-colors hover:text-foreground">AI Kurz</Link>
           </nav>
 
           <div className="flex items-center gap-2">
