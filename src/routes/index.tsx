@@ -178,7 +178,7 @@ function Solution() {
               </div>
               <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
                 <div className="text-xs font-medium text-muted-foreground">Priemerný čas dodania</div>
-                <div className="mt-1 text-3xl font-bold gradient-text">5 - 10 dní</div>
+                <div className="mt-1 text-3xl font-bold gradient-text">3 - 7 dní</div>
               </div>
             </div>
             <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-primary/20 blur-3xl -z-10" />
@@ -198,7 +198,7 @@ function Proof() {
           { v: "5×", l: "Rýchlejší vývoj než klasická agentúra" },
           { v: "70 %", l: "Nižšia cena pri rovnakej kvalite" },
           { v: "< 1 s", l: "Načítanie stránky na pc, tablete aj mobile" },
-          { v: "100 %", l: "Vlastníctvo kódu po odovzdaní" },
+          { v: "10 min.", l: "Čas, ktorý potrebujete na úpravu textu či fotky." },
         ].map((x) => (
           <div key={x.l} className="glass rounded-2xl p-6 text-center">
             <div className="text-4xl font-extrabold gradient-text md:text-5xl">{x.v}</div>
@@ -303,9 +303,9 @@ function Mechanism() {
 /* =================== 11. DIFFERENTIATION TABLE =================== */
 function Differentiation() {
   const rows = [
-    ["Čas vývoja", "4 — 8 týždňov", "5 — 10 dní"],
-    ["Cena", "1 500 € — 5 000 €", "od 125 €"],
-    ["Základné SEO", "Často doplatková", "Vždy v cene"],
+    ["Čas vývoja", "4 - 8 týždňov", "3 - 7 dní"],
+    ["Cena", "1 500 € - 5 000 €", "od 125 €"],
+    ["Základné SEO", "Často doplatková služba", "Vždy v cene"],
     ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
     ["Návratnosť investície", "Mesiace až roky", "Týždne až mesiace"],
