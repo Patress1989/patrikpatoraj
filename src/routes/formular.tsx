@@ -35,6 +35,10 @@ const schemas = {
   }),
   step3: z.object({
     business_area: z.string().trim().min(2, "Zadajte aspoň 2 znaky").max(200),
+    company_name: z.string().trim().max(200).optional().or(z.literal("")),
+    business_description: z.string().trim().max(1000).optional().or(z.literal("")),
+    services_list: z.string().trim().max(2000).optional().or(z.literal("")),
+    contact_info: z.string().trim().max(1000).optional().or(z.literal("")),
     preferred_colors: z.string().trim().max(200).optional().or(z.literal("")),
     existing_website: z.string().trim().max(255).optional().or(z.literal("")),
   }),
@@ -48,8 +52,13 @@ type FormData = {
   email: string;
   phone: string;
   business_area: string;
+  company_name: string;
+  business_description: string;
+  services_list: string;
+  contact_info: string;
   preferred_colors: string;
   existing_website: string;
+  photo_urls: string[];
   gdpr_consent: boolean;
 };
 
