@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as KurzRouteImport } from './routes/kurz'
+import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as IndexRouteImport } from './routes/index'
 
+const KurzRoute = KurzRouteImport.update({
+  id: '/kurz',
+  path: '/kurz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GdprRoute = GdprRouteImport.update({
+  id: '/gdpr',
+  path: '/gdpr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/gdpr': typeof GdprRoute
+  '/kurz': typeof KurzRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/gdpr': typeof GdprRoute
+  '/kurz': typeof KurzRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/gdpr': typeof GdprRoute
+  '/kurz': typeof KurzRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/gdpr' | '/kurz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/gdpr' | '/kurz'
+  id: '__root__' | '/' | '/gdpr' | '/kurz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GdprRoute: typeof GdprRoute
+  KurzRoute: typeof KurzRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/kurz': {
+      id: '/kurz'
+      path: '/kurz'
+      fullPath: '/kurz'
+      preLoaderRoute: typeof KurzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gdpr': {
+      id: '/gdpr'
+      path: '/gdpr'
+      fullPath: '/gdpr'
+      preLoaderRoute: typeof GdprRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GdprRoute: GdprRoute,
+  KurzRoute: KurzRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
