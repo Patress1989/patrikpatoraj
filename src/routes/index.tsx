@@ -350,19 +350,19 @@ function Pricing() {
   const plans = [
     {
       icon: Zap, name: "BASIC", tag: "Pre štart",
-      upfront: "25 €", final: "100 €", monthly: "10 €",
+      upfront: "25 €", final: "100 €", monthly: "10 €", delivery: "do 48 hodín",
       features: ["10-stránkový web", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
       highlight: false,
     },
     {
       icon: Star, name: "STANDARD", tag: "Najobľúbenejšie",
-      upfront: "100 €", final: "500 €", monthly: "20 €",
+      upfront: "100 €", final: "500 €", monthly: "20 €", delivery: "do 7 dní",
       features: ["Multi-page web alebo malá appka", "Databáza Supabase", "CMS pre úpravy obsahu", "Pokročilé SEO + analytika", "Integrácia emailov / platby"],
       highlight: true,
     },
     {
       icon: Crown, name: "PREMIUM", tag: "Pre firmy",
-      upfront: "200 €", final: "Individuálna cena", monthly: "20 €",
+      upfront: "200 €", final: "Individuálna cena", monthly: "20 €", delivery: "do 30 dní",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
     },
@@ -402,6 +402,9 @@ function Pricing() {
                   <span className="text-sm text-muted-foreground">po odovzdaní</span>
                 </div>
                 <div className="text-xs text-muted-foreground">voliteľne {p.monthly}/mes. správa</div>
+                <div className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                  <Clock className="h-3 w-3" /> Dodanie {p.delivery}
+                </div>
               </div>
 
               <ul className="mt-6 space-y-2.5 border-t border-white/5 pt-6">
