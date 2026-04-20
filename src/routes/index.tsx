@@ -532,10 +532,12 @@ function Bonuses() {
 }
 
 /* =================== 19. AUTHORITY =================== */
+import patrikPhoto from "@/assets/patrik-photo.png";
+
 function Authority() {
   const [photo, setPhoto] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    return localStorage.getItem("authority-photo");
+    if (typeof window === "undefined") return patrikPhoto;
+    return localStorage.getItem("authority-photo") || patrikPhoto;
   });
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -558,11 +560,17 @@ function Authority() {
     reader.readAsDataURL(file);
   };
 
+  const paragraphs = [
+    "Volám sa Patrik a v online svete sa pohybujem už viac ako 6 rokov. Počas pôsobenia ako externý dodávateľ pre veľkú firmu a správe webu pre rodinný biznis mojej manželky som na vlastnej koži pocítil frustráciu, ktorú zažíva väčšina podnikateľov.",
+    "Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil Lovable, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.",
+    "Moja efektivita nie je len teória – v priebehu jediného mesiaca som dokázal vytvoriť desiatky plne funkčných webov. Mojím cieľom je priniesť túto efektivitu aj vám.",
+  ];
+
   return (
     <Section eyebrow="O mne" title={<>Patrik Patoraj — <span className="gradient-text">Lovable Expert</span></>}>
-      <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 md:p-12">
-        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
-          <label className="group relative mx-auto block h-32 w-32 shrink-0 cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40">
+      <div className="glass-strong mx-auto max-w-5xl rounded-3xl p-6 md:p-12">
+        <div className="grid gap-8 md:grid-cols-[260px_1fr] md:items-start md:gap-12">
+          <label className="group relative mx-auto block aspect-square w-48 shrink-0 cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40 shadow-lg ring-1 ring-primary/20 md:w-full">
             {photo ? (
               <img src={photo} alt="Patrik Patoraj" className="h-full w-full object-cover" />
             ) : (
@@ -573,16 +581,12 @@ function Authority() {
             </span>
             <input type="file" accept="image/*" onChange={handleUpload} className="sr-only" />
           </label>
-          <div>
-            <p className="text-base leading-relaxed text-foreground md:text-lg whitespace-pre-line">
-              {`Volám sa Patrik a v online svete sa pohybujem už viac ako 6 rokov. Počas pôsobenia ako externý dodávateľ pre veľkú firmu a správe webu pre rodinný biznis mojej manželky som na vlastnej koži pocítil frustráciu, ktorú zažíva väčšina podnikateľov.
-
-
-Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil Lovable, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.
-
-
-Moja efektivita nie je len teória – v priebehu jediného mesiaca som dokázal vytvoriť desiatky plne funkčných webov. Mojím cieľom je priniesť túto efektivitu aj vám.`}
-            </p>
+          <div className="space-y-4 md:space-y-5">
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-base leading-relaxed text-foreground/90 md:text-lg">
+                {p}
+              </p>
+            ))}
           </div>
         </div>
       </div>
