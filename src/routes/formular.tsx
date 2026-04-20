@@ -138,7 +138,15 @@ function FormularPage() {
     let result;
     if (s === 1) result = schemas.step1.safeParse({ name: data.name });
     else if (s === 2) result = schemas.step2.safeParse({ email: data.email, phone: data.phone });
-    else if (s === 3) result = schemas.step3.safeParse({ business_area: data.business_area, preferred_colors: data.preferred_colors, existing_website: data.existing_website });
+    else if (s === 3) result = schemas.step3.safeParse({
+      business_area: data.business_area,
+      company_name: data.company_name,
+      business_description: data.business_description,
+      services_list: data.services_list,
+      contact_info: data.contact_info,
+      preferred_colors: data.preferred_colors,
+      existing_website: data.existing_website,
+    });
     else result = schemas.step4.safeParse({ gdpr_consent: data.gdpr_consent });
 
     if (!result.success) {
