@@ -230,25 +230,25 @@ function FormularPage() {
 
           {/* Progress */}
           <div className="mt-10">
-            <div className="flex items-center justify-between">
+            <div className="flex items-start">
               {STEPS.map((s, i) => (
-                <div key={s.n} className="flex flex-1 items-center">
-                  <div className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm font-semibold transition-all ${
-                    step > s.n ? "border-primary bg-primary text-primary-foreground" :
-                    step === s.n ? "border-primary bg-primary/20 text-primary" :
-                    "border-white/10 bg-white/5 text-muted-foreground"
-                  }`}>
-                    {step > s.n ? <Check className="h-4 w-4" /> : s.n}
+                <div key={s.n} className="flex flex-1 items-start">
+                  <div className="flex w-9 shrink-0 flex-col items-center">
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm font-semibold transition-all ${
+                      step > s.n ? "border-primary bg-primary text-primary-foreground" :
+                      step === s.n ? "border-primary bg-primary/20 text-primary" :
+                      "border-white/10 bg-white/5 text-muted-foreground"
+                    }`}>
+                      {step > s.n ? <Check className="h-4 w-4" /> : s.n}
+                    </div>
+                    <span className={`mt-2 text-center text-xs ${step >= s.n ? "text-foreground" : "text-muted-foreground"}`}>
+                      {s.label}
+                    </span>
                   </div>
                   {i < STEPS.length - 1 && (
-                    <div className={`mx-2 h-0.5 flex-1 transition-all ${step > s.n ? "bg-primary" : "bg-white/10"}`} />
+                    <div className={`mx-3 mt-[18px] h-0.5 flex-1 transition-all ${step > s.n ? "bg-primary" : "bg-white/10"}`} />
                   )}
                 </div>
-              ))}
-            </div>
-            <div className="mt-2 flex justify-between text-xs text-muted-foreground">
-              {STEPS.map((s) => (
-                <span key={s.n} className={step >= s.n ? "text-foreground" : ""}>{s.label}</span>
               ))}
             </div>
           </div>
