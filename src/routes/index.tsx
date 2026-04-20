@@ -583,7 +583,7 @@ function Urgency() {
 /* =================== FAQ =================== */
 function FAQ() {
   const items = [
-    { q: "Komu patrí web po odovzdaní?", a: "100 % vám. Dostávate plný prístup ku kódu, repozitáru aj všetkým účtom (hosting, databáza). Nikdy ste závislý odo mňa." },
+    { q: "Komu patrí web po odovzdaní?", a: "100% vám. Dostávate plný prístup k celému projektu, repozitáru aj všetkým účtom (hosting, databáza). Neostávate vôbec závislý odo mňa." },
     { q: "Aké technológie používate?", a: "Frontend: React + TypeScript + Tailwind. Backend: Supabase (PostgreSQL, Auth, Edge Functions). AI: OpenAI / Lovable AI Gateway. Hosting: globálny CDN." },
     { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si obsah viete meniť sami. Ak máte zakúpenú aj mesačnú správu, jednoduché zmeny aplikujem do 24 hodín. Komplexnejšie zmeny do 48 hodín." },
     { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
