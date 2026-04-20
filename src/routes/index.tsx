@@ -87,7 +87,7 @@ function Hero() {
         <div className="animate-fade-up delay-300 mt-14 grid grid-cols-3 gap-4 border-t border-white/5 pt-8 text-center">
           <Stat value="5×" label="Rýchlejší vývoj" />
           <Stat value="100%" label="Responzívne" />
-          <Stat value="48 h" label="Prvá ukážka" />
+          <Stat value="24 h" label="Prvá ukážka" />
         </div>
       </div>
     </section>
@@ -178,7 +178,7 @@ function Solution() {
               </div>
               <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
                 <div className="text-xs font-medium text-muted-foreground">Priemerný čas dodania</div>
-                <div className="mt-1 text-3xl font-bold gradient-text">7 — 14 dní</div>
+                <div className="mt-1 text-3xl font-bold gradient-text">5 - 10 dní</div>
               </div>
             </div>
             <div className="pointer-events-none absolute -inset-4 rounded-3xl bg-primary/20 blur-3xl -z-10" />
@@ -271,7 +271,7 @@ function Uniqueness() {
         <p className="mt-6 text-lg leading-relaxed text-foreground md:text-xl">
           Bežný vývojár stavia ručne týždne. Agentúra účtuje tisíce eur a meškania.
           <br className="hidden md:block" />
-          <span className="gradient-text font-semibold">Ja kombinujem AI + Lovable + 10 rokov skúseností</span> a doručujem profesionálne riešenia za zlomok ceny a času.
+          <span className="gradient-text font-semibold">Ja kombinujem AI + Lovable + 6 rokov skúseností</span> a doručujem profesionálne riešenia za zlomok ceny a času.
         </p>
       </div>
     </Section>
@@ -281,7 +281,7 @@ function Uniqueness() {
 /* =================== 10. MECHANISM (3 STEPS) =================== */
 function Mechanism() {
   const steps = [
-    { n: "01", title: "Ukážka zdarma", text: "Vyplníte formulár, do 48 h dostanete ukážku konceptu a cenovú ponuku." },
+    { n: "01", title: "Ukážka zdarma", text: "Vyplníte formulár, do 24 h dostanete ukážku konceptu a cenovú ponuku." },
     { n: "02", title: "Vývoj", text: "Po schválení a symbolickej zálohe začnem stavať. Priebežne zdieľam pokrok." },
     { n: "03", title: "Odovzdanie", text: "Web spustím, doplatíte zvyšnú sumu, dostávate plný prístup ku kódu aj projektu." },
   ];
@@ -303,12 +303,12 @@ function Mechanism() {
 /* =================== 11. DIFFERENTIATION TABLE =================== */
 function Differentiation() {
   const rows = [
-    ["Čas vývoja", "8 — 12 týždňov", "7 — 14 dní"],
-    ["Cena", "3 000 € — 15 000 €", "od 125 €"],
+    ["Čas vývoja", "4 — 8 týždňov", "5 — 10 dní"],
+    ["Cena", "1 500 € — 5 000 €", "od 125 €"],
     ["Responzívnosť", "Často doplatková", "Vždy v cene"],
     ["Vlastníctvo kódu", "Často nie", "100 % vaše"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
-    ["AI integrácia", "Extra projekt", "Pripravená"],
+    ["AI integrácia", "Extra projekt", "V cene"],
   ];
   return (
     <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
@@ -351,7 +351,7 @@ function Pricing() {
     {
       icon: Zap, name: "BASIC", tag: "Pre štart",
       upfront: "25 €", final: "100 €", monthly: "10 €",
-      features: ["1-stránkový web (landing)", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
+      features: ["10-stránkový web", "Plne responzívny", "Základné SEO", "Kontaktný formulár", "Hosting nastavenie"],
       highlight: false,
     },
     {
@@ -362,7 +362,7 @@ function Pricing() {
     },
     {
       icon: Crown, name: "PREMIUM", tag: "Pre firmy",
-      upfront: "100 €", final: "1 000 €", monthly: "20 €",
+      upfront: "100 €", final: "Individuálna cena", monthly: "20 €",
       features: ["Full-stack aplikácia / SaaS", "Užívateľské účty + dashboard", "AI integrácia (chatbot, atď.)", "Stripe platby a predplatné", "Prioritná podpora"],
       highlight: false,
     },
@@ -398,7 +398,7 @@ function Pricing() {
                   <span className="text-sm text-muted-foreground">vopred</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold gradient-text">+ {p.final}</span>
+                  <span className="text-2xl font-bold gradient-text">{p.final === "Individuálna cena" ? "" : "+ "}{p.final}</span>
                   <span className="text-sm text-muted-foreground">po odovzdaní</span>
                 </div>
                 <div className="text-xs text-muted-foreground">voliteľne {p.monthly}/mes. správa</div>
@@ -428,12 +428,12 @@ function PriceAnchor() {
   return (
     <Section>
       <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 text-center md:p-12">
-        <div className="text-sm font-medium uppercase tracking-wider text-primary">Cenová kotva</div>
+        <div className="text-sm font-medium uppercase tracking-wider text-primary">Cenový rozdiel</div>
         <h2 className="mt-3 text-2xl font-bold md:text-4xl">
-          Bežný vývoj komplexných aplikácií stojí <span className="line-through text-muted-foreground">3 000 — 15 000 €</span>
+          Bežný vývoj komplexných aplikácií stojí <span className="line-through text-muted-foreground">1 500 — 5 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">125 €</span>. Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
+          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">125 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
         </p>
         <Link to="/formular" className="btn-primary mt-8 inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
           Začať projekt <ArrowRight className="h-4 w-4" />
