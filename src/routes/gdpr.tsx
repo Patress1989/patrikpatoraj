@@ -87,7 +87,7 @@ function GdprPage() {
             </section>
 
             <p className="text-xs italic">
-              Tento dokument je placeholder a má informatívny charakter. Pre plnú právnu zhodnosť odporúčame konzultáciu s právnikom.
+              ​
             </p>
           </div>
         </div>
