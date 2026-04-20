@@ -68,13 +68,70 @@ function FormularPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>({
-    name: "", email: "", phone: "", business_area: "", preferred_colors: "", existing_website: "", gdpr_consent: false,
+    name: "", email: "", phone: "",
+    business_area: "", company_name: "", business_description: "",
+    services_list: "", contact_info: "",
+    preferred_colors: "", existing_website: "",
+    photo_urls: [],
+    gdpr_consent: false,
   });
 
   const update = <K extends keyof FormData>(k: K, v: FormData[K]) => {
     setData((d) => ({ ...d, [k]: v }));
     setErrors((e) => ({ ...e, [k]: "" }));
+  };
+
+  const MAX_PHOTOS = 10;
+  const MAX_SIZE = 5 * 1024 * 1024;
+
+  const handleFiles = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploadError(null);
+
+    const remaining = MAX_PHOTOS - data.photo_urls.length;
+    if (remaining <= 0) {
+      setUploadError(`Maximálne ${MAX_PHOTOS} fotiek.`);
+      return;
+    }
+    const toUpload = Array.from(files).slice(0, remaining);
+
+    for (const f of toUpload) {
+      if (!f.type.startsWith("image/")) {
+        setUploadError("Povolené sú len obrázky.");
+        return;
+      }
+      if (f.size > MAX_SIZE) {
+        setUploadError(`Súbor "${f.name}" presahuje 5 MB.`);
+        return;
+      }
+    }
+
+    setUploading(true);
+    try {
+      const uploaded: string[] = [];
+      for (const file of toUpload) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const path = `${crypto.randomUUID()}.${ext}`;
+        const { error: upErr } = await supabase.storage
+          .from("project-photos")
+          .upload(path, file, { contentType: file.type, upsert: false });
+        if (upErr) throw upErr;
+        const { data: pub } = supabase.storage.from("project-photos").getPublicUrl(path);
+        uploaded.push(pub.publicUrl);
+      }
+      setData((d) => ({ ...d, photo_urls: [...d.photo_urls, ...uploaded] }));
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Nahrávanie zlyhalo");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removePhoto = (url: string) => {
+    setData((d) => ({ ...d, photo_urls: d.photo_urls.filter((u) => u !== url) }));
   };
 
   const validateStep = (s: number): boolean => {
