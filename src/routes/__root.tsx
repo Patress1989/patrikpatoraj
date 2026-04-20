@@ -41,8 +41,8 @@ export const Route = createRootRoute({
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Patrik Patoraj" },
       { name: "twitter:description", content: "Moderné webstránky na mieru od Experta. Rýchly vývoj už za 3–7 dní. Rýchle, výkonné a cenovo dostupné weby pre moderné podnikanie." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d4b2c542-2fb1-442d-a0d1-583ec1085e36/id-preview-bc42fab0--957e66d1-4137-40f2-aaba-cb0fa5462dcc.lovable.app-1776696591284.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d4b2c542-2fb1-442d-a0d1-583ec1085e36/id-preview-bc42fab0--957e66d1-4137-40f2-aaba-cb0fa5462dcc.lovable.app-1776696591284.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1UsyXvl6qoMxZwH2urgkv3DeEbs1/social-images/social-1776701490248-náhľadový_obrázok_patrikpatoraj.sk.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1UsyXvl6qoMxZwH2urgkv3DeEbs1/social-images/social-1776701490248-náhľadový_obrázok_patrikpatoraj.sk.webp" },
     ],
     links: [
       {
