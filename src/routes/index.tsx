@@ -538,31 +538,6 @@ function Bonuses() {
 import patrikPhoto from "@/assets/patrik-photo.png";
 
 function Authority() {
-  const [photo, setPhoto] = useState<string | null>(() => {
-    if (typeof window === "undefined") return patrikPhoto;
-    return localStorage.getItem("authority-photo") || patrikPhoto;
-  });
-
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (file.size > 5 * 1024 * 1024) {
-      alert("Fotka musí mať maximálne 5 MB.");
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      setPhoto(result);
-      try {
-        localStorage.setItem("authority-photo", result);
-      } catch {
-        // storage full — ignore
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
   const paragraphs = [
     "Volám sa Patrik a v online svete sa pohybujem už viac ako 6 rokov. Počas pôsobenia ako externý dodávateľ pre veľkú firmu a správe webu pre rodinný biznis mojej manželky som na vlastnej koži pocítil frustráciu, ktorú zažíva väčšina podnikateľov.",
     "Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil Lovable, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.",
@@ -573,17 +548,15 @@ function Authority() {
     <Section eyebrow="O mne" title={<>Patrik Patoraj — <span className="gradient-text">Lovable Expert</span></>}>
       <div className="glass-strong mx-auto max-w-5xl rounded-3xl p-6 md:p-12">
         <div className="grid gap-8 md:grid-cols-[260px_1fr] md:items-start md:gap-12">
-          <label className="group relative mx-auto block aspect-square w-48 shrink-0 cursor-pointer overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40 shadow-lg ring-1 ring-primary/20 md:w-full">
-            {photo ? (
-              <img src={photo} alt="Patrik Patoraj" className="h-full w-full object-cover" />
-            ) : (
-              <span className="flex h-full w-full items-center justify-center text-5xl font-bold text-white">PP</span>
-            )}
-            <span className="absolute inset-0 flex items-center justify-center bg-black/60 text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
-              {photo ? "Zmeniť fotku" : "Nahrať fotku"}
-            </span>
-            <input type="file" accept="image/*" onChange={handleUpload} className="sr-only" />
-          </label>
+          <div className="relative mx-auto aspect-square w-48 shrink-0 overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40 shadow-lg ring-1 ring-primary/20 select-none md:w-full">
+            <img
+              src={patrikPhoto}
+              alt="Patrik Patoraj"
+              className="h-full w-full object-cover pointer-events-none select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+            />
+          </div>
           <div className="space-y-4 md:space-y-5">
             {paragraphs.map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-foreground/90 md:text-lg">
