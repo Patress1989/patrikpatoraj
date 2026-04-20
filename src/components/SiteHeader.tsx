@@ -44,7 +44,7 @@ export function SiteHeader() {
             <a href="#riesenie" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Riešenie</a>
             <a href="#balicky" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Balíčky</a>
             <a href="#faq" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">FAQ</a>
-            <Link to="/kurz" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">AI Kurz</Link>
+            
             <Link to="/formular" onClick={() => setOpen(false)} className="btn-primary mt-1 rounded-lg px-3 py-2 text-center text-sm font-semibold">
               Ukážka zdarma
             </Link>

@@ -525,9 +525,6 @@ function ThankYou() {
             <button onClick={() => navigate({ to: "/" })} className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold">
               Späť na hlavnú stránku
             </button>
-            <Link to="/kurz" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-foreground hover:bg-white/10">
-              Pozrieť AI kurz
-            </Link>
           </div>
         </div>
       </main>
