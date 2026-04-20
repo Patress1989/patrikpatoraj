@@ -40,7 +40,7 @@ function FormularVyplnenyPage() {
       </section>
 
       {/* Confirmation card */}
-      <main className="py-20 md:py-28">
+      <main className="py-20 md:py-[22px]">
         <div className="mx-auto max-w-2xl px-6 text-center">
           <div className="relative mx-auto mb-8 flex h-24 w-24 items-center justify-center">
             <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl animate-pulse-glow" aria-hidden="true" />
