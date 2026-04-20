@@ -80,7 +80,7 @@ function Hero() {
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <a href="#balicky" className="glass inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-medium text-foreground hover:bg-white/10">
-            Pozrieť Cenové WEB Balíky
+            Pozrieť Ceny WEB Balíkov
           </a>
         </div>
 
@@ -372,7 +372,7 @@ function Pricing() {
     <section id="balicky" className="relative py-20 md:py-[52px]">
       <div className="pointer-events-none absolute inset-0 mesh-bg opacity-40" />
       <div className="relative mx-auto max-w-6xl px-6">
-        <SectionHeader eyebrow="Cenové WEB Balíky" title={<>Cenovo dostupné riešenia pre <span className="gradient-text">každý projekt</span></>} subtitle="Transparentné ceny. Žiadne skryté poplatky." />
+        <SectionHeader eyebrow="Ceny WEB Balíkov" title={<>Cenovo dostupné riešenia pre <span className="gradient-text">každý projekt</span></>} subtitle="Transparentné ceny. Žiadne skryté poplatky." />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {plans.map((p) => (
