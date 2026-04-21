@@ -195,10 +195,12 @@ function FormularPage() {
 
       if (dbError) throw new Error(dbError.message);
 
-      // 2. Trigger email (best-effort, don't block on failure)
+      // 2. Trigger emails (best-effort, don't block on failure)
       try {
-        await supabase.functions.invoke("send-form-email", {
-          body: { submissionId, ...data },
+        await fetch('/api/form-emails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ submissionId, data }),
         });
       } catch (emailErr) {
         console.warn("Email send failed (submission saved):", emailErr);
