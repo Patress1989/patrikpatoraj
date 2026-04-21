@@ -100,7 +100,23 @@ function ObchodnePodmienkyPage() {
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">7. Referencie</h2>
+              <h2 className="text-lg font-semibold text-foreground">7. Technická požiadavka pre odovzdanie</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                Pre úspešné odovzdanie hotového projektu a následnú správu webu je potrebné, aby ste si vytvorili konto v aplikácii Lovable cez tento pozývací odkaz:{" "}
+                <a
+                  href="https://lovable.dev/invite/SPBXBVT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline break-all"
+                >
+                  https://lovable.dev/invite/SPBXBVT
+                </a>
+                . Po dokončení prác Vám cez tento systém budem môcť plne odovzdať prístup k správe webu.
+              </p>
+            </section>
+
+            <section className="glass rounded-2xl p-6">
+              <h2 className="text-lg font-semibold text-foreground">8. Referencie</h2>
               <p className="mt-3 text-sm leading-relaxed">
                 Zhotoviteľ si vyhradzuje právo uviesť dielo vo svojom portfóliu a umiestniť do pätičky webu krátky odkaz „Vytvoril patrikpatoraj.sk“, pokiaľ nebolo písomne dohodnuté inak.
               </p>
