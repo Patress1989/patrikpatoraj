@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
+import { Route as ObchodnePodmienkyRouteImport } from './routes/obchodne-podmienky'
 import { Route as KurzRouteImport } from './routes/kurz'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as FormularVyplnenyRouteImport } from './routes/formular-vyplneny'
@@ -27,6 +28,11 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 const UnsubscribeRoute = UnsubscribeRouteImport.update({
   id: '/unsubscribe',
   path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObchodnePodmienkyRoute = ObchodnePodmienkyRouteImport.update({
+  id: '/obchodne-podmienky',
+  path: '/obchodne-podmienky',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KurzRoute = KurzRouteImport.update({
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/obchodne-podmienky'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/obchodne-podmienky'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/obchodne-podmienky'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -204,6 +216,7 @@ export interface RootRouteChildren {
   FormularVyplnenyRoute: typeof FormularVyplnenyRoute
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
+  ObchodnePodmienkyRoute: typeof ObchodnePodmienkyRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminCrmRoute: typeof AdminCrmRoute
   AdminCrmLoginRoute: typeof AdminCrmLoginRoute
@@ -222,6 +235,13 @@ declare module '@tanstack/react-router' {
       path: '/unsubscribe'
       fullPath: '/unsubscribe'
       preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obchodne-podmienky': {
+      id: '/obchodne-podmienky'
+      path: '/obchodne-podmienky'
+      fullPath: '/obchodne-podmienky'
+      preLoaderRoute: typeof ObchodnePodmienkyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kurz': {
@@ -324,6 +344,7 @@ const rootRouteChildren: RootRouteChildren = {
   FormularVyplnenyRoute: FormularVyplnenyRoute,
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
+  ObchodnePodmienkyRoute: ObchodnePodmienkyRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminCrmRoute: AdminCrmRoute,
   AdminCrmLoginRoute: AdminCrmLoginRoute,

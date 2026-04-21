@@ -46,6 +46,9 @@ export function SiteFooter() {
               <li className="pt-3">
                 <Link to="/gdpr" className="hover:text-foreground">Ochrana údajov</Link>
               </li>
+              <li>
+                <Link to="/obchodne-podmienky" className="hover:text-foreground">Obchodné podmienky</Link>
+              </li>
             </ul>
           </div>
         </div>
