@@ -9,12 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as KurzRouteImport } from './routes/kurz'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as FormularVyplnenyRouteImport } from './routes/formular-vyplneny'
 import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
+import { Route as ApiFormEmailsRouteImport } from './routes/api/form-emails'
 import { Route as AdminCrmLoginRouteImport } from './routes/admin.crm-login'
 import { Route as AdminCrmRouteImport } from './routes/admin.crm'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
@@ -22,6 +24,11 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KurzRoute = KurzRouteImport.update({
   id: '/kurz',
   path: '/kurz',
@@ -50,6 +57,11 @@ const IndexRoute = IndexRouteImport.update({
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   id: '/email/unsubscribe',
   path: '/email/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiFormEmailsRoute = ApiFormEmailsRouteImport.update({
+  id: '/api/form-emails',
+  path: '/api/form-emails',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminCrmLoginRoute = AdminCrmLoginRouteImport.update({
@@ -92,8 +104,10 @@ export interface FileRoutesByFullPath {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
+  '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -106,8 +120,10 @@ export interface FileRoutesByTo {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
+  '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -121,8 +137,10 @@ export interface FileRoutesById {
   '/formular-vyplneny': typeof FormularVyplnenyRoute
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
+  '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -137,8 +155,10 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
+    | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
@@ -151,8 +171,10 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
+    | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
@@ -165,8 +187,10 @@ export interface FileRouteTypes {
     | '/formular-vyplneny'
     | '/gdpr'
     | '/kurz'
+    | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
+    | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
@@ -180,8 +204,10 @@ export interface RootRouteChildren {
   FormularVyplnenyRoute: typeof FormularVyplnenyRoute
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   AdminCrmRoute: typeof AdminCrmRoute
   AdminCrmLoginRoute: typeof AdminCrmLoginRoute
+  ApiFormEmailsRoute: typeof ApiFormEmailsRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
@@ -191,6 +217,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kurz': {
       id: '/kurz'
       path: '/kurz'
@@ -231,6 +264,13 @@ declare module '@tanstack/react-router' {
       path: '/email/unsubscribe'
       fullPath: '/email/unsubscribe'
       preLoaderRoute: typeof EmailUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/form-emails': {
+      id: '/api/form-emails'
+      path: '/api/form-emails'
+      fullPath: '/api/form-emails'
+      preLoaderRoute: typeof ApiFormEmailsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/crm-login': {
@@ -284,8 +324,10 @@ const rootRouteChildren: RootRouteChildren = {
   FormularVyplnenyRoute: FormularVyplnenyRoute,
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   AdminCrmRoute: AdminCrmRoute,
   AdminCrmLoginRoute: AdminCrmLoginRoute,
+  ApiFormEmailsRoute: ApiFormEmailsRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
