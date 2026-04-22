@@ -440,7 +440,7 @@ function Pricing() {
                   </div>
 
                   <Link
-                    to="/formular"
+                    to="/objednavka"
                     className="btn-primary mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-4 text-base font-semibold sm:w-auto"
                   >
                     Chcem web na predplatné <ArrowRight className="h-4 w-4" />
