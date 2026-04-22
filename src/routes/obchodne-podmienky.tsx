@@ -48,96 +48,88 @@ function ObchodnePodmienkyPage() {
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">2. Predmet služieb a technologický stack</h2>
+              <h2 className="text-lg font-semibold text-foreground">2. Technologický stack</h2>
               <p className="mt-3 text-sm leading-relaxed">
-                Zhotoviteľ poskytuje služby v oblasti digitálneho vývoja s využitím moderných technológií umelej inteligencie (AI) a platforiem tretích strán (Low-code/No-code). Rozsah služieb je definovaný balíkmi:
+                Zhotoviteľ poskytuje služby v oblasti digitálneho vývoja s využitím platforiem <strong className="text-foreground">Lovable, GitHub a Supabase</strong>. Objednávateľ berie na vedomie, že dielo je závislé na týchto platformách tretích strán a Zhotoviteľ nezodpovedá za ich výpadky, zmeny cenníkov ani ukončenie poskytovania služieb.
               </p>
-              <ul className="mt-3 space-y-2 text-sm leading-relaxed">
-                <li><strong className="text-foreground">Základný (284 €):</strong> 6-stránkový moderný web, responzivita, základné SEO, kontaktný formulár.</li>
-                <li><strong className="text-foreground">Biznis (1000 €):</strong> Funkcie balíka Základný + viacej podstránok, napojenie z feedu dodávateľa – databáza (Supabase), redakčný systém (CMS), CRM integrácia a platobné brány.</li>
-                <li><strong className="text-foreground">Prémiový (Individuálne):</strong> Komplexné SaaS aplikácie, AI integrácie a automatizácie.</li>
-              </ul>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">3. Garancia dodania „48 hodín“</h2>
+              <h2 className="text-lg font-semibold text-foreground">3. Povinná súčinnosť</h2>
               <p className="mt-3 text-sm leading-relaxed">
-                Lehota začína plynúť prvým pracovným dňom nasledujúcim po:
+                Pre odovzdanie webu do plného vlastníctva je Objednávateľ povinný vytvoriť si a udržiavať účty na platformách <strong className="text-foreground">GitHub</strong> (zdrojový kód) a <strong className="text-foreground">Supabase</strong> (databáza, ak je súčasťou balíka). Bez vytvorenia týchto prístupov nie je možné dielo technicky odovzdať.
               </p>
-              <ol className="mt-3 list-inside list-decimal space-y-1.5 text-sm leading-relaxed">
-                <li>Pripísaní dohodnutej zálohy na účet Zhotoviteľa.</li>
-                <li>Dodaní kompletných podkladov a zabezpečení potrebnej súčinnosti (vytvorenie účtov podľa bodu 7).</li>
-              </ol>
-              <p className="mt-3 text-sm leading-relaxed italic">
-                Ak Objednávateľ nedodá podklady alebo prístupy včas, lehota sa predlžuje o čas omeškania.
+              <p className="mt-3 text-sm leading-relaxed">
+                Pre vizuálnu správu a rýchle úpravy webu cez AI rozhranie odporúčame vytvoriť konto v platforme Lovable cez pozývací odkaz:{" "}
+                <a
+                  href="https://lovable.dev/invite/SPBXBVT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline break-all"
+                >
+                  https://lovable.dev/invite/SPBXBVT
+                </a>
+                .
               </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">4. Platobné podmienky a prevod vlastníctva</h2>
-              <ul className="mt-3 space-y-2 text-sm leading-relaxed">
-                <li><strong className="text-foreground">Záloha:</strong> 50 % z ceny diela vopred (nevratná po začatí prác).</li>
-                <li><strong className="text-foreground">Doplatok:</strong> Splatný po sprístupnení diela na testovacej doméne.</li>
-                <li><strong className="text-foreground">Vlastníctvo:</strong> Autorské práva a kontrola nad zdrojovým kódom v GitHub repozitári prechádzajú na Objednávateľa až po 100 % uhradení ceny. Dovtedy je kód výhradným majetkom Risali s.r.o.</li>
-              </ul>
+              <h2 className="text-lg font-semibold text-foreground">4. Charakter AI kódu</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                Zdrojový kód diela je generovaný za pomoci umelej inteligencie. Zhotoviteľ <strong className="text-foreground">garantuje funkčnosť diela podľa dohodnutej špecifikácie</strong>, nezodpovedá však za estetickú štruktúru zdrojového kódu.
+              </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">5. Technické špecifiká a zodpovednosť</h2>
+              <h2 className="text-lg font-semibold text-foreground">5. Platobné modely a vlastníctvo</h2>
               <ol className="mt-3 list-inside list-decimal space-y-2 text-sm leading-relaxed">
-                <li><strong className="text-foreground">Tretie strany:</strong> Zhotoviteľ využíva platformy Lovable, GitHub a Supabase. Nezodpovedá za výpadky, zmeny cien alebo ukončenie služieb týchto tretích strán.</li>
-                <li><strong className="text-foreground">Charakter AI kódu:</strong> Objednávateľ berie na vedomie, že kód je generovaný za pomoci AI. Zhotoviteľ nezodpovedá za estetickú štruktúru kódu, ale za jeho funkčnosť podľa zadania.</li>
-                <li><strong className="text-foreground">Zásahy do kódu:</strong> Zhotoviteľ nezodpovedá za chyby vzniknuté zásahom Objednávateľa do GitHub repozitára alebo prostredia Lovable po odovzdaní.</li>
-                <li><strong className="text-foreground">SEO:</strong> Zhotoviteľ garantuje technické nastavenie, nie pozície vo vyhľadávačoch.</li>
-              </ol>
-            </section>
-
-            <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">6. Reklamácie a servis</h2>
-              <p className="mt-3 text-sm leading-relaxed">
-                Objednávateľ má právo na bezplatné odstránenie technických chýb nahlásených do 14 dní od odovzdania. Neskoršie zmeny sú účtované podľa aktuálnej hodinovej sadzby Zhotoviteľa.
-              </p>
-            </section>
-
-            <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">7. Technická súčinnosť a odovzdanie (Povinné)</h2>
-              <p className="mt-3 text-sm leading-relaxed">
-                Pre úspešné fungovanie a odovzdanie webu je Objednávateľ povinný si vytvoriť a udržiavať nasledujúce účty (v bezplatných alebo platených verziách podľa potrieb projektu):
-              </p>
-              <ul className="mt-3 space-y-2 text-sm leading-relaxed">
-                <li><strong className="text-foreground">GitHub:</strong> Pre uloženie a vlastníctvo zdrojového kódu.</li>
                 <li>
-                  <strong className="text-foreground">Lovable:</strong> Pre vizuálnu správu a rýchle úpravy webu cez AI rozhranie. Konto si vytvorte cez pozývací odkaz:{" "}
-                  <a
-                    href="https://lovable.dev/invite/SPBXBVT"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline break-all"
-                  >
-                    https://lovable.dev/invite/SPBXBVT
-                  </a>
-                  .
+                  <strong className="text-foreground">Predplatné (39 €/mes. + 99 € aktivácia):</strong> Web zostáva po celú dobu trvania predplatného majetkom Zhotoviteľa. Objednávateľ má právo web aktívne využívať v rozsahu služby.
                 </li>
-                <li><strong className="text-foreground">Supabase:</strong> Pre správu databáz a používateľov (ak je súčasťou balíka).</li>
-                <li><strong className="text-foreground">Hosting (Netlify/Vercel):</strong> Pre samotný beh webovej stránky.</li>
-              </ul>
-              <p className="mt-3 text-sm leading-relaxed italic">
-                Bez vytvorenia týchto prístupov nie je možné dielo technicky odovzdať do vlastníctva Objednávateľa.
-              </p>
-            </section>
-
-            <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">8. Mesačná správa a „Exit stratégia“</h2>
-              <ol className="mt-3 list-inside list-decimal space-y-2 text-sm leading-relaxed">
-                <li><strong className="text-foreground">Servisný poplatok:</strong> Ak si Objednávateľ dohodne mesačnú správu, tá zahŕňa licenciu nástrojov (v rámci konta Zhotoviteľa), hostingovú réžiu a drobné úpravy.</li>
-                <li><strong className="text-foreground">Ukončenie spolupráce:</strong> Pri ukončení mesačnej správy zostáva funkčný zdrojový kód Objednávateľovi v jeho GitHub repozitári. Projekt v nástroji Lovable bude archivovaný alebo odstránený, ak sa zmluvné strany nedohodnú na jeho prevode na platený účet Objednávateľa.</li>
+                <li>
+                  <strong className="text-foreground">Jednorazová kúpa (Základný 284 €, Štandardný 1 000 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
+                </li>
               </ol>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-lg font-semibold text-foreground">9. Referencie</h2>
+              <h2 className="text-lg font-semibold text-foreground">6. Odkup diela z predplatného</h2>
               <p className="mt-3 text-sm leading-relaxed">
-                Zhotoviteľ si vyhradzuje právo uviesť dielo v portfóliu a umiestniť do pätičky odkaz „Vytvoril patrikpatoraj.sk“, pokiaľ nie je písomne dohodnuté inak.
+                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">284 €</strong> pri Základnom balíku).
+              </p>
+              <p className="mt-3 text-sm leading-relaxed italic">
+                Predošlé mesačné platby sa <strong className="not-italic text-foreground">nezapočítavajú</strong> do kúpnej ceny — predstavujú odplatu za poskytnutý servis, hosting a údržbu.
+              </p>
+            </section>
+
+            <section className="glass rounded-2xl p-6">
+              <h2 className="text-lg font-semibold text-foreground">7. Servis a technické úpravy</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                V rámci balíka <strong className="text-foreground">Web bez starostí (39 €/mes.)</strong> je zahrnutých <strong className="text-foreground">5 technických úprav mesačne</strong> (zmeny textov, fotiek, drobné úpravy sekcií). Nevyčerpané úpravy sa neprenášajú do nasledujúceho mesiaca.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed">
+                Úpravy nad rámec balíka, ako aj rozšírenia funkcionality, sú účtované podľa aktuálnej hodinovej sadzby Zhotoviteľa po vzájomnom odsúhlasení rozsahu.
+              </p>
+            </section>
+
+            <section className="glass rounded-2xl p-6">
+              <h2 className="text-lg font-semibold text-foreground">8. Garancia dodania a reklamácie</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                Lehota dodania začína plynúť prvým pracovným dňom po pripísaní zálohy/aktivačného poplatku a dodaní kompletných podkladov vrátane prístupov podľa bodu 3. Objednávateľ má právo na bezplatné odstránenie technických chýb nahlásených do <strong className="text-foreground">14 dní</strong> od odovzdania diela.
+              </p>
+            </section>
+
+            <section className="glass rounded-2xl p-6">
+              <h2 className="text-lg font-semibold text-foreground">9. SEO a marketingové výsledky</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                Zhotoviteľ garantuje korektné technické nastavenie SEO (meta tagy, sitemap, štruktúrovaný obsah), <strong className="text-foreground">negarantuje</strong> však konkrétne pozície vo vyhľadávačoch ani objem návštevnosti — tieto závisia od algoritmov tretích strán a trhových podmienok.
+              </p>
+            </section>
+
+            <section className="glass rounded-2xl p-6">
+              <h2 className="text-lg font-semibold text-foreground">10. Referencie</h2>
+              <p className="mt-3 text-sm leading-relaxed">
+                Zhotoviteľ si vyhradzuje právo uviesť dielo vo svojom portfóliu a umiestniť do pätičky webu odkaz „Vytvoril patrikpatoraj.sk“, pokiaľ nebolo písomne dohodnuté inak.
               </p>
             </section>
           </div>
