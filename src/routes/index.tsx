@@ -411,8 +411,8 @@ function Pricing() {
 
           <div className="relative mx-auto max-w-4xl">
             <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-primary/20 blur-3xl -z-10" />
-            <div className="glass-strong relative overflow-hidden rounded-3xl ring-2 ring-primary p-8 md:p-10">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
+            <div className="glass-strong relative rounded-3xl ring-2 ring-primary p-8 md:p-10">
+              <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
                 ⭐ Najobľúbenejšie
               </div>
 
