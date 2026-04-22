@@ -90,6 +90,9 @@ function ObchodnePodmienkyPage() {
                   <strong className="text-foreground">Jednorazová kúpa (Základný 284 €, Štandardný 1 000 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
                 </li>
               </ol>
+              <p className="mt-4 text-sm leading-relaxed">
+                Zhotoviteľ nie je platiteľom DPH. Všetky ceny uvedené v cenníku alebo v individuálnej cenovej ponuke sú konečné. V prípade, ak sa Zhotoviteľ v priebehu trvania zmluvného vzťahu stane platiteľom DPH, k dohodnutej cene bude pripočítaná DPH v zákonnej výške.
+              </p>
             </section>
 
             <section className="glass rounded-2xl p-6">

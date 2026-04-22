@@ -538,6 +538,10 @@ function Pricing() {
             </div>
           </div>
         </div>
+
+        <p className="mt-8 text-center text-xs text-muted-foreground">
+          Nie som platiteľom DPH. Ceny sú konečné.
+        </p>
       </div>
     </section>
   );
