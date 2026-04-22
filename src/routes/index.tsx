@@ -422,8 +422,11 @@ function Pricing() {
                     <Sparkles className="h-3 w-3" /> Web bez starostí
                   </div>
                   <h3 className="mt-4 text-3xl font-extrabold md:text-4xl">
-                    Predplatné, ktoré <span className="gradient-text">rastie s vami</span>
+                    Moderný web bez <span className="gradient-text">vysokej vstupnej investície</span>
                   </h3>
+                  <p className="mt-3 text-sm text-muted-foreground md:text-base">
+                    Fixná mesačná platba, ktorá sa nemení s rastom vašej firmy.
+                  </p>
                   <div className="mt-5 flex items-baseline gap-2">
                     <span className="text-5xl font-extrabold text-foreground md:text-6xl">39&nbsp;€</span>
                     <span className="text-base text-muted-foreground">/ mesačne</span>
