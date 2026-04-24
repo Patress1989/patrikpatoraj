@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   Sparkles, ArrowRight, Zap, Code2, Database, Layout, Workflow, Shield,
   Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, Layers, Brain, MessageSquare,
+  ShieldCheck, Eye, Key,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -277,25 +278,98 @@ function Uniqueness() {
   );
 }
 
-/* =================== 10. MECHANISM (3 STEPS) =================== */
+/* =================== 10. MECHANISM (4 STEPS) =================== */
 function Mechanism() {
   const steps = [
-    { n: "01", title: "Ukážka zdarma", text: "Vyplníte formulár, do 24 h dostanete ukážku konceptu a cenovú ponuku." },
-    { n: "02", title: "Vývoj", text: "Po schválení a symbolickej zálohe začnem stavať. Priebežne zdieľam pokrok." },
-    { n: "03", title: "Odovzdanie", text: "Web spustím, doplatíte zvyšnú sumu, dostávate plný prístup ku kódu aj projektu." },
+    {
+      n: "01",
+      icon: ShieldCheck,
+      title: "Založenie vášho „digitálneho trezoru“",
+      text: "Na začiatku si vytvoríte bezplatné účty na GitHub a Supabase. Slúžia ako bezpečné úložisko pre kód a dáta vášho webu. Od prvého dňa ste tak 100 % majiteľom projektu vy, nie ja.",
+      highlight: false,
+    },
+    {
+      n: "02",
+      icon: Zap,
+      title: "Blesková tvorba a úpravy cez AI",
+      text: "Web staviam pomocou profesionálneho AI nástroja Lovable. To mi umožňuje doručiť výsledok v priebehu dní, nie mesiacov. Akékoľvek zmeny v budúcnosti vďaka AI spracujem takmer okamžite.",
+      highlight: false,
+    },
+    {
+      n: "03",
+      icon: Eye,
+      title: "Transparentná správa (Editor prístup)",
+      text: "K projektu vám udelím editor prístup v bezplatnom konte Lovable. Môžete v reálnom čase sledovať priebeh prác a sami si kedykoľvek zmeniť text či fotku jednoduchým pokynom pre AI. Na zložitejšie úlohy a technický dohľad som tu ja so svojím profesionálnym zázemím.",
+      highlight: true,
+    },
+    {
+      n: "04",
+      icon: Key,
+      title: "Odovzdanie kľúčov a sloboda",
+      text: "Po dokončení prepojím hotový web s vašou doménou. Dostávate plne funkčný web, ku ktorému máte prístup a „list vlastníctva“ len vy. Získavate moderné riešenie bez akejkoľvek závislosti na dodávateľovi.",
+      highlight: false,
+    },
   ];
   return (
-    <Section eyebrow="Ako to funguje" title={<>Jednoduchý <span className="gradient-text">3-krokový proces</span></>}>
-      <div className="grid gap-5 md:grid-cols-3">
-        {steps.map((s) => (
-          <div key={s.n} className="glass relative rounded-2xl p-6">
-            <div className="text-5xl font-extrabold gradient-text">{s.n}</div>
-            <h3 className="mt-3 text-lg font-semibold">{s.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{s.text}</p>
+    <section id="ako-to-funguje" className="relative py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+            Ako to funguje
           </div>
-        ))}
+          <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+            4 kroky k <span className="gradient-text">nezávislosti a rýchlosti</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground md:text-lg">
+            Transparentný proces, v ktorom od prvého dňa držíte kľúče vy.
+          </p>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.n}
+                className={
+                  s.highlight
+                    ? "glass-strong relative rounded-2xl p-6 border-primary/40 shadow-[0_0_40px_-10px_var(--primary)]"
+                    : "glass relative rounded-2xl p-6"
+                }
+              >
+                {s.highlight && (
+                  <div className="absolute -top-3 left-6 rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Naša výhoda
+                  </div>
+                )}
+                <div
+                  className={
+                    s.highlight
+                      ? "mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-primary shadow-[0_0_24px_-4px_var(--primary)]"
+                      : "mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-foreground"
+                  }
+                >
+                  <Icon className="h-6 w-6" />
+                </div>
+                <div className={s.highlight ? "text-xs font-bold gradient-text" : "text-xs font-bold text-muted-foreground"}>
+                  KROK {s.n}
+                </div>
+                <h3 className="mt-2 text-base font-semibold leading-snug">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="glass-strong mx-auto mt-10 max-w-3xl rounded-2xl p-6 text-center md:p-8">
+          <Quote className="mx-auto h-8 w-8 text-primary" />
+          <p className="mt-4 text-base leading-relaxed text-foreground md:text-lg">
+            „Môj cieľ je, aby ste svojmu webu rozumeli a mali nad ním kontrolu.
+            Budem vaším technickým partnerom, ale <span className="gradient-text font-semibold">kľúče od celého systému budete držať vy</span>.“
+          </p>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
 

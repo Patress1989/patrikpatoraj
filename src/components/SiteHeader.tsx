@@ -18,6 +18,7 @@ export function SiteHeader() {
 
           <nav className="hidden items-center gap-7 text-sm md:flex">
             <a href="#riesenie" className="text-muted-foreground transition-colors hover:text-foreground">Riešenie</a>
+            <a href="#ako-to-funguje" className="text-muted-foreground transition-colors hover:text-foreground">Ako to funguje</a>
             <a href="#balicky" className="text-muted-foreground transition-colors hover:text-foreground">Ceny WEB Balíkov</a>
             <a href="#faq" className="text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
           </nav>
@@ -42,6 +43,7 @@ export function SiteHeader() {
         {open && (
           <div className="glass-strong mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden">
             <a href="#riesenie" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Riešenie</a>
+            <a href="#ako-to-funguje" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Ako to funguje</a>
             <a href="#balicky" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Ceny WEB Balíkov</a>
             <a href="#faq" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">FAQ</a>
             
