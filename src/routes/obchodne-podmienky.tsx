@@ -98,7 +98,7 @@ function ObchodnePodmienkyPage() {
             <section className="glass rounded-2xl p-6">
               <h2 className="text-lg font-semibold text-foreground">6. Odkup diela z predplatného</h2>
               <p className="mt-3 text-sm leading-relaxed">
-                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">99 €</strong> pri Základnom balíku).
+                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">284 €</strong> pri Základnom balíku).
               </p>
               <p className="mt-3 text-sm leading-relaxed italic">
                 Predošlé mesačné platby sa <strong className="not-italic text-foreground">nezapočítavajú</strong> do kúpnej ceny — predstavujú odplatu za poskytnutý servis, hosting a údržbu.
