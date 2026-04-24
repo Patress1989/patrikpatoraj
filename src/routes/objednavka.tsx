@@ -119,10 +119,10 @@ function ObjednavkaPage() {
               <div className="mt-6 border-t border-white/10 pt-5">
                 <div className="flex items-baseline justify-between">
                   <div className="text-sm font-semibold text-foreground">Dnes zaplatíte</div>
-                  <div className="text-2xl font-extrabold text-foreground">138,00&nbsp;€</div>
+                  <div className="text-2xl font-extrabold text-foreground">323,00&nbsp;€</div>
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  (99 € aktivácia + 39 € prvé mesačné predplatné)
+                  (284 € aktivácia + 39 € prvé mesačné predplatné)
                 </div>
                 <div className="mt-3 text-xs text-muted-foreground">
                   Potom 39&nbsp;€ mesačne, automaticky. Predplatné môžete kedykoľvek zrušiť.
