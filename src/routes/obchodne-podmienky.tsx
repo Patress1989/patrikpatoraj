@@ -84,10 +84,10 @@ function ObchodnePodmienkyPage() {
               <h2 className="text-lg font-semibold text-foreground">5. Platobné modely a vlastníctvo</h2>
               <ol className="mt-3 list-inside list-decimal space-y-2 text-sm leading-relaxed">
                 <li>
-                  <strong className="text-foreground">Predplatné (39 €/mes. + 99 € aktivácia):</strong> Web zostáva po celú dobu trvania predplatného majetkom Zhotoviteľa. Objednávateľ má právo web aktívne využívať v rozsahu služby.
+                  <strong className="text-foreground">Predplatné (39 €/mes. + 284 € aktivácia):</strong> Web zostáva po celú dobu trvania predplatného majetkom Zhotoviteľa. Objednávateľ má právo web aktívne využívať v rozsahu služby.
                 </li>
                 <li>
-                  <strong className="text-foreground">Jednorazová kúpa (Základný 99 €, Štandardný 984 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
+                  <strong className="text-foreground">Jednorazová kúpa (Základný 284 €, Štandardný 984 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
                 </li>
               </ol>
               <p className="mt-4 text-sm leading-relaxed">
@@ -98,7 +98,7 @@ function ObchodnePodmienkyPage() {
             <section className="glass rounded-2xl p-6">
               <h2 className="text-lg font-semibold text-foreground">6. Odkup diela z predplatného</h2>
               <p className="mt-3 text-sm leading-relaxed">
-                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">99 €</strong> pri Základnom balíku).
+                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">284 €</strong> pri Základnom balíku).
               </p>
               <p className="mt-3 text-sm leading-relaxed italic">
                 Predošlé mesačné platby sa <strong className="not-italic text-foreground">nezapočítavajú</strong> do kúpnej ceny — predstavujú odplatu za poskytnutý servis, hosting a údržbu.
