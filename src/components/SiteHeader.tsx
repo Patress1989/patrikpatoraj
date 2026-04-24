@@ -1,9 +1,22 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 
+const navItems = [
+  { hash: "riesenie", label: "Riešenie" },
+  { hash: "ako-to-funguje", label: "Ako to funguje" },
+  { hash: "balicky", label: "Ceny WEB Balíkov" },
+  { hash: "faq", label: "FAQ" },
+];
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
+
+  // On home: use plain hash anchors (smooth in-page scroll).
+  // On other routes: link to "/#hash" so the browser navigates home and scrolls.
+  const hrefFor = (hash: string) => (isHome ? `#${hash}` : `/#${hash}`);
 
   return (
     <header className="fixed top-0 z-50 w-full">
@@ -17,10 +30,15 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden items-center gap-7 text-sm md:flex">
-            <a href="#riesenie" className="text-muted-foreground transition-colors hover:text-foreground">Riešenie</a>
-            <a href="#ako-to-funguje" className="text-muted-foreground transition-colors hover:text-foreground">Ako to funguje</a>
-            <a href="#balicky" className="text-muted-foreground transition-colors hover:text-foreground">Ceny WEB Balíkov</a>
-            <a href="#faq" className="text-muted-foreground transition-colors hover:text-foreground">FAQ</a>
+            {navItems.map((item) => (
+              <a
+                key={item.hash}
+                href={hrefFor(item.hash)}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -42,12 +60,22 @@ export function SiteHeader() {
 
         {open && (
           <div className="glass-strong mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden">
-            <a href="#riesenie" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Riešenie</a>
-            <a href="#ako-to-funguje" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Ako to funguje</a>
-            <a href="#balicky" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">Ceny WEB Balíkov</a>
-            <a href="#faq" onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5">FAQ</a>
-            
-            <Link to="/formular" onClick={() => setOpen(false)} className="btn-primary mt-1 rounded-lg px-3 py-2 text-center text-sm font-semibold">
+            {navItems.map((item) => (
+              <a
+                key={item.hash}
+                href={hrefFor(item.hash)}
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-white/5"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <Link
+              to="/formular"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-1 rounded-lg px-3 py-2 text-center text-sm font-semibold"
+            >
               Ukážka zdarma
             </Link>
           </div>
