@@ -377,7 +377,7 @@ function Mechanism() {
 function Differentiation() {
   const rows = [
     ["Čas vývoja", "4 – 8 týždňov", "3 – 7 dní"],
-    ["Cena", "1 500 € – 5 000 €", "od 284 €"],
+    ["Cena", "1 500 € – 5 000 €", "od 99 €"],
     ["Základné SEO", "Často doplatková služba", "Vždy v cene"],
     ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
@@ -424,7 +424,7 @@ function Pricing() {
     {
       icon: Zap,
       name: "Základný",
-      price: "284 €",
+      price: "99 €",
       tag: "Pre začínajúcich",
       features: [
         "6-stránkový moderný web",
@@ -438,7 +438,7 @@ function Pricing() {
     {
       icon: Star,
       name: "Štandardný",
-      price: "1 000 €",
+      price: "984 €",
       tag: "Najpredávanejší",
       features: [
         "Všetko zo Základného balíka",
@@ -609,7 +609,7 @@ function Pricing() {
                   Z predplatného do vlastníctva — kedykoľvek
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Využívate mesačné predplatné, ale neskôr sa rozhodnete web vlastniť? Žiadny problém. Web môžete kedykoľvek odkúpiť do svojho plného vlastníctva za cenu zvoleného balíka (napr. <span className="font-semibold text-foreground">284&nbsp;€</span>). Mesačné poplatky sú platbou za aktívny servis a údržbu, <span className="font-semibold text-foreground">nie splátkami kúpnej ceny</span>.
+                  Využívate mesačné predplatné, ale neskôr sa rozhodnete web vlastniť? Žiadny problém. Web môžete kedykoľvek odkúpiť do svojho plného vlastníctva za cenu zvoleného balíka (napr. <span className="font-semibold text-foreground">99&nbsp;€</span>). Mesačné poplatky sú platbou za aktívny servis a údržbu, <span className="font-semibold text-foreground">nie splátkami kúpnej ceny</span>.
                 </p>
               </div>
             </div>
@@ -634,7 +634,7 @@ function PriceAnchor() {
           Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € – 5 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">284 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
+          Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">99 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
         </p>
         <Link to="/formular" className="btn-primary mt-8 inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold">
           Začať projekt <ArrowRight className="h-4 w-4" />
