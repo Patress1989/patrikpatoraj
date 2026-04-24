@@ -16,7 +16,7 @@ export const Route = createFileRoute("/objednavka")({
       {
         name: "description",
         content:
-          "Aktivujte si moderný web na predplatné — 99 € jednorazovo + 39 €/mesačne. Bez viazanosti, kedykoľvek možnosť odkúpiť.",
+          "Aktivujte si moderný web na predplatné — 284 € jednorazovo + 39 €/mesačne. Bez viazanosti, kedykoľvek možnosť odkúpiť.",
       },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "Objednávka — Web bez starostí" },
