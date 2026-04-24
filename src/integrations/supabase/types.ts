@@ -161,6 +161,75 @@ export type Database = {
         }
         Relationships: []
       }
+      order_submissions: {
+        Row: {
+          city: string
+          company_address: string | null
+          company_name: string | null
+          country: string
+          created_at: string
+          dic: string | null
+          email: string
+          first_name: string
+          gdpr_consent: boolean
+          ic_dph: string | null
+          ico: string | null
+          id: string
+          is_company: boolean
+          last_name: string
+          payment_status: string
+          phone: string
+          postal_code: string
+          street: string
+          stripe_session_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          city: string
+          company_address?: string | null
+          company_name?: string | null
+          country?: string
+          created_at?: string
+          dic?: string | null
+          email: string
+          first_name: string
+          gdpr_consent?: boolean
+          ic_dph?: string | null
+          ico?: string | null
+          id?: string
+          is_company?: boolean
+          last_name: string
+          payment_status?: string
+          phone: string
+          postal_code: string
+          street: string
+          stripe_session_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          city?: string
+          company_address?: string | null
+          company_name?: string | null
+          country?: string
+          created_at?: string
+          dic?: string | null
+          email?: string
+          first_name?: string
+          gdpr_consent?: boolean
+          ic_dph?: string | null
+          ico?: string | null
+          id?: string
+          is_company?: boolean
+          last_name?: string
+          payment_status?: string
+          phone?: string
+          postal_code?: string
+          street?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string

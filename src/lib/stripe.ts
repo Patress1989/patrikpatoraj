@@ -20,15 +20,35 @@ export function getStripeEnvironment(): string {
   return environment;
 }
 
-export async function createCheckoutClientSecret(opts: {
-  customerEmail?: string;
+export type CheckoutOrderInput = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  country?: string;
+  isCompany: boolean;
+  companyName?: string;
+  companyAddress?: string;
+  ico?: string;
+  dic?: string;
+  icDph?: string;
+  gdprConsent: boolean;
   returnUrl?: string;
-}): Promise<string> {
+};
+
+export async function createCheckoutClientSecret(opts: CheckoutOrderInput): Promise<string> {
   const { data, error } = await supabase.functions.invoke("create-checkout", {
     body: { ...opts, environment: getStripeEnvironment() },
   });
   if (error || !data?.clientSecret) {
-    throw new Error(error?.message || "Nepodarilo sa vytvoriť checkout reláciu");
+    const msg =
+      (data as { error?: string } | null)?.error ||
+      error?.message ||
+      "Nepodarilo sa vytvoriť checkout reláciu";
+    throw new Error(msg);
   }
   return data.clientSecret as string;
 }
