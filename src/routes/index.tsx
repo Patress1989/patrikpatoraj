@@ -506,7 +506,7 @@ function Pricing() {
                     <span className="text-base text-muted-foreground">/ mesačne</span>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    + jednorazový aktivačný poplatok <span className="font-semibold text-foreground">99&nbsp;€</span>
+                    + jednorazový aktivačný poplatok <span className="font-semibold text-foreground">284&nbsp;€</span>
                   </p>
 
                   <div className="mt-5 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-muted-foreground">
