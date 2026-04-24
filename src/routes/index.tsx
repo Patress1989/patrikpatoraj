@@ -424,7 +424,7 @@ function Pricing() {
     {
       icon: Zap,
       name: "Základný",
-      price: "284 €",
+      price: "99 €",
       tag: "Pre začínajúcich",
       features: [
         "6-stránkový moderný web",
@@ -438,7 +438,7 @@ function Pricing() {
     {
       icon: Star,
       name: "Štandardný",
-      price: "1 000 €",
+      price: "984 €",
       tag: "Najpredávanejší",
       features: [
         "Všetko zo Základného balíka",
