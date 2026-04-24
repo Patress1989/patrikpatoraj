@@ -609,7 +609,7 @@ function Pricing() {
                   Z predplatného do vlastníctva — kedykoľvek
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Využívate mesačné predplatné, ale neskôr sa rozhodnete web vlastniť? Žiadny problém. Web môžete kedykoľvek odkúpiť do svojho plného vlastníctva za cenu zvoleného balíka (napr. <span className="font-semibold text-foreground">284&nbsp;€</span>). Mesačné poplatky sú platbou za aktívny servis a údržbu, <span className="font-semibold text-foreground">nie splátkami kúpnej ceny</span>.
+                  Využívate mesačné predplatné, ale neskôr sa rozhodnete web vlastniť? Žiadny problém. Web môžete kedykoľvek odkúpiť do svojho plného vlastníctva za cenu zvoleného balíka (napr. <span className="font-semibold text-foreground">99&nbsp;€</span>). Mesačné poplatky sú platbou za aktívny servis a údržbu, <span className="font-semibold text-foreground">nie splátkami kúpnej ceny</span>.
                 </p>
               </div>
             </div>
