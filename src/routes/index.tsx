@@ -377,7 +377,7 @@ function Mechanism() {
 function Differentiation() {
   const rows = [
     ["Čas vývoja", "4 – 8 týždňov", "3 – 7 dní"],
-    ["Cena", "1 500 € – 5 000 €", "od 99 €"],
+    ["Cena", "1 500 € – 5 000 €", "od 284 €"],
     ["Základné SEO", "Často doplatková služba", "Vždy v cene"],
     ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
