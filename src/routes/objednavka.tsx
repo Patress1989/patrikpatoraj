@@ -22,7 +22,7 @@ export const Route = createFileRoute("/objednavka")({
       { property: "og:title", content: "Objednávka — Web bez starostí" },
       {
         property: "og:description",
-        content: "284 € aktivácia + 39 €/mes. Bez viazanosti.",
+        content: "99 € aktivácia + 39 €/mes. Bez viazanosti.",
       },
     ],
   }),
@@ -95,7 +95,7 @@ function ObjednavkaPage() {
                       Jednorazovo — úvodné nastavenie, doména, hosting, publikácia
                     </div>
                   </div>
-                  <div className="whitespace-nowrap font-bold text-foreground">284,00&nbsp;€</div>
+                  <div className="whitespace-nowrap font-bold text-foreground">99,00&nbsp;€</div>
                 </div>
 
                 <div className="h-px bg-white/10" />
@@ -119,10 +119,10 @@ function ObjednavkaPage() {
               <div className="mt-6 border-t border-white/10 pt-5">
                 <div className="flex items-baseline justify-between">
                   <div className="text-sm font-semibold text-foreground">Dnes zaplatíte</div>
-                  <div className="text-2xl font-extrabold text-foreground">323,00&nbsp;€</div>
+                  <div className="text-2xl font-extrabold text-foreground">138,00&nbsp;€</div>
                 </div>
                 <div className="mt-1 text-xs text-muted-foreground">
-                  (284 € aktivácia + 39 € prvé mesačné predplatné)
+                  (99 € aktivácia + 39 € prvé mesačné predplatné)
                 </div>
                 <div className="mt-3 text-xs text-muted-foreground">
                   Potom 39&nbsp;€ mesačne, automaticky. Predplatné môžete kedykoľvek zrušiť.
