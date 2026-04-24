@@ -43,15 +43,15 @@ serve(async (req) => {
     const subscriptionPrice = subPrices.data[0];
     const activationPrice = activationPrices.data[0];
 
-    // Subscription mode + add_invoice_items: charges activation fee on first invoice,
-    // then 39 EUR / month recurring.
+    // Subscription mode: activation fee is added as a one-time line item on the
+    // first invoice alongside the recurring subscription price (39 EUR / month).
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       ui_mode: "embedded",
-      line_items: [{ price: subscriptionPrice.id, quantity: 1 }],
-      subscription_data: {
-        add_invoice_items: [{ price: activationPrice.id, quantity: 1 }],
-      },
+      line_items: [
+        { price: activationPrice.id, quantity: 1 },
+        { price: subscriptionPrice.id, quantity: 1 },
+      ],
       return_url:
         returnUrl ||
         `${req.headers.get("origin")}/objednavka/dakujeme?session_id={CHECKOUT_SESSION_ID}`,
