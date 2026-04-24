@@ -22,7 +22,7 @@ export const Route = createFileRoute("/objednavka")({
       { property: "og:title", content: "Objednávka — Web bez starostí" },
       {
         property: "og:description",
-        content: "99 € aktivácia + 39 €/mes. Bez viazanosti.",
+        content: "284 € aktivácia + 39 €/mes. Bez viazanosti.",
       },
     ],
   }),
