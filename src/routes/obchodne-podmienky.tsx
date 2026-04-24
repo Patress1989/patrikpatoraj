@@ -87,7 +87,7 @@ function ObchodnePodmienkyPage() {
                   <strong className="text-foreground">Predplatné (39 €/mes. + 99 € aktivácia):</strong> Web zostáva po celú dobu trvania predplatného majetkom Zhotoviteľa. Objednávateľ má právo web aktívne využívať v rozsahu služby.
                 </li>
                 <li>
-                  <strong className="text-foreground">Jednorazová kúpa (Základný 284 €, Štandardný 1 000 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
+                  <strong className="text-foreground">Jednorazová kúpa (Základný 99 €, Štandardný 984 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
                 </li>
               </ol>
               <p className="mt-4 text-sm leading-relaxed">
