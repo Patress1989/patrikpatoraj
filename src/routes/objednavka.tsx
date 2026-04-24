@@ -95,7 +95,7 @@ function ObjednavkaPage() {
                       Jednorazovo — úvodné nastavenie, doména, hosting, publikácia
                     </div>
                   </div>
-                  <div className="whitespace-nowrap font-bold text-foreground">99,00&nbsp;€</div>
+                  <div className="whitespace-nowrap font-bold text-foreground">284,00&nbsp;€</div>
                 </div>
 
                 <div className="h-px bg-white/10" />
