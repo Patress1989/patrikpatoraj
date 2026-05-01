@@ -25,20 +25,57 @@ function ResetPasswordPage() {
   const [confirm, setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
-    // Supabase parses the recovery token from the URL hash automatically
-    // and emits a PASSWORD_RECOVERY event with an active session.
+    let cancelled = false;
+
+    const init = async () => {
+      try {
+        // 1) PKCE flow: ?code=... in query string -> exchange for session
+        const url = new URL(window.location.href);
+        const code = url.searchParams.get("code");
+        if (code) {
+          const { error } = await supabase.auth.exchangeCodeForSession(code);
+          if (error) throw error;
+          // clean the URL
+          url.searchParams.delete("code");
+          window.history.replaceState({}, "", url.pathname + url.hash);
+          if (!cancelled) setReady(true);
+          return;
+        }
+
+        // 2) Implicit flow: #access_token=...&type=recovery in hash
+        if (window.location.hash.includes("access_token")) {
+          // supabase-js auto-parses the hash; just wait for the event below
+          // but also check current session
+          const { data } = await supabase.auth.getSession();
+          if (data.session && !cancelled) {
+            setReady(true);
+            return;
+          }
+        }
+
+        // 3) Already have a session (e.g. came back from earlier link)
+        const { data } = await supabase.auth.getSession();
+        if (data.session && !cancelled) setReady(true);
+      } catch (e: any) {
+        if (!cancelled) setError(e?.message ?? "Odkaz je neplatný alebo expirovaný.");
+      }
+    };
+
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY" || event === "SIGNED_IN") {
         setReady(true);
       }
     });
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) setReady(true);
-    });
+    init();
 
-    return () => sub.subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -72,11 +109,24 @@ function ResetPasswordPage() {
           </div>
           <h1 className="text-2xl font-bold">Nastaviť nové heslo</h1>
           <p className="text-sm text-muted-foreground mt-1 text-center">
-            {ready
+            {error
+              ? error
+              : ready
               ? "Zadajte nové heslo k vášmu účtu."
               : "Overujem odkaz na obnovu hesla…"}
           </p>
         </div>
+
+        {error && (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => navigate({ to: "/admin/crm-login" })}
+          >
+            Späť na prihlásenie
+          </Button>
+        )}
 
         {ready && (
           <form onSubmit={handleSubmit} className="space-y-4">
