@@ -109,11 +109,24 @@ function ResetPasswordPage() {
           </div>
           <h1 className="text-2xl font-bold">Nastaviť nové heslo</h1>
           <p className="text-sm text-muted-foreground mt-1 text-center">
-            {ready
+            {error
+              ? error
+              : ready
               ? "Zadajte nové heslo k vášmu účtu."
               : "Overujem odkaz na obnovu hesla…"}
           </p>
         </div>
+
+        {error && (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => navigate({ to: "/admin/crm-login" })}
+          >
+            Späť na prihlásenie
+          </Button>
+        )}
 
         {ready && (
           <form onSubmit={handleSubmit} className="space-y-4">
