@@ -7,10 +7,10 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   ArrowRight, ArrowLeft, Check, Loader2, Sparkles,
   User, Mail, Phone, Building2, Briefcase, Globe, Palette,
-  Type, Image as ImageIcon, FileText, Settings2, Languages,
+  Type, Image as ImageIcon, Settings2, Languages,
   Target, Trophy, Wrench, Wallet, Calendar, MessageSquare, ShieldCheck,
   CreditCard, Receipt, Send, Database, BarChart3, Bot, AppWindow,
-  CalendarCheck, Lock, BookOpen, Server, Plug,
+  Server, Plug,
 } from "lucide-react";
 
 export const Route = createFileRoute("/pomocka")({
