@@ -352,6 +352,14 @@ function CRMPage() {
           <DialogHeader>
             <DialogTitle>Detail briefu — Pomôcka k webu</DialogTitle>
             <DialogDescription>Kompletné odpovede klienta.</DialogDescription>
+            {selectedBrief && (
+              <div className="pt-2">
+                <Button size="sm" variant="outline" onClick={() => downloadBriefPdf(selectedBrief)}>
+                  <FileText className="w-4 h-4 mr-2" />
+                  Stiahnuť PDF
+                </Button>
+              </div>
+            )}
           </DialogHeader>
           {selectedBrief && (
             <div className="space-y-3 text-sm">
