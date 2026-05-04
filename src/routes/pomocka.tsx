@@ -687,3 +687,33 @@ function YesNo({
     </div>
   );
 }
+
+function Choice({
+  options, value, onChange,
+}: {
+  options: string[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((opt) => {
+        const active = value === opt;
+        return (
+          <button
+            key={opt}
+            type="button"
+            onClick={() => onChange(active ? "" : opt)}
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+              active
+                ? "border-primary bg-primary/15 text-primary"
+                : "border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+            }`}
+          >
+            {opt}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
