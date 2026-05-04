@@ -31,7 +31,8 @@ const STEPS = [
   { n: 3, label: "Ciele" },
   { n: 4, label: "Dizajn" },
   { n: 5, label: "Funkcie" },
-  { n: 6, label: "Záver" },
+  { n: 6, label: "Integrácie" },
+  { n: 7, label: "Záver" },
 ];
 
 const GOAL_OPTIONS = [
@@ -42,6 +43,13 @@ const GOAL_OPTIONS = [
   "Budovanie značky a povedomia",
   "Rast sledovateľov na sociálnych sieťach",
 ];
+
+const PAYMENT_GATEWAYS = ["Stripe", "GoPay", "Besteron / Comgate", "TrustPay", "PayPal", "Iné", "Žiadnu"];
+const INVOICING_SYSTEMS = ["FAPI", "SuperFaktúra", "iDoklad", "Fakturoid", "KROS / Omega", "Vlastný systém", "Iný", "Žiadny"];
+const EMAIL_PROVIDERS = ["Resend", "Mailchimp", "Mailerlite", "Ecomail", "SmartEmailing", "Brevo (Sendinblue)", "Iný", "Žiadny"];
+const ANALYTICS_TOOLS = ["Google Analytics", "Meta / FB Pixel", "Plausible / Umami", "Hotjar / Clarity", "Iné", "Žiadne"];
+const HOSTING_OPTIONS = ["Lovable Cloud", "Vercel / Netlify", "Vlastný hosting (WebSupport, ...)", "Neviem, navrhnite"];
+const DATA_STORAGE = ["Lovable Cloud (DB)", "Google tabuľky", "Airtable / Notion", "Vlastný systém", "Neviem, navrhnite"];
 
 type FormData = {
   name: string; email: string; phone: string; company_name: string;
@@ -60,15 +68,34 @@ type FormData = {
   reference_sites: string;
   main_features: string;
   sells_products: boolean | null;
+  payment_gateway_current: string;
+  payment_gateway_switch_stripe: boolean | null;
   needs_crm_integration: boolean | null;
   crm_details: string;
+  email_provider_current: string;
+  email_switch_resend: boolean | null;
   needs_invoicing: boolean | null;
+  invoicing_system: string;
+  invoicing_switch_recommended: boolean | null;
   needs_analytics: boolean | null;
+  analytics_tools: string;
   multilingual: boolean | null;
   languages: string;
   contact_form: boolean | null;
   newsletter_form: boolean | null;
   special_features: string;
+  has_internal_crm: boolean | null;
+  internal_crm_details: string;
+  other_integrations: string;
+  wants_ai_assistant: boolean | null;
+  ai_assistant_purpose: string;
+  wants_custom_app: boolean | null;
+  custom_app_details: string;
+  wants_booking_system: boolean | null;
+  wants_member_area: boolean | null;
+  wants_blog: boolean | null;
+  data_storage_preference: string;
+  hosting_preference: string;
   target_audience: string;
   unique_selling_point: string;
   maintenance_package: boolean | null;
@@ -86,10 +113,19 @@ const initial: FormData = {
   preferred_colors: "", preferred_typography: "",
   has_own_photos: null, has_own_texts: null, reference_sites: "",
   main_features: "", sells_products: null,
+  payment_gateway_current: "", payment_gateway_switch_stripe: null,
   needs_crm_integration: null, crm_details: "",
-  needs_invoicing: null, needs_analytics: null,
+  email_provider_current: "", email_switch_resend: null,
+  needs_invoicing: null, invoicing_system: "", invoicing_switch_recommended: null,
+  needs_analytics: null, analytics_tools: "",
   multilingual: null, languages: "",
   contact_form: null, newsletter_form: null, special_features: "",
+  has_internal_crm: null, internal_crm_details: "",
+  other_integrations: "",
+  wants_ai_assistant: null, ai_assistant_purpose: "",
+  wants_custom_app: null, custom_app_details: "",
+  wants_booking_system: null, wants_member_area: null, wants_blog: null,
+  data_storage_preference: "", hosting_preference: "",
   target_audience: "", unique_selling_point: "",
   maintenance_package: null, budget_range: "", deadline: "", notes: "",
   gdpr_consent: false,
