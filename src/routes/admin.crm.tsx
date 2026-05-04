@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Download, LogOut, Trash2, Eye, RefreshCw } from "lucide-react";
+import { Download, LogOut, Trash2, Eye, RefreshCw, FileText } from "lucide-react";
+import { downloadBriefPdf } from "@/lib/brief-pdf";
 
 type Submission = Tables<"form_submissions">;
 type Brief = Tables<"web_briefs">;
