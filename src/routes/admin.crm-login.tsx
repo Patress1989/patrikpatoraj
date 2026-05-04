@@ -26,23 +26,57 @@ function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) {
+    let cancelled = false;
+
+    const checkExistingSession = async () => {
+      const { data: userData, error } = await supabase.auth.getUser();
+      if (cancelled || error || !userData.user) return;
+
+      const { data: roleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userData.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      if (cancelled) return;
+      if (roleData) {
         navigate({ to: "/admin/crm" });
+      } else {
+        await supabase.auth.signOut();
       }
-    });
+    };
+
+    checkExistingSession();
+
+    return () => {
+      cancelled = true;
+    };
   }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-    setLoading(false);
     if (error) {
+      setLoading(false);
       toast.error("Nesprávne prihlasovacie údaje");
+      return;
+    }
+    const { data: roleData } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", data.user.id)
+      .eq("role", "admin")
+      .maybeSingle();
+
+    setLoading(false);
+    if (!roleData) {
+      await supabase.auth.signOut();
+      toast.error("Tento účet nemá admin prístup");
       return;
     }
     toast.success("Prihlásenie úspešné");
