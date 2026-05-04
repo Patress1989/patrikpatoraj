@@ -53,8 +53,11 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/5 pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Risali s.r.o. — Všetky práva vyhradené.
+        <div className="mt-12 flex flex-col items-center gap-2 border-t border-white/5 pt-6 text-center text-xs text-muted-foreground">
+          <div>© {new Date().getFullYear()} Risali s.r.o. — Všetky práva vyhradené.</div>
+          <Link to="/pomocka" className="text-muted-foreground/60 transition-colors hover:text-muted-foreground">
+            Pomôcka k webu
+          </Link>
         </div>
       </div>
     </footer>
