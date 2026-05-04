@@ -9,6 +9,8 @@ import {
   User, Mail, Phone, Building2, Briefcase, Globe, Palette,
   Type, Image as ImageIcon, FileText, Settings2, Languages,
   Target, Trophy, Wrench, Wallet, Calendar, MessageSquare, ShieldCheck,
+  CreditCard, Receipt, Send, Database, BarChart3, Bot, AppWindow,
+  CalendarCheck, Lock, BookOpen, Server, Plug,
 } from "lucide-react";
 
 export const Route = createFileRoute("/pomocka")({
