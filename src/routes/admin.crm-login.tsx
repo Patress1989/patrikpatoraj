@@ -66,6 +66,11 @@ function AdminLoginPage() {
       toast.error("Nesprávne prihlasovacie údaje");
       return;
     }
+    if (!data.user) {
+      setLoading(false);
+      toast.error("Prihlásenie sa nepodarilo");
+      return;
+    }
     const { data: roleData } = await supabase
       .from("user_roles")
       .select("role")
