@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
+import { Route as PomockaRouteImport } from './routes/pomocka'
 import { Route as ObjednavkaRouteImport } from './routes/objednavka'
 import { Route as ObchodnePodmienkyRouteImport } from './routes/obchodne-podmienky'
 import { Route as KurzRouteImport } from './routes/kurz'
@@ -31,6 +32,11 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 const UnsubscribeRoute = UnsubscribeRouteImport.update({
   id: '/unsubscribe',
   path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PomockaRoute = PomockaRouteImport.update({
+  id: '/pomocka',
+  path: '/pomocka',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObjednavkaRoute = ObjednavkaRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/objednavka': typeof ObjednavkaRouteWithChildren
+  '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/objednavka': typeof ObjednavkaRouteWithChildren
+  '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
   '/objednavka': typeof ObjednavkaRouteWithChildren
+  '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/kurz'
     | '/obchodne-podmienky'
     | '/objednavka'
+    | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
     | '/kurz'
     | '/obchodne-podmienky'
     | '/objednavka'
+    | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -233,6 +244,7 @@ export interface FileRouteTypes {
     | '/kurz'
     | '/obchodne-podmienky'
     | '/objednavka'
+    | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
     | '/admin/crm-login'
@@ -254,6 +266,7 @@ export interface RootRouteChildren {
   KurzRoute: typeof KurzRoute
   ObchodnePodmienkyRoute: typeof ObchodnePodmienkyRoute
   ObjednavkaRoute: typeof ObjednavkaRouteWithChildren
+  PomockaRoute: typeof PomockaRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminCrmRoute: typeof AdminCrmRoute
   AdminCrmLoginRoute: typeof AdminCrmLoginRoute
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       path: '/unsubscribe'
       fullPath: '/unsubscribe'
       preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pomocka': {
+      id: '/pomocka'
+      path: '/pomocka'
+      fullPath: '/pomocka'
+      preLoaderRoute: typeof PomockaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/objednavka': {
@@ -417,6 +437,7 @@ const rootRouteChildren: RootRouteChildren = {
   KurzRoute: KurzRoute,
   ObchodnePodmienkyRoute: ObchodnePodmienkyRoute,
   ObjednavkaRoute: ObjednavkaRouteWithChildren,
+  PomockaRoute: PomockaRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminCrmRoute: AdminCrmRoute,
   AdminCrmLoginRoute: AdminCrmLoginRoute,

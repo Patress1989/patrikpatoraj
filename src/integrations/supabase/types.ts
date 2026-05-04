@@ -275,6 +275,129 @@ export type Database = {
         }
         Relationships: []
       }
+      web_briefs: {
+        Row: {
+          budget_range: string | null
+          business_one_liner: string | null
+          company_name: string | null
+          contact_form: boolean | null
+          created_at: string
+          crm_details: string | null
+          deadline: string | null
+          email: string
+          existing_site_issues: string | null
+          existing_site_url: string | null
+          gdpr_consent: boolean
+          goals: string[] | null
+          has_brand: boolean | null
+          has_existing_site: boolean | null
+          has_own_photos: boolean | null
+          has_own_texts: boolean | null
+          id: string
+          is_starting: boolean | null
+          languages: string | null
+          main_features: string | null
+          maintenance_package: boolean | null
+          multilingual: boolean | null
+          name: string
+          needs_analytics: boolean | null
+          needs_crm_integration: boolean | null
+          needs_invoicing: boolean | null
+          newsletter_form: boolean | null
+          notes: string | null
+          phone: string | null
+          preferred_colors: string | null
+          preferred_typography: string | null
+          reference_sites: string | null
+          self_edit: boolean | null
+          sells_products: boolean | null
+          special_features: string | null
+          target_audience: string | null
+          unique_selling_point: string | null
+          updated_at: string
+        }
+        Insert: {
+          budget_range?: string | null
+          business_one_liner?: string | null
+          company_name?: string | null
+          contact_form?: boolean | null
+          created_at?: string
+          crm_details?: string | null
+          deadline?: string | null
+          email: string
+          existing_site_issues?: string | null
+          existing_site_url?: string | null
+          gdpr_consent?: boolean
+          goals?: string[] | null
+          has_brand?: boolean | null
+          has_existing_site?: boolean | null
+          has_own_photos?: boolean | null
+          has_own_texts?: boolean | null
+          id?: string
+          is_starting?: boolean | null
+          languages?: string | null
+          main_features?: string | null
+          maintenance_package?: boolean | null
+          multilingual?: boolean | null
+          name: string
+          needs_analytics?: boolean | null
+          needs_crm_integration?: boolean | null
+          needs_invoicing?: boolean | null
+          newsletter_form?: boolean | null
+          notes?: string | null
+          phone?: string | null
+          preferred_colors?: string | null
+          preferred_typography?: string | null
+          reference_sites?: string | null
+          self_edit?: boolean | null
+          sells_products?: boolean | null
+          special_features?: string | null
+          target_audience?: string | null
+          unique_selling_point?: string | null
+          updated_at?: string
+        }
+        Update: {
+          budget_range?: string | null
+          business_one_liner?: string | null
+          company_name?: string | null
+          contact_form?: boolean | null
+          created_at?: string
+          crm_details?: string | null
+          deadline?: string | null
+          email?: string
+          existing_site_issues?: string | null
+          existing_site_url?: string | null
+          gdpr_consent?: boolean
+          goals?: string[] | null
+          has_brand?: boolean | null
+          has_existing_site?: boolean | null
+          has_own_photos?: boolean | null
+          has_own_texts?: boolean | null
+          id?: string
+          is_starting?: boolean | null
+          languages?: string | null
+          main_features?: string | null
+          maintenance_package?: boolean | null
+          multilingual?: boolean | null
+          name?: string
+          needs_analytics?: boolean | null
+          needs_crm_integration?: boolean | null
+          needs_invoicing?: boolean | null
+          newsletter_form?: boolean | null
+          notes?: string | null
+          phone?: string | null
+          preferred_colors?: string | null
+          preferred_typography?: string | null
+          reference_sites?: string | null
+          self_edit?: boolean | null
+          sells_products?: boolean | null
+          special_features?: string | null
+          target_audience?: string | null
+          unique_selling_point?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
