@@ -150,7 +150,7 @@ function PomockaPage() {
     setSubmitting(true);
     setSubmitError(null);
     try {
-      const { error } = await supabase.from("web_briefs").insert({
+      const insertPayload = {
         name: data.name,
         email: data.email,
         phone: data.phone || null,
@@ -186,8 +186,22 @@ function PomockaPage() {
         deadline: data.deadline || null,
         notes: data.notes || null,
         gdpr_consent: data.gdpr_consent,
-      });
+      };
+      const { data: inserted, error } = await supabase
+        .from("web_briefs")
+        .insert(insertPayload)
+        .select("id")
+        .single();
       if (error) throw new Error(error.message);
+
+      // Fire-and-forget: send PDF summary to client + admin.
+      // Do not block redirect if email fails.
+      supabase.functions
+        .invoke("send-brief-email", {
+          body: { ...insertPayload, briefId: inserted?.id },
+        })
+        .catch((e) => console.warn("send-brief-email failed:", e));
+
       navigate({ to: "/formular-vyplneny" });
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Nastala neočakávaná chyba");
