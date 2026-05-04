@@ -101,15 +101,42 @@ export function generateBriefPdf(p: Brief): jsPDF {
   section("Funkcie webu");
   row("Hlavné funkcie", val(p.main_features));
   row("Predaj produktov / služieb", yn(p.sells_products));
+  if (p.sells_products) {
+    row("Aktuálna platobná brána", val((p as any).payment_gateway_current));
+    row("Ochota prejsť na Stripe", yn((p as any).payment_gateway_switch_stripe));
+  }
   row("CRM / e-mailing integrácia", yn(p.needs_crm_integration));
-  if (p.needs_crm_integration) row("Detail CRM", val(p.crm_details));
+  if (p.needs_crm_integration) {
+    row("E-mail / CRM nástroj", val((p as any).email_provider_current));
+    row("Detail CRM", val(p.crm_details));
+    row("Ochota použiť Resend", yn((p as any).email_switch_resend));
+  }
   row("Fakturačný systém", yn(p.needs_invoicing));
+  if (p.needs_invoicing) {
+    row("Aktuálny fakturačný systém", val((p as any).invoicing_system));
+    row("Akceptuje odporúčanie (FAPI/SuperFaktúra)", yn((p as any).invoicing_switch_recommended));
+  }
   row("Analytika", yn(p.needs_analytics));
+  if (p.needs_analytics) row("Analytické nástroje", val((p as any).analytics_tools));
   row("Viacjazyčnosť", yn(p.multilingual));
   if (p.multilingual) row("Jazyky", val(p.languages));
   row("Kontaktný formulár", yn(p.contact_form));
   row("Newsletter formulár", yn(p.newsletter_form));
   row("Špeciálne funkcie", val(p.special_features));
+
+  section("Integrácie a rozšírenia");
+  row("Interný CRM systém", yn((p as any).has_internal_crm));
+  if ((p as any).has_internal_crm) row("Detail interného CRM", val((p as any).internal_crm_details));
+  row("Iné integrácie", val((p as any).other_integrations));
+  row("AI asistent na stránke", yn((p as any).wants_ai_assistant));
+  if ((p as any).wants_ai_assistant) row("Účel AI asistenta", val((p as any).ai_assistant_purpose));
+  row("Vlastná aplikácia", yn((p as any).wants_custom_app));
+  if ((p as any).wants_custom_app) row("Detail aplikácie", val((p as any).custom_app_details));
+  row("Rezervačný systém", yn((p as any).wants_booking_system));
+  row("Členská zóna", yn((p as any).wants_member_area));
+  row("Blog / magazín", yn((p as any).wants_blog));
+  row("Preferované úložisko dát", val((p as any).data_storage_preference));
+  row("Preferencia hostingu", val((p as any).hosting_preference));
 
   section("Záver");
   row("Cieľová skupina", val(p.target_audience));

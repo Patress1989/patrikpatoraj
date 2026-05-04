@@ -7,8 +7,10 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   ArrowRight, ArrowLeft, Check, Loader2, Sparkles,
   User, Mail, Phone, Building2, Briefcase, Globe, Palette,
-  Type, Image as ImageIcon, FileText, Settings2, Languages,
+  Type, Image as ImageIcon, Settings2, Languages,
   Target, Trophy, Wrench, Wallet, Calendar, MessageSquare, ShieldCheck,
+  CreditCard, Receipt, Send, Database, BarChart3, Bot, AppWindow,
+  Server, Plug,
 } from "lucide-react";
 
 export const Route = createFileRoute("/pomocka")({
@@ -29,7 +31,8 @@ const STEPS = [
   { n: 3, label: "Ciele" },
   { n: 4, label: "Dizajn" },
   { n: 5, label: "Funkcie" },
-  { n: 6, label: "Záver" },
+  { n: 6, label: "Integrácie" },
+  { n: 7, label: "Záver" },
 ];
 
 const GOAL_OPTIONS = [
@@ -40,6 +43,13 @@ const GOAL_OPTIONS = [
   "Budovanie značky a povedomia",
   "Rast sledovateľov na sociálnych sieťach",
 ];
+
+const PAYMENT_GATEWAYS = ["Stripe", "GoPay", "Besteron / Comgate", "TrustPay", "PayPal", "Iné", "Žiadnu"];
+const INVOICING_SYSTEMS = ["FAPI", "SuperFaktúra", "iDoklad", "Fakturoid", "KROS / Omega", "Vlastný systém", "Iný", "Žiadny"];
+const EMAIL_PROVIDERS = ["Resend", "Mailchimp", "Mailerlite", "Ecomail", "SmartEmailing", "Brevo (Sendinblue)", "Iný", "Žiadny"];
+const ANALYTICS_TOOLS = ["Google Analytics", "Meta / FB Pixel", "Plausible / Umami", "Hotjar / Clarity", "Iné", "Žiadne"];
+const HOSTING_OPTIONS = ["Lovable Cloud", "Vercel / Netlify", "Vlastný hosting (WebSupport, ...)", "Neviem, navrhnite"];
+const DATA_STORAGE = ["Lovable Cloud (DB)", "Google tabuľky", "Airtable / Notion", "Vlastný systém", "Neviem, navrhnite"];
 
 type FormData = {
   name: string; email: string; phone: string; company_name: string;
@@ -58,15 +68,34 @@ type FormData = {
   reference_sites: string;
   main_features: string;
   sells_products: boolean | null;
+  payment_gateway_current: string;
+  payment_gateway_switch_stripe: boolean | null;
   needs_crm_integration: boolean | null;
   crm_details: string;
+  email_provider_current: string;
+  email_switch_resend: boolean | null;
   needs_invoicing: boolean | null;
+  invoicing_system: string;
+  invoicing_switch_recommended: boolean | null;
   needs_analytics: boolean | null;
+  analytics_tools: string;
   multilingual: boolean | null;
   languages: string;
   contact_form: boolean | null;
   newsletter_form: boolean | null;
   special_features: string;
+  has_internal_crm: boolean | null;
+  internal_crm_details: string;
+  other_integrations: string;
+  wants_ai_assistant: boolean | null;
+  ai_assistant_purpose: string;
+  wants_custom_app: boolean | null;
+  custom_app_details: string;
+  wants_booking_system: boolean | null;
+  wants_member_area: boolean | null;
+  wants_blog: boolean | null;
+  data_storage_preference: string;
+  hosting_preference: string;
   target_audience: string;
   unique_selling_point: string;
   maintenance_package: boolean | null;
@@ -84,10 +113,19 @@ const initial: FormData = {
   preferred_colors: "", preferred_typography: "",
   has_own_photos: null, has_own_texts: null, reference_sites: "",
   main_features: "", sells_products: null,
+  payment_gateway_current: "", payment_gateway_switch_stripe: null,
   needs_crm_integration: null, crm_details: "",
-  needs_invoicing: null, needs_analytics: null,
+  email_provider_current: "", email_switch_resend: null,
+  needs_invoicing: null, invoicing_system: "", invoicing_switch_recommended: null,
+  needs_analytics: null, analytics_tools: "",
   multilingual: null, languages: "",
   contact_form: null, newsletter_form: null, special_features: "",
+  has_internal_crm: null, internal_crm_details: "",
+  other_integrations: "",
+  wants_ai_assistant: null, ai_assistant_purpose: "",
+  wants_custom_app: null, custom_app_details: "",
+  wants_booking_system: null, wants_member_area: null, wants_blog: null,
+  data_storage_preference: "", hosting_preference: "",
   target_audience: "", unique_selling_point: "",
   maintenance_package: null, budget_range: "", deadline: "", notes: "",
   gdpr_consent: false,
@@ -100,7 +138,7 @@ const stepSchemas = {
     phone: z.string().trim().max(30).optional().or(z.literal("")),
     company_name: z.string().trim().max(200).optional().or(z.literal("")),
   }),
-  6: z.object({
+  7: z.object({
     gdpr_consent: z.literal(true, { errorMap: () => ({ message: "Musíte súhlasiť so spracovaním údajov" }) }),
   }),
 };
@@ -126,12 +164,12 @@ function PomockaPage() {
   };
 
   const validateStep = (s: number): boolean => {
-    const schema = stepSchemas[s as 1 | 6];
+    const schema = (stepSchemas as Record<number, z.ZodTypeAny | undefined>)[s];
     if (!schema) return true;
     const result = schema.safeParse(data);
     if (!result.success) {
       const fe: Record<string, string> = {};
-      result.error.errors.forEach((e) => {
+      result.error.errors.forEach((e: z.ZodIssue) => {
         if (e.path[0]) fe[e.path[0] as string] = e.message;
       });
       setErrors(fe);
@@ -146,7 +184,7 @@ function PomockaPage() {
   const prev = () => setStep((s) => Math.max(1, s - 1));
 
   const submit = async () => {
-    if (!validateStep(6)) return;
+    if (!validateStep(7)) return;
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -170,15 +208,34 @@ function PomockaPage() {
         reference_sites: data.reference_sites || null,
         main_features: data.main_features || null,
         sells_products: data.sells_products,
+        payment_gateway_current: data.payment_gateway_current || null,
+        payment_gateway_switch_stripe: data.payment_gateway_switch_stripe,
         needs_crm_integration: data.needs_crm_integration,
         crm_details: data.crm_details || null,
+        email_provider_current: data.email_provider_current || null,
+        email_switch_resend: data.email_switch_resend,
         needs_invoicing: data.needs_invoicing,
+        invoicing_system: data.invoicing_system || null,
+        invoicing_switch_recommended: data.invoicing_switch_recommended,
         needs_analytics: data.needs_analytics,
+        analytics_tools: data.analytics_tools || null,
         multilingual: data.multilingual,
         languages: data.languages || null,
         contact_form: data.contact_form,
         newsletter_form: data.newsletter_form,
         special_features: data.special_features || null,
+        has_internal_crm: data.has_internal_crm,
+        internal_crm_details: data.internal_crm_details || null,
+        other_integrations: data.other_integrations || null,
+        wants_ai_assistant: data.wants_ai_assistant,
+        ai_assistant_purpose: data.ai_assistant_purpose || null,
+        wants_custom_app: data.wants_custom_app,
+        custom_app_details: data.custom_app_details || null,
+        wants_booking_system: data.wants_booking_system,
+        wants_member_area: data.wants_member_area,
+        wants_blog: data.wants_blog,
+        data_storage_preference: data.data_storage_preference || null,
+        hosting_preference: data.hosting_preference || null,
         target_audience: data.target_audience || null,
         unique_selling_point: data.unique_selling_point || null,
         maintenance_package: data.maintenance_package,
@@ -342,19 +399,87 @@ function PomockaPage() {
             )}
 
             {step === 5 && (
-              <Section title="Funkcie webu" subtitle="Čo má web vedieť?">
+              <Section title="Funkcie webu" subtitle="Čo má web vedieť? Pri každej funkcii vám viem rýchlo nasadiť osvedčené riešenia.">
                 <Field icon={Settings2} label="Aké hlavné funkcie má web spĺňať?" hint="Voliteľné">
                   <textarea className="input-field min-h-[90px] resize-y" value={data.main_features} onChange={(e) => update("main_features", e.target.value)} placeholder="Napr. rezervácia termínov, blog, galéria, online platba..." />
                 </Field>
+
                 <YesNo label="Bude sa na webe realizovať predaj produktov / služieb?" value={data.sells_products} onChange={(v) => update("sells_products", v)} />
-                <YesNo label="Prepojenie s CRM / e-mailingom (Mailchimp, Mailerlite, Ecomail...)?" value={data.needs_crm_integration} onChange={(v) => update("needs_crm_integration", v)} />
+                {data.sells_products && (
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={CreditCard} label="Akú platobnú bránu používate / chcete používať?">
+                      <Choice options={PAYMENT_GATEWAYS} value={data.payment_gateway_current} onChange={(v) => update("payment_gateway_current", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.payment_gateway_current}
+                        onChange={(e) => update("payment_gateway_current", e.target.value)}
+                        placeholder="Napr. Stripe — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <YesNo
+                      label="Ste ochotný/á prejsť na Stripe? (rýchla integrácia, nízke poplatky, podpora kariet, Apple/Google Pay, predplatného)"
+                      value={data.payment_gateway_switch_stripe}
+                      onChange={(v) => update("payment_gateway_switch_stripe", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Prepojenie s CRM / e-mailingom (newsletter, automatizácie)?" value={data.needs_crm_integration} onChange={(v) => update("needs_crm_integration", v)} />
                 {data.needs_crm_integration && (
-                  <Field icon={MessageSquare} label="Akým systémom?" hint="Voliteľné">
-                    <input className="input-field" value={data.crm_details} onChange={(e) => update("crm_details", e.target.value)} placeholder="Napr. Ecomail" />
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={Send} label="Aký e-mailový / CRM nástroj používate?">
+                      <Choice options={EMAIL_PROVIDERS} value={data.email_provider_current} onChange={(v) => update("email_provider_current", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.email_provider_current}
+                        onChange={(e) => update("email_provider_current", e.target.value)}
+                        placeholder="Napr. Mailerlite — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <Field icon={MessageSquare} label="Doplňujúce detaily k CRM" hint="Voliteľné">
+                      <input className="input-field" value={data.crm_details} onChange={(e) => update("crm_details", e.target.value)} placeholder="Napr. počet kontaktov, automatizácie..." />
+                    </Field>
+                    <YesNo
+                      label="Ste ochotný/á použiť Resend pre transakčné e-maily? (lacné, spoľahlivé, rýchla integrácia)"
+                      value={data.email_switch_resend}
+                      onChange={(v) => update("email_switch_resend", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Prepojenie s fakturačným systémom?" value={data.needs_invoicing} onChange={(v) => update("needs_invoicing", v)} />
+                {data.needs_invoicing && (
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={Receipt} label="Aký fakturačný systém používate?">
+                      <Choice options={INVOICING_SYSTEMS} value={data.invoicing_system} onChange={(v) => update("invoicing_system", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.invoicing_system}
+                        onChange={(e) => update("invoicing_system", e.target.value)}
+                        placeholder="Napr. SuperFaktúra — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <YesNo
+                      label="Akceptujete moje odporúčanie systému s rýchlou API integráciou? (FAPI / SuperFaktúra majú overené API)"
+                      value={data.invoicing_switch_recommended}
+                      onChange={(v) => update("invoicing_switch_recommended", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Analytické nástroje?" value={data.needs_analytics} onChange={(v) => update("needs_analytics", v)} />
+                {data.needs_analytics && (
+                  <Field icon={BarChart3} label="Ktoré nástroje?">
+                    <Choice options={ANALYTICS_TOOLS} value={data.analytics_tools} onChange={(v) => update("analytics_tools", v)} />
+                    <input
+                      className="input-field mt-2"
+                      value={data.analytics_tools}
+                      onChange={(e) => update("analytics_tools", e.target.value)}
+                      placeholder="Doplňte alebo vyberte z možností"
+                    />
                   </Field>
                 )}
-                <YesNo label="Prepojenie s fakturačným systémom?" value={data.needs_invoicing} onChange={(v) => update("needs_invoicing", v)} />
-                <YesNo label="Analytické nástroje (Google Analytics, FB Pixel)?" value={data.needs_analytics} onChange={(v) => update("needs_analytics", v)} />
+
                 <YesNo label="Web vo viacerých jazykoch?" value={data.multilingual} onChange={(v) => update("multilingual", v)} />
                 {data.multilingual && (
                   <Field icon={Languages} label="V akých jazykoch?">
@@ -364,12 +489,61 @@ function PomockaPage() {
                 <YesNo label="Kontaktný formulár?" value={data.contact_form} onChange={(v) => update("contact_form", v)} />
                 <YesNo label="Formulár na odber newslettera?" value={data.newsletter_form} onChange={(v) => update("newsletter_form", v)} />
                 <Field icon={Wrench} label="Iné špeciálne funkcie?" hint="Voliteľné">
-                  <textarea className="input-field min-h-[80px] resize-y" value={data.special_features} onChange={(e) => update("special_features", e.target.value)} placeholder="Napr. členská zóna, kalkulačka, AI chat..." />
+                  <textarea className="input-field min-h-[80px] resize-y" value={data.special_features} onChange={(e) => update("special_features", e.target.value)} placeholder="Napr. kalkulačka, konfigurátor, mapa pobočiek..." />
                 </Field>
               </Section>
             )}
 
             {step === 6 && (
+              <Section title="Integrácie a rozšírenia" subtitle="Funkcie navyše, ktoré viem rýchlo nasadiť cez overené nástroje.">
+                <YesNo label="Máte interný CRM systém, s ktorým chcete web prepojiť?" value={data.has_internal_crm} onChange={(v) => update("has_internal_crm", v)} />
+                {data.has_internal_crm && (
+                  <Field icon={Database} label="Aký systém? Akým spôsobom prepojiť?" hint="Voliteľné">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.internal_crm_details} onChange={(e) => update("internal_crm_details", e.target.value)} placeholder="Napr. Pipedrive cez API, vlastný systém s REST endpointom..." />
+                  </Field>
+                )}
+
+                <Field icon={Plug} label="Chcete web prepojiť ešte s niečím iným?" hint="Voliteľné · ERP, sklad, rezervačný systém, Zapier, Make...">
+                  <textarea className="input-field min-h-[70px] resize-y" value={data.other_integrations} onChange={(e) => update("other_integrations", e.target.value)} placeholder="Napr. prepojenie so skladom, Zapier automatizácie..." />
+                </Field>
+
+                <YesNo
+                  label="Chcete na stránke AI asistenta (chatbot)? Vyžaduje predplatné za prevádzku."
+                  value={data.wants_ai_assistant}
+                  onChange={(v) => update("wants_ai_assistant", v)}
+                />
+                {data.wants_ai_assistant && (
+                  <Field icon={Bot} label="Na čo by mal asistent slúžiť?" hint="Pomocník pre návštevníkov / kvalifikácia leadov / podpora">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.ai_assistant_purpose} onChange={(e) => update("ai_assistant_purpose", e.target.value)} placeholder="Napr. odpovedať na časté otázky o službách, navrhnúť termín..." />
+                  </Field>
+                )}
+
+                <YesNo
+                  label="Potrebujete aj vlastnú aplikáciu (web app, klientsky portál, interný nástroj)?"
+                  value={data.wants_custom_app}
+                  onChange={(v) => update("wants_custom_app", v)}
+                />
+                {data.wants_custom_app && (
+                  <Field icon={AppWindow} label="O akú aplikáciu ide?" hint="Stručný popis funkcionality">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.custom_app_details} onChange={(e) => update("custom_app_details", e.target.value)} placeholder="Napr. portál pre klientov s prihlásením a prehľadom objednávok..." />
+                  </Field>
+                )}
+
+                <YesNo label="Rezervačný / objednávkový systém priamo na webe?" value={data.wants_booking_system} onChange={(v) => update("wants_booking_system", v)} />
+                <YesNo label="Členská zóna (prihlásenie, obsah pre platiacich)?" value={data.wants_member_area} onChange={(v) => update("wants_member_area", v)} />
+                <YesNo label="Blog / magazín?" value={data.wants_blog} onChange={(v) => update("wants_blog", v)} />
+
+                <Field icon={Database} label="Kde chcete ukladať dáta z formulárov / objednávok?" hint="Odporúčam Lovable Cloud DB — najjednoduchšia integrácia">
+                  <Choice options={DATA_STORAGE} value={data.data_storage_preference} onChange={(v) => update("data_storage_preference", v)} />
+                </Field>
+
+                <Field icon={Server} label="Preferencia hostingu" hint="Lovable Cloud zahŕňa všetko v jednom">
+                  <Choice options={HOSTING_OPTIONS} value={data.hosting_preference} onChange={(v) => update("hosting_preference", v)} />
+                </Field>
+              </Section>
+            )}
+
+            {step === 7 && (
               <Section title="Záver" subtitle="Posledné otázky a odošleme.">
                 <Field icon={Target} label="Opíšte vašu cieľovú skupinu" hint="Voliteľné">
                   <textarea className="input-field min-h-[80px] resize-y" value={data.target_audience} onChange={(e) => update("target_audience", e.target.value)} placeholder="Komu predávate? Vek, lokalita, záujmy..." />
@@ -510,6 +684,36 @@ function YesNo({
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function Choice({
+  options, value, onChange,
+}: {
+  options: string[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((opt) => {
+        const active = value === opt;
+        return (
+          <button
+            key={opt}
+            type="button"
+            onClick={() => onChange(active ? "" : opt)}
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+              active
+                ? "border-primary bg-primary/15 text-primary"
+                : "border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+            }`}
+          >
+            {opt}
+          </button>
+        );
+      })}
     </div>
   );
 }
