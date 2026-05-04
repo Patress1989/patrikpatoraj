@@ -164,12 +164,12 @@ function PomockaPage() {
   };
 
   const validateStep = (s: number): boolean => {
-    const schema = stepSchemas[s as 1 | 6];
+    const schema = (stepSchemas as Record<number, z.ZodTypeAny | undefined>)[s];
     if (!schema) return true;
     const result = schema.safeParse(data);
     if (!result.success) {
       const fe: Record<string, string> = {};
-      result.error.errors.forEach((e) => {
+      result.error.errors.forEach((e: z.ZodIssue) => {
         if (e.path[0]) fe[e.path[0] as string] = e.message;
       });
       setErrors(fe);
@@ -184,7 +184,7 @@ function PomockaPage() {
   const prev = () => setStep((s) => Math.max(1, s - 1));
 
   const submit = async () => {
-    if (!validateStep(6)) return;
+    if (!validateStep(7)) return;
     setSubmitting(true);
     setSubmitError(null);
     try {
