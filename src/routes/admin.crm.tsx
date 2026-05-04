@@ -287,10 +287,13 @@ function CRMPage() {
                         <TableCell>{b.company_name || "—"}</TableCell>
                         <TableCell>{b.budget_range || "—"}</TableCell>
                         <TableCell className="text-right">
-                          <Button variant="ghost" size="sm" onClick={() => setSelectedBrief(b)}>
+                          <Button variant="ghost" size="sm" onClick={() => setSelectedBrief(b)} title="Zobraziť detail">
                             <Eye className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)}>
+                          <Button variant="ghost" size="sm" onClick={() => downloadBriefPdf(b)} title="Stiahnuť PDF">
+                            <FileText className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
                             <Trash2 className="w-4 h-4 text-destructive" />
                           </Button>
                         </TableCell>
