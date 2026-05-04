@@ -29,6 +29,12 @@ function ResetPasswordPage() {
 
   useEffect(() => {
     let cancelled = false;
+    let readyResolved = false;
+
+    const markReady = () => {
+      readyResolved = true;
+      if (!cancelled) setReady(true);
+    };
 
     const init = async () => {
       try {
@@ -41,24 +47,40 @@ function ResetPasswordPage() {
           // clean the URL
           url.searchParams.delete("code");
           window.history.replaceState({}, "", url.pathname + url.hash);
-          if (!cancelled) setReady(true);
+          markReady();
           return;
         }
 
         // 2) Implicit flow: #access_token=...&type=recovery in hash
-        if (window.location.hash.includes("access_token")) {
-          // supabase-js auto-parses the hash; just wait for the event below
-          // but also check current session
-          const { data } = await supabase.auth.getSession();
-          if (data.session && !cancelled) {
-            setReady(true);
-            return;
-          }
+        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+        const hashError = hashParams.get("error_description") || hashParams.get("error");
+        if (hashError) throw new Error(hashError);
+
+        const accessToken = hashParams.get("access_token");
+        const refreshToken = hashParams.get("refresh_token");
+        if (accessToken && refreshToken) {
+          const { error } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+          if (error) throw error;
+          window.history.replaceState({}, "", url.pathname);
+          markReady();
+          return;
         }
 
         // 3) Already have a session (e.g. came back from earlier link)
         const { data } = await supabase.auth.getSession();
-        if (data.session && !cancelled) setReady(true);
+        if (data.session) {
+          markReady();
+          return;
+        }
+
+        window.setTimeout(() => {
+          if (!cancelled && !readyResolved) {
+            setError("Odkaz je neplatný alebo expirovaný. Pošlite si nový odkaz na reset hesla.");
+          }
+        }, 1500);
       } catch (e: any) {
         if (!cancelled) setError(e?.message ?? "Odkaz je neplatný alebo expirovaný.");
       }
@@ -66,7 +88,7 @@ function ResetPasswordPage() {
 
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY" || event === "SIGNED_IN") {
-        setReady(true);
+        markReady();
       }
     });
 

@@ -46,8 +46,8 @@ function CRMPage() {
   const [selectedBrief, setSelectedBrief] = useState<Brief | null>(null);
 
   const checkAuth = async () => {
-    const { data: sessionData } = await supabase.auth.getSession();
-    if (!sessionData.session) {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) {
       setAuthorized(false);
       setLoading(false);
       return false;
@@ -55,7 +55,7 @@ function CRMPage() {
     const { data: roleData } = await supabase
       .from("user_roles")
       .select("role")
-      .eq("user_id", sessionData.session.user.id)
+      .eq("user_id", userData.user.id)
       .eq("role", "admin")
       .maybeSingle();
     if (!roleData) {
