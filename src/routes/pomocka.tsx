@@ -399,19 +399,87 @@ function PomockaPage() {
             )}
 
             {step === 5 && (
-              <Section title="Funkcie webu" subtitle="Čo má web vedieť?">
+              <Section title="Funkcie webu" subtitle="Čo má web vedieť? Pri každej funkcii vám viem rýchlo nasadiť osvedčené riešenia.">
                 <Field icon={Settings2} label="Aké hlavné funkcie má web spĺňať?" hint="Voliteľné">
                   <textarea className="input-field min-h-[90px] resize-y" value={data.main_features} onChange={(e) => update("main_features", e.target.value)} placeholder="Napr. rezervácia termínov, blog, galéria, online platba..." />
                 </Field>
+
                 <YesNo label="Bude sa na webe realizovať predaj produktov / služieb?" value={data.sells_products} onChange={(v) => update("sells_products", v)} />
-                <YesNo label="Prepojenie s CRM / e-mailingom (Mailchimp, Mailerlite, Ecomail...)?" value={data.needs_crm_integration} onChange={(v) => update("needs_crm_integration", v)} />
+                {data.sells_products && (
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={CreditCard} label="Akú platobnú bránu používate / chcete používať?">
+                      <Choice options={PAYMENT_GATEWAYS} value={data.payment_gateway_current} onChange={(v) => update("payment_gateway_current", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.payment_gateway_current}
+                        onChange={(e) => update("payment_gateway_current", e.target.value)}
+                        placeholder="Napr. Stripe — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <YesNo
+                      label="Ste ochotný/á prejsť na Stripe? (rýchla integrácia, nízke poplatky, podpora kariet, Apple/Google Pay, predplatného)"
+                      value={data.payment_gateway_switch_stripe}
+                      onChange={(v) => update("payment_gateway_switch_stripe", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Prepojenie s CRM / e-mailingom (newsletter, automatizácie)?" value={data.needs_crm_integration} onChange={(v) => update("needs_crm_integration", v)} />
                 {data.needs_crm_integration && (
-                  <Field icon={MessageSquare} label="Akým systémom?" hint="Voliteľné">
-                    <input className="input-field" value={data.crm_details} onChange={(e) => update("crm_details", e.target.value)} placeholder="Napr. Ecomail" />
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={Send} label="Aký e-mailový / CRM nástroj používate?">
+                      <Choice options={EMAIL_PROVIDERS} value={data.email_provider_current} onChange={(v) => update("email_provider_current", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.email_provider_current}
+                        onChange={(e) => update("email_provider_current", e.target.value)}
+                        placeholder="Napr. Mailerlite — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <Field icon={MessageSquare} label="Doplňujúce detaily k CRM" hint="Voliteľné">
+                      <input className="input-field" value={data.crm_details} onChange={(e) => update("crm_details", e.target.value)} placeholder="Napr. počet kontaktov, automatizácie..." />
+                    </Field>
+                    <YesNo
+                      label="Ste ochotný/á použiť Resend pre transakčné e-maily? (lacné, spoľahlivé, rýchla integrácia)"
+                      value={data.email_switch_resend}
+                      onChange={(v) => update("email_switch_resend", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Prepojenie s fakturačným systémom?" value={data.needs_invoicing} onChange={(v) => update("needs_invoicing", v)} />
+                {data.needs_invoicing && (
+                  <div className="space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                    <Field icon={Receipt} label="Aký fakturačný systém používate?">
+                      <Choice options={INVOICING_SYSTEMS} value={data.invoicing_system} onChange={(v) => update("invoicing_system", v)} />
+                      <input
+                        className="input-field mt-2"
+                        value={data.invoicing_system}
+                        onChange={(e) => update("invoicing_system", e.target.value)}
+                        placeholder="Napr. SuperFaktúra — alebo doplňte vlastnú odpoveď"
+                      />
+                    </Field>
+                    <YesNo
+                      label="Akceptujete moje odporúčanie systému s rýchlou API integráciou? (FAPI / SuperFaktúra majú overené API)"
+                      value={data.invoicing_switch_recommended}
+                      onChange={(v) => update("invoicing_switch_recommended", v)}
+                    />
+                  </div>
+                )}
+
+                <YesNo label="Analytické nástroje?" value={data.needs_analytics} onChange={(v) => update("needs_analytics", v)} />
+                {data.needs_analytics && (
+                  <Field icon={BarChart3} label="Ktoré nástroje?">
+                    <Choice options={ANALYTICS_TOOLS} value={data.analytics_tools} onChange={(v) => update("analytics_tools", v)} />
+                    <input
+                      className="input-field mt-2"
+                      value={data.analytics_tools}
+                      onChange={(e) => update("analytics_tools", e.target.value)}
+                      placeholder="Doplňte alebo vyberte z možností"
+                    />
                   </Field>
                 )}
-                <YesNo label="Prepojenie s fakturačným systémom?" value={data.needs_invoicing} onChange={(v) => update("needs_invoicing", v)} />
-                <YesNo label="Analytické nástroje (Google Analytics, FB Pixel)?" value={data.needs_analytics} onChange={(v) => update("needs_analytics", v)} />
+
                 <YesNo label="Web vo viacerých jazykoch?" value={data.multilingual} onChange={(v) => update("multilingual", v)} />
                 {data.multilingual && (
                   <Field icon={Languages} label="V akých jazykoch?">
@@ -421,12 +489,61 @@ function PomockaPage() {
                 <YesNo label="Kontaktný formulár?" value={data.contact_form} onChange={(v) => update("contact_form", v)} />
                 <YesNo label="Formulár na odber newslettera?" value={data.newsletter_form} onChange={(v) => update("newsletter_form", v)} />
                 <Field icon={Wrench} label="Iné špeciálne funkcie?" hint="Voliteľné">
-                  <textarea className="input-field min-h-[80px] resize-y" value={data.special_features} onChange={(e) => update("special_features", e.target.value)} placeholder="Napr. členská zóna, kalkulačka, AI chat..." />
+                  <textarea className="input-field min-h-[80px] resize-y" value={data.special_features} onChange={(e) => update("special_features", e.target.value)} placeholder="Napr. kalkulačka, konfigurátor, mapa pobočiek..." />
                 </Field>
               </Section>
             )}
 
             {step === 6 && (
+              <Section title="Integrácie a rozšírenia" subtitle="Funkcie navyše, ktoré viem rýchlo nasadiť cez overené nástroje.">
+                <YesNo label="Máte interný CRM systém, s ktorým chcete web prepojiť?" value={data.has_internal_crm} onChange={(v) => update("has_internal_crm", v)} />
+                {data.has_internal_crm && (
+                  <Field icon={Database} label="Aký systém? Akým spôsobom prepojiť?" hint="Voliteľné">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.internal_crm_details} onChange={(e) => update("internal_crm_details", e.target.value)} placeholder="Napr. Pipedrive cez API, vlastný systém s REST endpointom..." />
+                  </Field>
+                )}
+
+                <Field icon={Plug} label="Chcete web prepojiť ešte s niečím iným?" hint="Voliteľné · ERP, sklad, rezervačný systém, Zapier, Make...">
+                  <textarea className="input-field min-h-[70px] resize-y" value={data.other_integrations} onChange={(e) => update("other_integrations", e.target.value)} placeholder="Napr. prepojenie so skladom, Zapier automatizácie..." />
+                </Field>
+
+                <YesNo
+                  label="Chcete na stránke AI asistenta (chatbot)? Vyžaduje predplatné za prevádzku."
+                  value={data.wants_ai_assistant}
+                  onChange={(v) => update("wants_ai_assistant", v)}
+                />
+                {data.wants_ai_assistant && (
+                  <Field icon={Bot} label="Na čo by mal asistent slúžiť?" hint="Pomocník pre návštevníkov / kvalifikácia leadov / podpora">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.ai_assistant_purpose} onChange={(e) => update("ai_assistant_purpose", e.target.value)} placeholder="Napr. odpovedať na časté otázky o službách, navrhnúť termín..." />
+                  </Field>
+                )}
+
+                <YesNo
+                  label="Potrebujete aj vlastnú aplikáciu (web app, klientsky portál, interný nástroj)?"
+                  value={data.wants_custom_app}
+                  onChange={(v) => update("wants_custom_app", v)}
+                />
+                {data.wants_custom_app && (
+                  <Field icon={AppWindow} label="O akú aplikáciu ide?" hint="Stručný popis funkcionality">
+                    <textarea className="input-field min-h-[70px] resize-y" value={data.custom_app_details} onChange={(e) => update("custom_app_details", e.target.value)} placeholder="Napr. portál pre klientov s prihlásením a prehľadom objednávok..." />
+                  </Field>
+                )}
+
+                <YesNo label="Rezervačný / objednávkový systém priamo na webe?" value={data.wants_booking_system} onChange={(v) => update("wants_booking_system", v)} icon={CalendarCheck} />
+                <YesNo label="Členská zóna (prihlásenie, obsah pre platiacich)?" value={data.wants_member_area} onChange={(v) => update("wants_member_area", v)} icon={Lock} />
+                <YesNo label="Blog / magazín?" value={data.wants_blog} onChange={(v) => update("wants_blog", v)} icon={BookOpen} />
+
+                <Field icon={Database} label="Kde chcete ukladať dáta z formulárov / objednávok?" hint="Odporúčam Lovable Cloud DB — najjednoduchšia integrácia">
+                  <Choice options={DATA_STORAGE} value={data.data_storage_preference} onChange={(v) => update("data_storage_preference", v)} />
+                </Field>
+
+                <Field icon={Server} label="Preferencia hostingu" hint="Lovable Cloud zahŕňa všetko v jednom">
+                  <Choice options={HOSTING_OPTIONS} value={data.hosting_preference} onChange={(v) => update("hosting_preference", v)} />
+                </Field>
+              </Section>
+            )}
+
+            {step === 7 && (
               <Section title="Záver" subtitle="Posledné otázky a odošleme.">
                 <Field icon={Target} label="Opíšte vašu cieľovú skupinu" hint="Voliteľné">
                   <textarea className="input-field min-h-[80px] resize-y" value={data.target_audience} onChange={(e) => update("target_audience", e.target.value)} placeholder="Komu predávate? Vek, lokalita, záujmy..." />
