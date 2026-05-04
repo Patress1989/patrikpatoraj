@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Download, LogOut, Trash2, Eye, RefreshCw } from "lucide-react";
+import { Download, LogOut, Trash2, Eye, RefreshCw, FileText } from "lucide-react";
+import { downloadBriefPdf } from "@/lib/brief-pdf";
 
 type Submission = Tables<"form_submissions">;
 type Brief = Tables<"web_briefs">;
@@ -286,10 +287,13 @@ function CRMPage() {
                         <TableCell>{b.company_name || "—"}</TableCell>
                         <TableCell>{b.budget_range || "—"}</TableCell>
                         <TableCell className="text-right">
-                          <Button variant="ghost" size="sm" onClick={() => setSelectedBrief(b)}>
+                          <Button variant="ghost" size="sm" onClick={() => setSelectedBrief(b)} title="Zobraziť detail">
                             <Eye className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)}>
+                          <Button variant="ghost" size="sm" onClick={() => downloadBriefPdf(b)} title="Stiahnuť PDF">
+                            <FileText className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
                             <Trash2 className="w-4 h-4 text-destructive" />
                           </Button>
                         </TableCell>
@@ -348,6 +352,14 @@ function CRMPage() {
           <DialogHeader>
             <DialogTitle>Detail briefu — Pomôcka k webu</DialogTitle>
             <DialogDescription>Kompletné odpovede klienta.</DialogDescription>
+            {selectedBrief && (
+              <div className="pt-2">
+                <Button size="sm" variant="outline" onClick={() => downloadBriefPdf(selectedBrief)}>
+                  <FileText className="w-4 h-4 mr-2" />
+                  Stiahnuť PDF
+                </Button>
+              </div>
+            )}
           </DialogHeader>
           {selectedBrief && (
             <div className="space-y-3 text-sm">
