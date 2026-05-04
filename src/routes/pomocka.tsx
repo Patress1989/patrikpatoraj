@@ -529,9 +529,9 @@ function PomockaPage() {
                   </Field>
                 )}
 
-                <YesNo label="Rezervačný / objednávkový systém priamo na webe?" value={data.wants_booking_system} onChange={(v) => update("wants_booking_system", v)} icon={CalendarCheck} />
-                <YesNo label="Členská zóna (prihlásenie, obsah pre platiacich)?" value={data.wants_member_area} onChange={(v) => update("wants_member_area", v)} icon={Lock} />
-                <YesNo label="Blog / magazín?" value={data.wants_blog} onChange={(v) => update("wants_blog", v)} icon={BookOpen} />
+                <YesNo label="Rezervačný / objednávkový systém priamo na webe?" value={data.wants_booking_system} onChange={(v) => update("wants_booking_system", v)} />
+                <YesNo label="Členská zóna (prihlásenie, obsah pre platiacich)?" value={data.wants_member_area} onChange={(v) => update("wants_member_area", v)} />
+                <YesNo label="Blog / magazín?" value={data.wants_blog} onChange={(v) => update("wants_blog", v)} />
 
                 <Field icon={Database} label="Kde chcete ukladať dáta z formulárov / objednávok?" hint="Odporúčam Lovable Cloud DB — najjednoduchšia integrácia">
                   <Choice options={DATA_STORAGE} value={data.data_storage_preference} onChange={(v) => update("data_storage_preference", v)} />
