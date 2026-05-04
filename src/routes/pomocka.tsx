@@ -138,7 +138,7 @@ const stepSchemas = {
     phone: z.string().trim().max(30).optional().or(z.literal("")),
     company_name: z.string().trim().max(200).optional().or(z.literal("")),
   }),
-  6: z.object({
+  7: z.object({
     gdpr_consent: z.literal(true, { errorMap: () => ({ message: "Musíte súhlasiť so spracovaním údajov" }) }),
   }),
 };
