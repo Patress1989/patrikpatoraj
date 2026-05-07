@@ -441,26 +441,6 @@ function FormularPage() {
         </div>
       </main>
       <SiteFooter />
-
-      <style>{`
-        .input-field {
-          width: 100%;
-          padding: 0.75rem 1rem;
-          background: oklch(1 0 0 / 0.05);
-          border: 1px solid oklch(1 0 0 / 0.1);
-          border-radius: 0.75rem;
-          color: var(--color-foreground);
-          font-size: 0.95rem;
-          transition: all 0.2s;
-          outline: none;
-        }
-        .input-field::placeholder { color: var(--color-muted-foreground); opacity: 0.6; }
-        .input-field:focus {
-          border-color: var(--color-primary);
-          background: oklch(1 0 0 / 0.08);
-          box-shadow: 0 0 0 3px oklch(0.65 0.2 255 / 0.15);
-        }
-      `}</style>
     </div>
   );
 }
