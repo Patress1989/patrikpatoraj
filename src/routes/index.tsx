@@ -863,7 +863,7 @@ function Portfolio() {
       description: "Autorizovaný predajca robotických kosačiek a bazénových vysávačov Mammotion.",
       url: "https://mammotion1.sk",
       image: mammotion1Img,
-      tag: "E-shop / Predaj",
+      tag: "Digitálny katalóg",
     },
     {
       title: "Charisma Experience",
