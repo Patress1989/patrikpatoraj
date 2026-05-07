@@ -378,7 +378,7 @@ function Mechanism() {
 function Differentiation() {
   const rows = [
     ["Čas vývoja", "4 – 8 týždňov", "3 – 7 dní"],
-    ["Cena", "1 500 € – 5 000 €", "od 99 €"],
+    ["Cena", "1 500 € - 2 000 €", "od 99 €"],
     ["Základné SEO", "Často doplatková služba", "Vždy v cene"],
     ["Rýchlosť načítania", "Často pomalý (ťažký kód, starý hosting)", "Bleskový (optimalizovaný kód & moderná infraštruktúra)"],
     ["Úpravy obsahu", "Týždne, drahé", "Hodiny, lacné"],
@@ -632,7 +632,7 @@ function PriceAnchor() {
       <div className="glass-strong mx-auto max-w-4xl rounded-3xl p-8 text-center md:p-12">
         <div className="text-sm font-medium uppercase tracking-wider text-primary">Cenový rozdiel</div>
         <h2 className="mt-3 text-2xl font-bold md:text-4xl">
-          Bežný vývoj komplexných aplikácií <br />stojí <span className="line-through text-muted-foreground">1 500 € – 5 000 €</span>
+          Bežný vývoj jednostránkového webu <br />stojí <span className="line-through text-muted-foreground">1 500 € - 2 000 €</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           Moje riešenie štartuje už na <span className="gradient-text font-bold text-xl">99 €</span>.<br />Profesionálna kvalita. Zlomok ceny. Niekoľkonásobne rýchlejšie.
