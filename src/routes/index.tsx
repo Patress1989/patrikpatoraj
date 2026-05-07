@@ -867,7 +867,7 @@ function Portfolio() {
     },
     {
       title: "Charisma Experience",
-      description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek.",
+      description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek. Intergrovaný Stirpe, vlastné CMR a napojenie na Superfaktúru.",
       url: "https://charisma.nlp-akademia.sk",
       image: charismaImg,
       tag: "Vzdelávanie",
