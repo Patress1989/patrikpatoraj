@@ -853,7 +853,7 @@ function Portfolio() {
   const projects = [
     {
       title: "Balónový svet",
-      description: "Profesionálne balónové dekorácie pre eventy po celom Slovensku.",
+      description: "Profesionálne balónové dekorácie pre eventy po celom Slovensku. Napojenie na EcoMail a Superfakúru",
       url: "https://balonovysvet.eu",
       image: balonovysvetImg,
       tag: "Služby & Eventy",
