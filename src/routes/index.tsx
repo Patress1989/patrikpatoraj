@@ -701,7 +701,7 @@ function Bonuses() {
 }
 
 /* =================== 19. AUTHORITY =================== */
-import patrikPhoto from "@/assets/patrik-photo.png";
+import patrikPhoto from "@/assets/patrik-patoraj-photo.webp";
 
 function Authority() {
   const paragraphs = [
@@ -718,6 +718,10 @@ function Authority() {
             <img
               src={patrikPhoto}
               alt="Patrik Patoraj"
+              width={384}
+              height={384}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover pointer-events-none select-none"
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
