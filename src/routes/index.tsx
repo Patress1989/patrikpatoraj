@@ -31,6 +31,7 @@ function HomePage() {
         <PainPoints />
         <Solution />
         <Proof />
+        <Portfolio />
         <DesiredOutcome />
         <Capabilities />
         <Uniqueness />
@@ -844,6 +845,78 @@ function FinalCTA() {
 }
 
 /* =================== Section helpers =================== */
+import balonovysvetImg from "@/assets/projects/balonovysvet.webp";
+import mammotion1Img from "@/assets/projects/mammotion1.webp";
+import charismaImg from "@/assets/projects/charisma.webp";
+
+function Portfolio() {
+  const projects = [
+    {
+      title: "Balónový svet",
+      description: "Profesionálne balónové dekorácie pre eventy po celom Slovensku.",
+      url: "https://balonovysvet.eu",
+      image: balonovysvetImg,
+      tag: "Služby & Eventy",
+    },
+    {
+      title: "Hattech – Mammotion",
+      description: "Autorizovaný predajca robotických kosačiek a bazénových vysávačov Mammotion.",
+      url: "https://mammotion1.sk",
+      image: mammotion1Img,
+      tag: "E-shop / Predaj",
+    },
+    {
+      title: "Charisma Experience",
+      description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek.",
+      url: "https://charisma.nlp-akademia.sk",
+      image: charismaImg,
+      tag: "Vzdelávanie",
+    },
+  ];
+
+  return (
+    <Section
+      eyebrow="Hotové projekty"
+      title={<>Weby, ktoré som <span className="text-primary">postavil pre klientov</span></>}
+      subtitle="Pozrite si reálne ukážky webov, ktoré aktuálne fungujú a prinášajú klientom výsledky."
+    >
+      <div className="grid gap-8 md:grid-cols-3">
+        {projects.map((p) => (
+          <a
+            key={p.url}
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+          >
+            <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+              <img
+                src={p.image}
+                alt={`Náhľad webu ${p.title}`}
+                width={1200}
+                height={750}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-1 flex-col gap-3 p-6">
+              <div className="inline-flex w-fit items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                {p.tag}
+              </div>
+              <h3 className="text-xl font-semibold tracking-tight">{p.title}</h3>
+              <p className="text-base text-muted-foreground">{p.description}</p>
+              <div className="mt-auto pt-2 text-sm font-medium text-primary">
+                Pozrieť web →
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Section({ eyebrow, title, subtitle, children }: {
   eyebrow?: string; title?: React.ReactNode; subtitle?: React.ReactNode; children: React.ReactNode;
 }) {
