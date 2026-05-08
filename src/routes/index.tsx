@@ -421,48 +421,80 @@ function Guarantee() {
 
 /* =================== 13. PRICING =================== */
 function Pricing() {
-  const ownPlans = [
+  const webPackages = [
     {
-      icon: Zap,
-      name: "Základný",
-      price: "284 €",
+      icon: Layout,
+      name: "Profesionálna vizitka",
+      price: "590 €",
       tag: "Pre začínajúcich",
-      features: [
-        "6-stránkový moderný web",
-        "Plná responzivita (mobil, tablet, PC)",
-        "Základné SEO nastavenie",
-        "Kontaktný formulár",
-        "Nastavenie hostingu",
-      ],
       highlight: false,
+      features: [
+        "Kompletná firemná prezentácia (6 podstránok)",
+        "Dokonalé zobrazenie na mobiloch aj počítačoch",
+        "Nastavenie pre Google, aby vás klienti ľahko našli",
+        "Zberný formulár (dopyty priamo na váš e-mail)",
+        "Kompletné technické spustenie bez vašich starostí",
+      ],
     },
     {
-      icon: Star,
-      name: "Štandardný",
-      price: "984 €",
-      tag: "Najpredávanejší",
+      icon: Rocket,
+      name: "Zarábajúci automat",
+      price: "1 390 €",
+      tag: "Najobľúbenejšie",
+      highlight: true,
       features: [
-        "Všetko zo Základného balíka",
-        "Supabase databáza",
-        "Vlastné CMS na správu obsahu",
-        "CRM integrácia",
-        "Platobná brána (Stripe)",
+        "Všetko z balíka Profesionálna vizitka",
+        "Bezpečné ukladanie kontaktov a dát od zákazníkov",
+        "Jednoduchý systém na vlastnú úpravu textov a fotiek",
+        "Automatické prepojenie s vašou fakturáciou (SuperFaktúra/iDoklad)",
+        "Integrácia e-mailového marketingu (Ecomail/SmartEmailing)",
+        "Platobná brána pre okamžité platby kartou",
       ],
-      highlight: false,
     },
     {
       icon: Crown,
-      name: "Prémiový",
-      price: "od 1 500 €",
-      tag: "SaaS na mieru",
-      features: [
-        "SaaS riešenia na mieru",
-        "Komplexné AI integrácie",
-        "Automatizácie biznis procesov",
-        "Klientske zóny a dashboardy",
-        "Prioritná podpora",
-      ],
+      name: "Systém na mieru",
+      price: "od 2 900 €",
+      tag: "Pre náročných",
       highlight: false,
+      features: [
+        "Vývoj unikátnej webovej aplikácie podľa potrieb biznisu",
+        "Uzamknuté klientske zóny a osobné profily",
+        "Inteligentné AI funkcie, ktoré šetria hodiny práce",
+        "Komplexné automatizácie biznis procesov",
+        "Prioritná technická podpora",
+      ],
+    },
+  ];
+
+  const risaliPlans = [
+    {
+      icon: Gauge,
+      name: "Štandard",
+      price: "19 €",
+      period: "/ mesačne",
+      highlight: false,
+      features: [
+        "Kompletný prístup do aplikácie Risali.app",
+        "Prehľadný dashboard s kontaktmi a objednávkami",
+        "Hotové napojenie na SuperFaktúru a Ecomail",
+        "Bleskový web: konverzia obrázkov do .webp jedným klikom",
+        "Jednoduchá správa SEO a lokálneho (GEO) cielenia",
+        "Správa webu a aktualizácie v cene",
+      ],
+    },
+    {
+      icon: Sparkles,
+      name: "Pro",
+      price: "49 €",
+      period: "/ mesačne",
+      highlight: true,
+      features: [
+        "Všetko zo Štandard plánu",
+        "Individuálne prispôsobenie funkcií pre vašu firmu",
+        "Pokročilé automatizácie na pozadí",
+        "Technický dohľad nad vašimi dátami a prioritná podpora",
+      ],
     },
   ];
 
@@ -472,94 +504,32 @@ function Pricing() {
       <div className="relative mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow="Cenník"
-          title={<>Vyberte si model, ktorý <span className="gradient-text">sedí vášmu biznisu</span></>}
-          subtitle="Web ako služba s nízkym vstupom, alebo web do plného vlastníctva. Transparentne, bez skrytých poplatkov."
+          title={<>Vyberte si riešenie, ktoré <span className="gradient-text">posunie váš biznis</span></>}
+          subtitle="Jednorazové webové balíky do vlastníctva alebo mesačné riadiace centrum Risali.app. Transparentne, bez skrytých poplatkov."
         />
 
-        {/* ============== A. WEB AKO SLUŽBA (HERO CARD) ============== */}
+        {/* ============== A. WEBOVÉ BALÍKY (Jednorazová platba) ============== */}
         <div className="mt-12">
           <div className="mb-5 flex items-center justify-center gap-2">
             <div className="h-px w-8 bg-white/10" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Web ako služba</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Webové balíky do vlastníctva · Jednorazová platba</span>
             <div className="h-px w-8 bg-white/10" />
           </div>
-
-          <div className="relative mx-auto max-w-4xl">
-            <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-primary/20 blur-3xl -z-10" />
-            <div className="glass-strong relative rounded-3xl ring-2 ring-primary p-8 md:p-10">
-              <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
-                ⭐ Najobľúbenejšie
-              </div>
-
-              <div className="grid gap-8 md:grid-cols-2 md:items-center">
-                <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                    <Sparkles className="h-3 w-3" /> Web bez starostí
-                  </div>
-                  <h3 className="mt-4 text-3xl font-extrabold md:text-4xl">
-                    Moderný web bez <span className="gradient-text">vysokej vstupnej investície</span>
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground md:text-base">
-                    Fixná mesačná platba, ktorá sa nemení s rastom vašej firmy.
-                  </p>
-                  <div className="mt-5 flex items-baseline gap-2">
-                    <span className="text-5xl font-extrabold text-foreground md:text-6xl">39&nbsp;€</span>
-                    <span className="text-base text-muted-foreground">/ mesačne</span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    + jednorazový aktivačný poplatok <span className="font-semibold text-foreground">99&nbsp;€</span>
-                  </p>
-
-                  <div className="mt-5 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">Bez viazanosti.</span> Web môžete kedykoľvek odkúpiť do plného vlastníctva, dočasne pozastaviť alebo úplne vypnúť — flexibilita je súčasťou služby.
-                  </div>
-
-                  <Link
-                    to="/objednavka"
-                    className="btn-primary mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-4 text-base font-semibold sm:w-auto"
-                  >
-                    Chcem web na predplatné <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-
-                <ul className="space-y-3.5 rounded-2xl border border-white/5 bg-white/[0.03] p-6">
-                  {[
-                    "Vytvorenie moderného webu na mieru",
-                    "Hosting a .sk doména v cene",
-                    "SSL certifikát (zabezpečenie)",
-                    "5 technických úprav mesačne v cene",
-                    "Správa cez AI rozhranie a tech. podpora",
-                  ].map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-foreground">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20">
-                        <Check className="h-3 w-3 text-primary" />
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ============== B. WEB DO VLASTNÍCTVA (3 KARTY) ============== */}
-        <div className="mt-20">
-          <div className="mb-5 flex items-center justify-center gap-2">
-            <div className="h-px w-8 bg-white/10" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Web do vlastníctva</span>
-            <div className="h-px w-8 bg-white/10" />
-          </div>
-          <p className="mx-auto max-w-xl text-center text-sm text-muted-foreground">
-            Jednorazová platba. Po 100 % uhradení získavate plné autorské práva a zdrojový kód.
-          </p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {ownPlans.map((p) => (
+            {webPackages.map((p) => (
               <div
                 key={p.name}
-                className="glass relative flex flex-col rounded-3xl p-7 transition-all hover:bg-white/[0.07]"
+                className={`glass relative flex flex-col rounded-3xl p-7 transition-all hover:bg-white/[0.07] ${
+                  p.highlight ? "ring-2 ring-primary" : ""
+                }`}
               >
+                {p.highlight && (
+                  <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
+                    ⭐ Najobľúbenejšie
+                  </div>
+                )}
+
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15">
                     <p.icon className="h-5 w-5 text-primary" />
@@ -574,7 +544,7 @@ function Pricing() {
                   <div className="flex items-baseline gap-2">
                     <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
                   </div>
-                  <div className="mt-1 text-xs text-muted-foreground">jednorazovo</div>
+                  <div className="mt-1 text-xs text-muted-foreground">jednorazovo · plné vlastníctvo</div>
                 </div>
 
                 <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/5 pt-6">
@@ -588,37 +558,112 @@ function Pricing() {
 
                 <Link
                   to="/formular"
-                  className="mt-7 block w-full rounded-xl border border-white/10 bg-white/5 py-3 text-center text-sm font-semibold text-foreground transition-all hover:bg-white/10"
+                  className={`mt-7 block w-full rounded-xl py-3 text-center text-sm font-semibold transition-all ${
+                    p.highlight
+                      ? "btn-primary text-primary-foreground"
+                      : "border border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+                  }`}
                 >
-                  Mám záujem o tento balík
+                  Chcem nezáväznú ukážku zdarma
                 </Link>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ============== C. INFO BOX — BUYOUT LOGIC ============== */}
-        <div className="mt-14 mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-primary/[0.08] p-6 md:p-8">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-            <div className="relative flex flex-col gap-4 md:flex-row md:items-start">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
-                <Workflow className="h-6 w-6 text-primary" />
+        {/* ============== B. RISALI.APP (Mesačné predplatné) ============== */}
+        <div className="mt-24">
+          <div className="mb-5 flex items-center justify-center gap-2">
+            <div className="h-px w-8 bg-white/10" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Risali.app · Mesačné predplatné</span>
+            <div className="h-px w-8 bg-white/10" />
+          </div>
+
+          <div className="mx-auto max-w-2xl text-center">
+            <h3 className="text-2xl font-extrabold md:text-3xl">
+              Riadiace centrum <span className="gradient-text">vášho biznisu</span>
+            </h3>
+            <p className="mt-3 text-sm text-muted-foreground md:text-base">
+              Koniec chaosu v tabuľkách. Majte svoje objednávky, maily a nastavenia webu pod palcom v jednom prehľadnom systéme.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
+            {risaliPlans.map((p) => (
+              <div
+                key={p.name}
+                className={`glass relative flex flex-col rounded-3xl p-7 transition-all hover:bg-white/[0.07] ${
+                  p.highlight ? "ring-2 ring-primary" : ""
+                }`}
+              >
+                {p.highlight && (
+                  <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
+                    Odporúčané
+                  </div>
+                )}
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15">
+                    <p.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="text-lg font-bold">Plán {p.name}</div>
+                </div>
+
+                <div className="mt-6 flex items-baseline gap-2">
+                  <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
+                  <span className="text-sm text-muted-foreground">{p.period}</span>
+                </div>
+                <div className="mt-1 text-xs text-muted-foreground">bez viazanosti</div>
+
+                <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/5 pt-6">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-foreground">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/formular"
+                  className={`mt-7 block w-full rounded-xl py-3 text-center text-sm font-semibold transition-all ${
+                    p.highlight
+                      ? "btn-primary text-primary-foreground"
+                      : "border border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+                  }`}
+                >
+                  Chcem nezáväznú ukážku zdarma
+                </Link>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-foreground md:text-xl">
-                  Z predplatného do vlastníctva — kedykoľvek
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Využívate mesačné predplatné, ale neskôr sa rozhodnete web vlastniť? Žiadny problém. Web môžete kedykoľvek odkúpiť do svojho plného vlastníctva za cenu zvoleného balíka. Mesačné poplatky sú platbou za aktívny servis a údržbu, <span className="font-semibold text-foreground">nie splátkami kúpnej ceny</span>.
-                </p>
+            ))}
+          </div>
+
+          {/* Doplnková služba */}
+          <div className="mt-8 mx-auto md:max-w-4xl">
+            <div className="glass relative overflow-hidden rounded-2xl border border-primary/20 p-5 md:p-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15">
+                  <Workflow className="h-6 w-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">Doplnková služba</span>
+                    <h4 className="text-base font-bold text-foreground md:text-lg">
+                      Napojenie vášho vlastného systému
+                    </h4>
+                    <span className="text-sm font-semibold text-foreground">100 € – 300 € jednorazovo</span>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Máte už vlastné CRM alebo špecifický softvér? Bez problémov ho prepojíme s Risali.app, aby ste mali všetko na jednom mieste. Cena závisí od technickej náročnosti.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-xs text-muted-foreground">
-          Nie som platiteľom DPH. Ceny sú konečné.
+        <p className="mt-10 text-center text-xs text-muted-foreground">
+          Nie som platcom DPH. Ceny sú konečné a transparentné.
         </p>
       </div>
     </section>
