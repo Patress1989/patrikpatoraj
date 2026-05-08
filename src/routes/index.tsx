@@ -299,8 +299,8 @@ function Mechanism() {
     {
       n: "03",
       icon: Eye,
-      title: "Transparentná správa (Editor prístup)",
-      text: "K projektu vám udelím editor prístup v bezplatnom konte Lovable. Môžete v reálnom čase sledovať priebeh prác a sami si kedykoľvek zmeniť text či fotku jednoduchým pokynom pre AI. Na zložitejšie úlohy a technický dohľad som tu ja so svojím profesionálnym zázemím.",
+      title: "Jednoduchá správa obsahu (Risali.app)",
+      text: "Po spustení získate prístup do Risali.app — jednoduchého správcu obsahu, kde si v pár klikoch upravíte ceny, texty, obrázky aj veľkosť písma. Bez kódu, bez čakania na vývojára. Na zložitejšie úpravy a technický dohľad som tu ja so svojím profesionálnym zázemím.",
       highlight: true,
     },
     {
