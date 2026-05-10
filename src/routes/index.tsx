@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   Sparkles, ArrowRight, Zap, Code2, Database, Layout, Workflow, Shield,
   Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, Layers, Brain, MessageSquare,
-  ShieldCheck, Eye, Key,
+  ShieldCheck, Eye, Key, Gift,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -469,6 +469,19 @@ function Pricing() {
 
   const risaliPlans = [
     {
+      icon: Gift,
+      name: "Free",
+      price: "0 €",
+      period: "/ navždy",
+      highlight: false,
+      features: [
+        "Jednoduchá správa obsahu webu",
+        "Základný prehľad kontaktov a dopytov",
+        "Prístup do aplikácie Risali.app bez záväzkov",
+        "Ideálne na vyskúšanie systému",
+      ],
+    },
+    {
       icon: Gauge,
       name: "Štandard",
       price: "19 €",
@@ -588,7 +601,7 @@ function Pricing() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
+          <div className="mt-10 grid gap-6 md:grid-cols-3 md:max-w-5xl md:mx-auto">
             {risaliPlans.map((p) => (
               <div
                 key={p.name}
