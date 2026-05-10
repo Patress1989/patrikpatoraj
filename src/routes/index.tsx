@@ -469,6 +469,19 @@ function Pricing() {
 
   const risaliPlans = [
     {
+      icon: Gift,
+      name: "Free",
+      price: "0 €",
+      period: "/ navždy",
+      highlight: false,
+      features: [
+        "Jednoduchá správa obsahu webu",
+        "Základný prehľad kontaktov a dopytov",
+        "Prístup do aplikácie Risali.app bez záväzkov",
+        "Ideálne na vyskúšanie systému",
+      ],
+    },
+    {
       icon: Gauge,
       name: "Štandard",
       price: "19 €",
