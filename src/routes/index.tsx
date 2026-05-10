@@ -695,7 +695,7 @@ function Reviews() {
   const reviews = [
     { name: "Martin K.", role: "Majiteľ výrobnej firmy", text: "Patrik nám vytvoril vizuálny konfigurátor z reálnych fotiek, ktorý klientom okamžite vypočíta cenu a vygeneruje PDF ponuku. Naša efektivita pri nacenovaní stúpla o 300 % – ušetrený čas, ktorý sme predtým trávili manuálnou prácou, je pre firmu kľúčový.", stars: 5 },
     { name: "Jana S.", role: "Business Development Manager", text: "Tvorca digitálneho obsahu", stars: 5 },
-    { name: "Lucia P.", role: "Majiteľka eventovej agentúry", text: "Náš starý web bol pomalý a na mobiloch sa takmer nedal používať, kvôli čomu sme strácali dopyty. Patrik vytvoril bleskovú stránku, ktorá sa načíta pod sekundu. Odvtedy, čo je web online, vidíme, že ľudia na ňom trávia viac času a miera okamžitých odchodov (bounce rate) výrazne klesla. Moderný dizajn bol už len čerešničkou na torte.", stars: 5 },
+    { name: "Lucia P.", role: "Majiteľka eventovej agentúry", text: "Spolupráca s Patrikom bola jednoducho perfektná. Náš nový web je nielen krásny a responzívny, ale vďaka prepojeniu na Ecomail a SuperFaktúru mi ušetril asi polovicu zbytočnej administratívy. Od tvorby cenových ponúk až po faktúry – všetko je teraz oveľa jednoduchšie. Odkedy sme web spustili, výrazne sa nám zvýšil počet dopytov. Patrik komunikuje na jednotku, zmeny zapracoval neuveriteľne rýchlo a za výbornú cenu. Maximálna spokojnosť, odporúčam každému podnikateľovi!", stars: 5 },
   ];
   return (
     <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
