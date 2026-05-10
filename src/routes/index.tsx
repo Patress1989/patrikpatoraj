@@ -694,7 +694,7 @@ function PriceAnchor() {
 function Reviews() {
   const reviews = [
     { name: "Martin K.", role: "Majiteľ výrobnej firmy", text: "Patrik nám vytvoril vizuálny konfigurátor z reálnych fotiek, ktorý klientom okamžite vypočíta cenu a vygeneruje PDF ponuku. Naša efektivita pri nacenovaní stúpla o 300 % – ušetrený čas, ktorý sme predtým trávili manuálnou prácou, je pre firmu kľúčový.", stars: 5 },
-    { name: "Pavol Knut Navrátil", role: "Tvorca digitálneho obsahu", text: "Tvorca digitálneho obsahu", stars: 5 },
+    { name: "Pavol Knut Navrátil", role: "Tvorca digitálneho obsahu", text: "Celkom dobré, Patrik... Poviem ti, že ani ja nemám toľko zeleného (špičkové výsledky v prísnom technickom audite Google Lighthouse) na svojom webe ako máš ty. Som dávno nevidel tak precízne nastavenia. Bravo. Budem odporúčať tvoju osobu pre tých, čo potrebujú nové weby.", stars: 5 },
     { name: "Lucia P.", role: "Majiteľka eventovej agentúry", text: "Spolupráca s Patrikom bola jednoducho perfektná. Náš nový web je nielen krásny a responzívny, ale vďaka prepojeniu na Ecomail a SuperFaktúru mi ušetril asi polovicu zbytočnej administratívy. Od tvorby cenových ponúk až po faktúry – všetko je teraz oveľa jednoduchšie. Odkedy sme web spustili, výrazne sa nám zvýšil počet dopytov. Patrik komunikuje na jednotku, zmeny zapracoval neuveriteľne rýchlo a za výbornú cenu. Maximálna spokojnosť, odporúčam každému podnikateľovi!", stars: 5 },
   ];
   return (
