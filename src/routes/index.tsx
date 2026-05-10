@@ -601,7 +601,7 @@ function Pricing() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
+          <div className="mt-10 grid gap-6 md:grid-cols-3 md:max-w-5xl md:mx-auto">
             {risaliPlans.map((p) => (
               <div
                 key={p.name}
