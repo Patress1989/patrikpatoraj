@@ -33,7 +33,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Patrik Patoraj" },
       { name: "description", content: "Moderné webstránky na mieru. Rýchly vývoj už za 3–7 dní. Rýchle, výkonné a cenovo dostupné weby pre moderné podnikanie." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Patrik Patoraj" },
       { property: "og:title", content: "Patrik Patoraj" },
       { property: "og:description", content: "Moderné webstránky na mieru. Rýchly vývoj už za 3–7 dní. Rýchle, výkonné a cenovo dostupné weby pre moderné podnikanie." },
       { property: "og:type", content: "website" },
