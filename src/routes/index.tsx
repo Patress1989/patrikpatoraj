@@ -142,17 +142,17 @@ function Solution() {
               <Zap className="h-3 w-3" /> Naše riešenie
             </div>
             <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-              <span className="gradient-text">Lovable</span> — moderný spôsob tvorby webov a aplikácií
+              Moderný web, ktorý <span className="gradient-text">pracuje za vás</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Lovable je platforma novej generácie, ktorá spája rýchlosť umelej inteligencie s kvalitou a flexibilitou ručného kódovania. Žiadne šablóny, žiadne kompromisy — iba čistý kód postavený na mieru vašej značke.
+              Žiadne šablóny ani kompromisy. Postavím vám web na mieru — taký, ktorý vyzerá profesionálne, rýchlo sa načíta a robí presne to, čo váš biznis potrebuje. Vy sa staráte o klientov, web sa stará o zvyšok.
             </p>
             <ul className="mt-7 space-y-3">
               {[
-                "Plne responzívne weby a aplikácie",
-                "Vlastná databáza a backend (Supabase)",
-                "Integrácie s AI, platbami, emailmi",
-                "Optimalizácia pre rýchlosť a SEO",
+                "Dokonalé zobrazenie na mobile, tablete aj počítači",
+                "Bezpečné ukladanie kontaktov a objednávok od zákazníkov",
+                "Prepojenie s fakturáciou, e-mailmi či platobnou bránou",
+                "Profesionálne SEO — aby vás klienti našli na Google",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-3 text-sm text-foreground">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20"><Check className="h-3 w-3 text-primary" /></span>
@@ -166,10 +166,10 @@ function Solution() {
             <div className="glass-strong relative rounded-3xl p-8">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: Code2, label: "React + TS" },
-                  { icon: Database, label: "Supabase DB" },
-                  { icon: Brain, label: "AI Gateway" },
-                  { icon: Layers, label: "Edge funkcie" },
+                  { icon: Layout, label: "Krásny dizajn" },
+                  { icon: Gauge, label: "Bleskové načítanie" },
+                  { icon: Shield, label: "Bezpečnosť dát" },
+                  { icon: Workflow, label: "Automatizácie" },
                 ].map((x) => (
                   <div key={x.label} className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center">
                     <x.icon className="mx-auto h-6 w-6 text-primary" />
