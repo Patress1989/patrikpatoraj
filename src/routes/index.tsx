@@ -11,10 +11,10 @@ import { useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Patrik Patoraj — Moderné weby a aplikácie cez Lovable" },
-      { name: "description", content: "Moderný responzívny web na mieru, ktorý mení návštevníkov na platiacich klientov. Full-stack aplikácie postavené cez Lovable v rekordnom čase." },
-      { property: "og:title", content: "Patrik Patoraj — Moderné weby a aplikácie cez Lovable" },
-      { property: "og:description", content: "Využívam silu AI a platformy Lovable na doručenie komplexných webových riešení v rekordnom čase." },
+      { title: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { name: "description", content: "Moderný a rýchly web, ktorý za vás predáva. Hotový do 7 dní, za zlomok ceny agentúry. Bez komplikácií, bez technických starostí." },
+      { property: "og:title", content: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { property: "og:description", content: "Web, ktorý vyzerá profesionálne, načíta sa pod 1 sekundu a mení návštevníkov na platiacich klientov. Hotový za pár dní." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
