@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo-patrikpatoraj.webp";
 
 export function SiteFooter() {
   return (
@@ -7,7 +8,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-[24px]">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="text-lg font-bold text-foreground">Patrik Patoraj</div>
+            <div className="flex items-center gap-3">
+              <img
+                src={logo}
+                alt="Patrik Patoraj logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+                loading="lazy"
+              />
+              <div className="text-lg font-bold text-foreground">Patrik Patoraj</div>
+            </div>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
               Moderné weby a aplikácie postavené na platforme Lovable. Rýchlo, profesionálne a za zlomok ceny agentúry.
             </p>

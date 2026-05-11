@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-patrikpatoraj.webp";
 
 const navItems = [
   { hash: "riesenie", label: "Riešenie" },
@@ -23,9 +24,14 @@ export function SiteHeader() {
       <div className="mx-auto max-w-7xl px-4 pt-4">
         <div className="glass-strong flex items-center justify-between rounded-2xl px-5 py-3">
           <Link to="/" className="flex items-center gap-2 text-foreground">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20">
-              <Sparkles className="h-4 w-4 text-primary" />
-            </div>
+            <img
+              src={logo}
+              alt="Patrik Patoraj logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
+              fetchPriority="high"
+            />
             <span className="font-bold tracking-tight">Patrik Patoraj</span>
           </Link>
 
