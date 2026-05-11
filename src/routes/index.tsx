@@ -385,12 +385,12 @@ function Differentiation() {
     ["Návratnosť investície", "Mesiace až roky", "Týždne až mesiace"],
   ];
   return (
-    <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
+    <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">moje riešenie</span></>}>
       <div className="glass-strong overflow-hidden rounded-2xl">
         <div className="grid grid-cols-3 border-b border-white/5 bg-white/5 px-4 py-4 text-sm font-semibold md:px-6">
           <div className="text-muted-foreground">Parameter</div>
-          <div className="text-muted-foreground">Bežný web</div>
-          <div className="text-primary">Lovable web</div>
+          <div className="text-muted-foreground">Bežná agentúra</div>
+          <div className="text-primary">Patrik Patoraj</div>
         </div>
         {rows.map((r, i) => (
           <div key={i} className="grid grid-cols-3 border-b border-white/5 px-4 py-4 text-sm last:border-b-0 md:px-6">
