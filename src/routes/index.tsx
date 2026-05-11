@@ -738,9 +738,9 @@ function Reviews() {
 /* =================== 18. BONUSES =================== */
 function Bonuses() {
   const bonuses = [
-    { icon: Target, title: "Základné SEO", text: "Meta tagy, sitemap, sociálne náhľady — všetko v cene." },
-    { icon: Gauge, title: "Google Analytics", text: "Nastavenie analytiky a meranie konverzií zdarma." },
-    { icon: Shield, title: "SSL + bezpečnosť", text: "Šifrovanie a zabezpečené formuláre v každom balíku." },
+    { icon: Target, title: "Profesionálne SEO v cene", text: "SEO znamená, že váš web bude pripravený tak, aby ho Google ukazoval vyššie vo vyhľadávaní. Výsledok: viac návštevníkov a klientov bez platenia za reklamu." },
+    { icon: Gauge, title: "Meranie návštevnosti", text: "Nastavím vám analytiku, takže presne uvidíte, koľko ľudí chodí na váš web, odkiaľ prišli a čo ich zaujíma. Žiadne hádanie." },
+    { icon: Shield, title: "Bezpečnosť a šifrovanie", text: "Váš web aj formuláre sú chránené modernou bezpečnosťou (SSL). Návštevníci aj Google to vidia ako znak dôveryhodnosti." },
   ];
   return (
     <Section eyebrow="Bonusy v cene" title={<>Extra hodnota, ktorú <span className="gradient-text">dostanete zdarma</span></>}>
