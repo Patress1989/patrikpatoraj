@@ -805,9 +805,9 @@ function TargetAudience() {
     <Section eyebrow="Pre koho je to" title={<>Táto ponuka je pre <span className="gradient-text">vás, ak...</span></>}>
       <div className="grid gap-5 md:grid-cols-3">
         {[
-          { icon: Rocket, title: "Startupy", text: "Potrebujete rýchlo MVP alebo SaaS aplikáciu, aby ste otestovali nápad na trhu." },
-          { icon: Zap, title: "Inovátori", text: "Máte víziu a chcete ju zhmotniť do funkčného produktu bez technických prekážok." },
-          { icon: Users, title: "Rastúce firmy", text: "Chcete moderný web alebo internú aplikáciu, ktorá vás posunie pred konkurenciu." },
+          { icon: Rocket, title: "Začínajúci podnikatelia", text: "Potrebujete rýchlo profesionálny web, aby ste získali prvých klientov a začali zarábať." },
+          { icon: Zap, title: "Aktívni podnikatelia", text: "Máte fungujúci biznis a chcete moderný web, ktorý bude pôsobiť dôveryhodne a prinášať dopyty aj v noci." },
+          { icon: Users, title: "Rastúce firmy", text: "Chcete web alebo interný systém, ktorý vás odlíši od konkurencie a zjednoduší vašu každodennú prácu." },
         ].map((x) => (
           <div key={x.title} className="glass rounded-2xl p-6">
             <x.icon className="h-7 w-7 text-primary" />
