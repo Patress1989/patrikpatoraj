@@ -72,7 +72,7 @@ function Hero() {
         </h1>
 
         <p className="animate-fade-up delay-100 mx-auto mt-7 max-w-2xl text-lg text-muted-foreground md:text-xl">
-          Využívam silu umelej inteligencie a platformy <span className="text-foreground font-semibold">Lovable</span> na doručenie komplexných webových riešení a startupových aplikácií v rekordnom čase.
+          Vďaka modernej technológii a umelej inteligencii postavím váš web či online systém v priebehu dní — nie mesiacov. Profesionálna kvalita za zlomok ceny agentúry.
         </p>
 
         <div className="animate-fade-up delay-200 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
