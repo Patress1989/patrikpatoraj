@@ -266,13 +266,13 @@ function Capabilities() {
 /* =================== 9. UNIQUENESS =================== */
 function Uniqueness() {
   return (
-    <Section eyebrow="Prečo práve ja" title={<>Maximálna efektivita vďaka <span className="gradient-text">Lovable</span></>}>
+    <Section eyebrow="Prečo práve ja" title={<>Profesionálny výsledok <span className="gradient-text">za zlomok ceny a času</span></>}>
       <div className="glass-strong mx-auto max-w-3xl rounded-3xl p-8 md:p-12 text-center">
         <Quote className="mx-auto h-10 w-10 text-primary" />
         <p className="mt-6 text-lg leading-relaxed text-foreground md:text-xl">
-          Bežný vývojár stavia ručne týždne. Agentúra účtuje tisíce eur a meškania.
+          Bežná agentúra stavia web týždne až mesiace a účtuje tisíce eur.
           <br className="hidden md:block" />
-          <span className="gradient-text font-semibold">Ja kombinujem AI + Lovable + 6 rokov skúseností</span> a doručujem profesionálne riešenia za zlomok ceny a času.
+          <span className="gradient-text font-semibold">Ja kombinujem 6 rokov skúseností s najmodernejšími nástrojmi</span> a doručím vám rovnako kvalitný web v priebehu pár dní — za zlomok ceny.
         </p>
       </div>
     </Section>
