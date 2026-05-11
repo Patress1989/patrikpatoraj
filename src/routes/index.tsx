@@ -292,8 +292,8 @@ function Mechanism() {
     {
       n: "02",
       icon: Zap,
-      title: "Blesková tvorba a úpravy cez AI",
-      text: "Web staviam pomocou profesionálneho AI nástroja Lovable. To mi umožňuje doručiť výsledok v priebehu dní, nie mesiacov. Akékoľvek zmeny v budúcnosti vďaka AI spracujem takmer okamžite.",
+      title: "Bleskové dodanie a okamžité úpravy",
+      text: "Web staviam s pomocou najmodernejších nástrojov a umelej inteligencie. To znamená, že prvú ukážku máte v rukách za pár dní a akúkoľvek zmenu v budúcnosti zapracujem takmer okamžite.",
       highlight: false,
     },
     {
