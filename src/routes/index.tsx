@@ -241,15 +241,15 @@ function DesiredOutcome() {
 /* =================== 8. CAPABILITIES =================== */
 function Capabilities() {
   const items = [
-    { icon: Layout, title: "Full-stack aplikácie", text: "Komplexné webové aplikácie s frontendom, backendom aj databázou." },
-    { icon: Rocket, title: "SaaS riešenia", text: "Predplatné, používateľské účty, dashboardy — všetko pripravené." },
-    { icon: Database, title: "Supabase databázy", text: "Bezpečné dáta, autentifikácia a real-time funkcie." },
-    { icon: Sparkles, title: "Pokročilé UI/UX", text: "Moderné, prístupné a konverzne optimalizované rozhranie." },
-    { icon: Workflow, title: "Automatizácia", text: "Edge funkcie, webhooky, integrácie s Stripe, Resend, OpenAI." },
-    { icon: Shield, title: "Správa & údržba", text: "Mesačná podpora, aktualizácie a rýchle úpravy obsahu." },
+    { icon: Layout, title: "Moderné weby na mieru", text: "Od jednoduchej vizitky až po komplexnú online prezentáciu, ktorá vám prinesie viac dopytov." },
+    { icon: Rocket, title: "Online systémy a aplikácie", text: "Klientske zóny, rezervačné systémy, vlastné CRM či nástroje šité na mieru vášmu biznisu." },
+    { icon: Database, title: "Bezpečné dáta a zákazníci", text: "Vaše kontakty, objednávky a údaje uložené pod prísnym zámkom — pripravené kedykoľvek po ruke." },
+    { icon: Sparkles, title: "Dizajn, ktorý predáva", text: "Prehľadný a moderný vzhľad, ktorý buduje dôveru a vedie návštevníka k objednávke." },
+    { icon: Workflow, title: "Automatizácie, ktoré šetria čas", text: "Prepojenie s fakturáciou, e-mailmi a platbami — administratíva sa rieši sama." },
+    { icon: Shield, title: "Správa a aktualizácie", text: "Mesačná podpora, drobné úpravy a technický dohľad. Žiadne starosti — len výsledky." },
   ];
   return (
-    <Section eyebrow="Čo viem postaviť" title={<>Komplexné riešenia <span className="gradient-text">od A po Z</span></>}>
+    <Section eyebrow="Čo pre vás postavím" title={<>Komplexné riešenia <span className="gradient-text">od A po Z</span></>}>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((x) => (
           <div key={x.title} className="glass rounded-2xl p-6 transition-all hover:bg-white/[0.07]">
