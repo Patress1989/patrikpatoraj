@@ -845,12 +845,12 @@ function Urgency() {
 /* =================== FAQ =================== */
 function FAQ() {
   const items = [
-    { q: "Komu patrí web po odovzdaní?", a: "100% vám. Dostávate plný prístup k celému projektu, repozitáru aj všetkým účtom (hosting, databáza). Neostávate vôbec závislý odo mňa." },
-    { q: "Aké technológie používate?", a: "Frontend: React + TypeScript + Tailwind. Backend: Supabase (PostgreSQL, Auth, Edge Functions). AI: OpenAI / Lovable AI Gateway. Hosting: globálny CDN." },
-    { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si obsah viete meniť sami. Ak máte zakúpenú aj mesačnú správu, jednoduché zmeny aplikujem do 24 hodín. Komplexnejšie zmeny do 48 hodín." },
+    { q: "Komu patrí web po odovzdaní?", a: "100 % vám. Dostávate plný prístup k celému projektu aj všetkým účtom (web, dáta, e-maily). Nie ste nijako závislí odo mňa a viete kedykoľvek pokračovať s kýmkoľvek iným." },
+    { q: "Na čom je môj web postavený?", a: "Používam to najmodernejšie, čo dnes existuje — rovnaké technológie, na akých bežia svetové aplikácie. Pre vás to znamená bleskovú rýchlosť, bezpečnosť a to, že váš web vydrží roky bez zastarávania. O technické detaily sa vôbec nemusíte starať, postarám sa o všetko ja." },
+    { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si jednoduché veci (texty, fotky, ceny) viete meniť sami v pár klikoch. Ak máte mesačnú správu, jednoduché zmeny urobím do 24 hodín, zložitejšie do 48 hodín." },
     { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
     { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
-    { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s platbami cez Stripe a správou objednávok." },
+    { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
   ];
   return (
     <section id="faq" className="relative py-20 md:py-[52px]">
