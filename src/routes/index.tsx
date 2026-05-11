@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import {
-  Sparkles, ArrowRight, Zap, Code2, Database, Layout, Workflow, Shield,
-  Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, Layers, Brain, MessageSquare,
+  Sparkles, ArrowRight, Zap, Database, Layout, Workflow, Shield,
+  Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, MessageSquare,
   ShieldCheck, Eye, Key, Gift,
 } from "lucide-react";
 import { useState } from "react";
