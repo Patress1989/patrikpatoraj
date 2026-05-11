@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import {
-  Sparkles, ArrowRight, Zap, Code2, Database, Layout, Workflow, Shield,
-  Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, Layers, Brain, MessageSquare,
+  Sparkles, ArrowRight, Zap, Database, Layout, Workflow, Shield,
+  Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, MessageSquare,
   ShieldCheck, Eye, Key, Gift,
 } from "lucide-react";
 import { useState } from "react";
@@ -11,10 +11,10 @@ import { useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Patrik Patoraj — Moderné weby a aplikácie cez Lovable" },
-      { name: "description", content: "Moderný responzívny web na mieru, ktorý mení návštevníkov na platiacich klientov. Full-stack aplikácie postavené cez Lovable v rekordnom čase." },
-      { property: "og:title", content: "Patrik Patoraj — Moderné weby a aplikácie cez Lovable" },
-      { property: "og:description", content: "Využívam silu AI a platformy Lovable na doručenie komplexných webových riešení v rekordnom čase." },
+      { title: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { name: "description", content: "Moderný a rýchly web, ktorý za vás predáva. Hotový do 7 dní, za zlomok ceny agentúry. Bez komplikácií, bez technických starostí." },
+      { property: "og:title", content: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { property: "og:description", content: "Web, ktorý vyzerá profesionálne, načíta sa pod 1 sekundu a mení návštevníkov na platiacich klientov. Hotový za pár dní." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -72,7 +72,7 @@ function Hero() {
         </h1>
 
         <p className="animate-fade-up delay-100 mx-auto mt-7 max-w-2xl text-lg text-muted-foreground md:text-xl">
-          Využívam silu umelej inteligencie a platformy <span className="text-foreground font-semibold">Lovable</span> na doručenie komplexných webových riešení a startupových aplikácií v rekordnom čase.
+          Vďaka modernej technológii a umelej inteligencii postavím váš web či online systém v priebehu dní — nie mesiacov. Profesionálna kvalita za zlomok ceny agentúry.
         </p>
 
         <div className="animate-fade-up delay-200 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -142,17 +142,17 @@ function Solution() {
               <Zap className="h-3 w-3" /> Naše riešenie
             </div>
             <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-              <span className="gradient-text">Lovable</span> — moderný spôsob tvorby webov a aplikácií
+              Moderný web, ktorý <span className="gradient-text">pracuje za vás</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Lovable je platforma novej generácie, ktorá spája rýchlosť umelej inteligencie s kvalitou a flexibilitou ručného kódovania. Žiadne šablóny, žiadne kompromisy — iba čistý kód postavený na mieru vašej značke.
+              Žiadne šablóny ani kompromisy. Postavím vám web na mieru — taký, ktorý vyzerá profesionálne, rýchlo sa načíta a robí presne to, čo váš biznis potrebuje. Vy sa staráte o klientov, web sa stará o zvyšok.
             </p>
             <ul className="mt-7 space-y-3">
               {[
-                "Plne responzívne weby a aplikácie",
-                "Vlastná databáza a backend (Supabase)",
-                "Integrácie s AI, platbami, emailmi",
-                "Optimalizácia pre rýchlosť a SEO",
+                "Dokonalé zobrazenie na mobile, tablete aj počítači",
+                "Bezpečné ukladanie kontaktov a objednávok od zákazníkov",
+                "Prepojenie s fakturáciou, e-mailmi či platobnou bránou",
+                "Profesionálne SEO — aby vás klienti našli na Google",
               ].map((t) => (
                 <li key={t} className="flex items-center gap-3 text-sm text-foreground">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20"><Check className="h-3 w-3 text-primary" /></span>
@@ -166,10 +166,10 @@ function Solution() {
             <div className="glass-strong relative rounded-3xl p-8">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: Code2, label: "React + TS" },
-                  { icon: Database, label: "Supabase DB" },
-                  { icon: Brain, label: "AI Gateway" },
-                  { icon: Layers, label: "Edge funkcie" },
+                  { icon: Layout, label: "Krásny dizajn" },
+                  { icon: Gauge, label: "Bleskové načítanie" },
+                  { icon: Shield, label: "Bezpečnosť dát" },
+                  { icon: Workflow, label: "Automatizácie" },
                 ].map((x) => (
                   <div key={x.label} className="rounded-2xl border border-white/5 bg-white/5 p-4 text-center">
                     <x.icon className="mx-auto h-6 w-6 text-primary" />
@@ -241,15 +241,15 @@ function DesiredOutcome() {
 /* =================== 8. CAPABILITIES =================== */
 function Capabilities() {
   const items = [
-    { icon: Layout, title: "Full-stack aplikácie", text: "Komplexné webové aplikácie s frontendom, backendom aj databázou." },
-    { icon: Rocket, title: "SaaS riešenia", text: "Predplatné, používateľské účty, dashboardy — všetko pripravené." },
-    { icon: Database, title: "Supabase databázy", text: "Bezpečné dáta, autentifikácia a real-time funkcie." },
-    { icon: Sparkles, title: "Pokročilé UI/UX", text: "Moderné, prístupné a konverzne optimalizované rozhranie." },
-    { icon: Workflow, title: "Automatizácia", text: "Edge funkcie, webhooky, integrácie s Stripe, Resend, OpenAI." },
-    { icon: Shield, title: "Správa & údržba", text: "Mesačná podpora, aktualizácie a rýchle úpravy obsahu." },
+    { icon: Layout, title: "Moderné weby na mieru", text: "Od jednoduchej vizitky až po komplexnú online prezentáciu, ktorá vám prinesie viac dopytov." },
+    { icon: Rocket, title: "Online systémy a aplikácie", text: "Klientske zóny, rezervačné systémy, vlastné CRM či nástroje šité na mieru vášmu biznisu." },
+    { icon: Database, title: "Bezpečné dáta a zákazníci", text: "Vaše kontakty, objednávky a údaje uložené pod prísnym zámkom — pripravené kedykoľvek po ruke." },
+    { icon: Sparkles, title: "Dizajn, ktorý predáva", text: "Prehľadný a moderný vzhľad, ktorý buduje dôveru a vedie návštevníka k objednávke." },
+    { icon: Workflow, title: "Automatizácie, ktoré šetria čas", text: "Prepojenie s fakturáciou, e-mailmi a platbami — administratíva sa rieši sama." },
+    { icon: Shield, title: "Správa a aktualizácie", text: "Mesačná podpora, drobné úpravy a technický dohľad. Žiadne starosti — len výsledky." },
   ];
   return (
-    <Section eyebrow="Čo viem postaviť" title={<>Komplexné riešenia <span className="gradient-text">od A po Z</span></>}>
+    <Section eyebrow="Čo pre vás postavím" title={<>Komplexné riešenia <span className="gradient-text">od A po Z</span></>}>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((x) => (
           <div key={x.title} className="glass rounded-2xl p-6 transition-all hover:bg-white/[0.07]">
@@ -266,13 +266,13 @@ function Capabilities() {
 /* =================== 9. UNIQUENESS =================== */
 function Uniqueness() {
   return (
-    <Section eyebrow="Prečo práve ja" title={<>Maximálna efektivita vďaka <span className="gradient-text">Lovable</span></>}>
+    <Section eyebrow="Prečo práve ja" title={<>Profesionálny výsledok <span className="gradient-text">za zlomok ceny a času</span></>}>
       <div className="glass-strong mx-auto max-w-3xl rounded-3xl p-8 md:p-12 text-center">
         <Quote className="mx-auto h-10 w-10 text-primary" />
         <p className="mt-6 text-lg leading-relaxed text-foreground md:text-xl">
-          Bežný vývojár stavia ručne týždne. Agentúra účtuje tisíce eur a meškania.
+          Bežná agentúra stavia web týždne až mesiace a účtuje tisíce eur.
           <br className="hidden md:block" />
-          <span className="gradient-text font-semibold">Ja kombinujem AI + Lovable + 6 rokov skúseností</span> a doručujem profesionálne riešenia za zlomok ceny a času.
+          <span className="gradient-text font-semibold">Ja kombinujem 6 rokov skúseností s najmodernejšími nástrojmi</span> a doručím vám rovnako kvalitný web v priebehu pár dní — za zlomok ceny.
         </p>
       </div>
     </Section>
@@ -292,8 +292,8 @@ function Mechanism() {
     {
       n: "02",
       icon: Zap,
-      title: "Blesková tvorba a úpravy cez AI",
-      text: "Web staviam pomocou profesionálneho AI nástroja Lovable. To mi umožňuje doručiť výsledok v priebehu dní, nie mesiacov. Akékoľvek zmeny v budúcnosti vďaka AI spracujem takmer okamžite.",
+      title: "Bleskové dodanie a okamžité úpravy",
+      text: "Web staviam s pomocou najmodernejších nástrojov a umelej inteligencie. To znamená, že prvú ukážku máte v rukách za pár dní a akúkoľvek zmenu v budúcnosti zapracujem takmer okamžite.",
       highlight: false,
     },
     {
@@ -385,12 +385,12 @@ function Differentiation() {
     ["Návratnosť investície", "Mesiace až roky", "Týždne až mesiace"],
   ];
   return (
-    <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">Lovable web</span></>}>
+    <Section eyebrow="Porovnanie" title={<>Bežná agentúra <span className="text-muted-foreground">vs.</span> <span className="gradient-text">moje riešenie</span></>}>
       <div className="glass-strong overflow-hidden rounded-2xl">
         <div className="grid grid-cols-3 border-b border-white/5 bg-white/5 px-4 py-4 text-sm font-semibold md:px-6">
           <div className="text-muted-foreground">Parameter</div>
-          <div className="text-muted-foreground">Bežný web</div>
-          <div className="text-primary">Lovable web</div>
+          <div className="text-muted-foreground">Bežná agentúra</div>
+          <div className="text-primary">Patrik Patoraj</div>
         </div>
         {rows.map((r, i) => (
           <div key={i} className="grid grid-cols-3 border-b border-white/5 px-4 py-4 text-sm last:border-b-0 md:px-6">
@@ -738,9 +738,9 @@ function Reviews() {
 /* =================== 18. BONUSES =================== */
 function Bonuses() {
   const bonuses = [
-    { icon: Target, title: "Základné SEO", text: "Meta tagy, sitemap, sociálne náhľady — všetko v cene." },
-    { icon: Gauge, title: "Google Analytics", text: "Nastavenie analytiky a meranie konverzií zdarma." },
-    { icon: Shield, title: "SSL + bezpečnosť", text: "Šifrovanie a zabezpečené formuláre v každom balíku." },
+    { icon: Target, title: "Profesionálne SEO v cene", text: "SEO znamená, že váš web bude pripravený tak, aby ho Google ukazoval vyššie vo vyhľadávaní. Výsledok: viac návštevníkov a klientov bez platenia za reklamu." },
+    { icon: Gauge, title: "Meranie návštevnosti", text: "Nastavím vám analytiku, takže presne uvidíte, koľko ľudí chodí na váš web, odkiaľ prišli a čo ich zaujíma. Žiadne hádanie." },
+    { icon: Shield, title: "Bezpečnosť a šifrovanie", text: "Váš web aj formuláre sú chránené modernou bezpečnosťou (SSL). Návštevníci aj Google to vidia ako znak dôveryhodnosti." },
   ];
   return (
     <Section eyebrow="Bonusy v cene" title={<>Extra hodnota, ktorú <span className="gradient-text">dostanete zdarma</span></>}>
@@ -805,9 +805,9 @@ function TargetAudience() {
     <Section eyebrow="Pre koho je to" title={<>Táto ponuka je pre <span className="gradient-text">vás, ak...</span></>}>
       <div className="grid gap-5 md:grid-cols-3">
         {[
-          { icon: Rocket, title: "Startupy", text: "Potrebujete rýchlo MVP alebo SaaS aplikáciu, aby ste otestovali nápad na trhu." },
-          { icon: Zap, title: "Inovátori", text: "Máte víziu a chcete ju zhmotniť do funkčného produktu bez technických prekážok." },
-          { icon: Users, title: "Rastúce firmy", text: "Chcete moderný web alebo internú aplikáciu, ktorá vás posunie pred konkurenciu." },
+          { icon: Rocket, title: "Začínajúci podnikatelia", text: "Potrebujete rýchlo profesionálny web, aby ste získali prvých klientov a začali zarábať." },
+          { icon: Zap, title: "Aktívni podnikatelia", text: "Máte fungujúci biznis a chcete moderný web, ktorý bude pôsobiť dôveryhodne a prinášať dopyty aj v noci." },
+          { icon: Users, title: "Rastúce firmy", text: "Chcete web alebo interný systém, ktorý vás odlíši od konkurencie a zjednoduší vašu každodennú prácu." },
         ].map((x) => (
           <div key={x.title} className="glass rounded-2xl p-6">
             <x.icon className="h-7 w-7 text-primary" />
@@ -845,12 +845,12 @@ function Urgency() {
 /* =================== FAQ =================== */
 function FAQ() {
   const items = [
-    { q: "Komu patrí web po odovzdaní?", a: "100% vám. Dostávate plný prístup k celému projektu, repozitáru aj všetkým účtom (hosting, databáza). Neostávate vôbec závislý odo mňa." },
-    { q: "Aké technológie používate?", a: "Frontend: React + TypeScript + Tailwind. Backend: Supabase (PostgreSQL, Auth, Edge Functions). AI: OpenAI / Lovable AI Gateway. Hosting: globálny CDN." },
-    { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si obsah viete meniť sami. Ak máte zakúpenú aj mesačnú správu, jednoduché zmeny aplikujem do 24 hodín. Komplexnejšie zmeny do 48 hodín." },
+    { q: "Komu patrí web po odovzdaní?", a: "100 % vám. Dostávate plný prístup k celému projektu aj všetkým účtom (web, dáta, e-maily). Nie ste nijako závislí odo mňa a viete kedykoľvek pokračovať s kýmkoľvek iným." },
+    { q: "Na čom je môj web postavený?", a: "Používam to najmodernejšie, čo dnes existuje — rovnaké technológie, na akých bežia svetové aplikácie. Pre vás to znamená bleskovú rýchlosť, bezpečnosť a to, že váš web vydrží roky bez zastarávania. O technické detaily sa vôbec nemusíte starať, postarám sa o všetko ja." },
+    { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si jednoduché veci (texty, fotky, ceny) viete meniť sami v pár klikoch. Ak máte mesačnú správu, jednoduché zmeny urobím do 24 hodín, zložitejšie do 48 hodín." },
     { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
     { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
-    { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s platbami cez Stripe a správou objednávok." },
+    { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
   ];
   return (
     <section id="faq" className="relative py-20 md:py-[52px]">
