@@ -63,7 +63,7 @@ function Hero() {
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         <div className="animate-fade-in mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-md">
           <Sparkles className="h-3.5 w-3.5 text-primary" />
-          Lovable Expert · Voľné kapacity tento mesiac
+          Expert na weby · Voľné kapacity tento mesiac
         </div>
 
         <h1 className="animate-fade-up text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
