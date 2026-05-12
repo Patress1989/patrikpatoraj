@@ -475,11 +475,11 @@ function Pricing() {
       period: "/ navždy",
       highlight: false,
       features: [
-        "Jednoduchá správa obsahu webu",
-        "Prehľadné štatistiky návštevnosti",
-        "Základný prehľad kontaktov a dopytov",
-        "Prístup do aplikácie Risali.app bez záväzkov",
-        "Ideálne na vyskúšanie systému",
+        { text: "Jednoduchá správa obsahu webu", strong: true },
+        { text: "Prehľadné štatistiky návštevnosti", strong: true },
+        { text: "Základný prehľad kontaktov a dopytov", strong: false },
+        { text: "Prístup do aplikácie Risali.app bez záväzkov", strong: false },
+        { text: "Ideálne na vyskúšanie systému", strong: false },
       ],
     },
     {
@@ -489,12 +489,12 @@ function Pricing() {
       period: "/ mesačne",
       highlight: false,
       features: [
-        "Kompletný prístup do aplikácie Risali.app",
-        "Prehľadný dashboard s kontaktmi a objednávkami",
-        "Hotové napojenie na SuperFaktúru a Ecomail",
-        "Bleskový web: konverzia obrázkov do .webp jedným klikom",
-        "Jednoduchá správa SEO a lokálneho (GEO) cielenia",
-        "Správa webu a aktualizácie v cene",
+        { text: "Kompletný prístup do aplikácie Risali.app", strong: false },
+        { text: "Prehľadný dashboard s kontaktmi a objednávkami", strong: true },
+        { text: "Hotové napojenie na SuperFaktúru a Ecomail", strong: true },
+        { text: "Bleskový web: konverzia obrázkov do .webp jedným klikom", strong: false },
+        { text: "Jednoduchá správa SEO a lokálneho (GEO) cielenia", strong: false },
+        { text: "Správa webu a aktualizácie v cene", strong: true },
       ],
     },
     {
@@ -504,10 +504,10 @@ function Pricing() {
       period: "/ mesačne",
       highlight: true,
       features: [
-        "Všetko zo Štandard plánu",
-        "Individuálne prispôsobenie funkcií pre vašu firmu",
-        "Pokročilé automatizácie na pozadí",
-        "Technický dohľad nad vašimi dátami a prioritná podpora",
+        { text: "Všetko zo Štandard plánu", strong: false },
+        { text: "Individuálne prispôsobenie funkcií pre vašu firmu", strong: true },
+        { text: "Pokročilé automatizácie na pozadí", strong: true },
+        { text: "Technický dohľad nad vašimi dátami a prioritná podpora", strong: true },
       ],
     },
   ];
@@ -561,9 +561,9 @@ function Pricing() {
                   <div className="mt-1 text-xs text-muted-foreground">jednorazovo · plné vlastníctvo</div>
                 </div>
 
-                <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/5 pt-6">
+                <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-foreground">
+                    <li key={f} className="flex items-start gap-2.5 text-[15px] leading-snug text-foreground md:text-sm">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       {f}
                     </li>
@@ -585,91 +585,100 @@ function Pricing() {
           </div>
         </div>
 
-        {/* ============== B. RISALI.APP (Mesačné predplatné) ============== */}
-        <div className="mt-24">
-          <div className="mb-5 flex items-center justify-center gap-2">
-            <div className="h-px w-8 bg-white/10" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Risali.app · Mesačné predplatné</span>
-            <div className="h-px w-8 bg-white/10" />
-          </div>
+        {/* ============== B. RISALI.APP (Mesačné predplatné) — vizuálne odlíšené ============== */}
+        <div className="relative mt-24 overflow-hidden rounded-[2rem] border border-primary/20 bg-gradient-to-b from-primary/[0.08] via-primary/[0.04] to-transparent p-6 md:p-12">
+          <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
+          <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-glow-violet/15 blur-[100px]" />
 
-          <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-2xl font-extrabold md:text-3xl">
-              Riadiace centrum <span className="gradient-text">vášho biznisu</span>
-            </h3>
-            <p className="mt-3 text-sm text-muted-foreground md:text-base">
-              Koniec chaosu v tabuľkách. Majte svoje objednávky, maily a nastavenia webu pod palcom v jednom prehľadnom systéme.
-            </p>
-          </div>
+          <div className="relative">
+            <div className="mb-5 flex items-center justify-center gap-2">
+              <div className="h-px w-8 bg-primary/30" />
+              <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                Risali.app · Mesačné predplatné
+              </span>
+              <div className="h-px w-8 bg-primary/30" />
+            </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3 md:max-w-5xl md:mx-auto">
-            {risaliPlans.map((p) => (
-              <div
-                key={p.name}
-                className={`glass relative flex flex-col rounded-3xl p-7 transition-all hover:bg-white/[0.07] ${
-                  p.highlight ? "ring-2 ring-primary" : ""
-                }`}
-              >
-                {p.highlight && (
-                  <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
-                    Odporúčané
-                  </div>
-                )}
+            <div className="mx-auto max-w-2xl text-center">
+              <h3 className="text-2xl font-extrabold md:text-3xl">
+                Riadiace centrum <span className="gradient-text">vášho biznisu</span>
+              </h3>
+              <p className="mt-3 text-base text-muted-foreground md:text-base">
+                Koniec chaosu v tabuľkách. Majte svoje objednávky, maily a nastavenia webu pod palcom v jednom prehľadnom systéme.
+              </p>
+            </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15">
-                    <p.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="text-lg font-bold">Plán {p.name}</div>
-                </div>
-
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
-                  <span className="text-sm text-muted-foreground">{p.period}</span>
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground">bez viazanosti</div>
-
-                <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/5 pt-6">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-foreground">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to="/formular"
-                  className={`mt-7 block w-full rounded-xl py-3 text-center text-sm font-semibold transition-all ${
+            <div className="mt-10 grid gap-6 md:grid-cols-3 md:max-w-5xl md:mx-auto">
+              {risaliPlans.map((p) => (
+                <div
+                  key={p.name}
+                  className={`relative flex flex-col rounded-3xl border p-7 backdrop-blur-md transition-all hover:bg-white/[0.05] ${
                     p.highlight
-                      ? "btn-primary text-primary-foreground"
-                      : "border border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+                      ? "border-primary/40 bg-white/[0.04] ring-2 ring-primary shadow-[0_0_60px_-15px_oklch(0.65_0.2_255_/_0.5)]"
+                      : "border-white/10 bg-white/[0.03]"
                   }`}
                 >
-                  Chcem nezáväznú ukážku zdarma
-                </Link>
-              </div>
-            ))}
-          </div>
+                  {p.highlight && (
+                    <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-lg">
+                      Odporúčané
+                    </div>
+                  )}
 
-          {/* Doplnková služba */}
-          <div className="mt-8 mx-auto md:max-w-4xl">
-            <div className="glass relative overflow-hidden rounded-2xl border border-primary/20 p-5 md:p-6">
-              <div className="flex flex-col gap-4 md:flex-row md:items-center">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15">
-                  <Workflow className="h-6 w-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">Doplnková služba</span>
-                    <h4 className="text-base font-bold text-foreground md:text-lg">
-                      Napojenie vášho vlastného systému
-                    </h4>
-                    <span className="text-sm font-semibold text-foreground">100 € – 300 € jednorazovo</span>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
+                      <p.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="text-lg font-bold">Plán {p.name}</div>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Máte už vlastné CRM alebo špecifický softvér? Bez problémov ho prepojíme s Risali.app, aby ste mali všetko na jednom mieste. Cena závisí od technickej náročnosti.
-                  </p>
+
+                  <div className="mt-6 flex items-baseline gap-2">
+                    <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
+                    <span className="text-sm text-muted-foreground">{p.period}</span>
+                  </div>
+                  <div className="mt-1 text-xs text-muted-foreground">bez viazanosti</div>
+
+                  <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
+                    {p.features.map((f) => (
+                      <li key={f.text} className="flex items-start gap-2.5 text-[15px] leading-snug text-foreground md:text-sm">
+                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${f.strong ? "text-primary" : "text-primary/60"}`} />
+                        <span className={f.strong ? "font-semibold text-foreground" : "text-foreground/85"}>{f.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    to="/formular"
+                    className={`mt-7 block w-full rounded-xl py-3 text-center text-sm font-semibold transition-all ${
+                      p.highlight
+                        ? "btn-primary text-primary-foreground"
+                        : "border border-white/10 bg-white/5 text-foreground hover:bg-white/10"
+                    }`}
+                  >
+                    Chcem nezáväznú ukážku zdarma
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {/* Doplnková služba */}
+            <div className="mt-8 mx-auto md:max-w-4xl">
+              <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-white/[0.03] p-5 backdrop-blur-md md:p-6">
+                <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
+                    <Workflow className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-primary">Doplnková služba</span>
+                      <h4 className="text-base font-bold text-foreground md:text-lg">
+                        Napojenie vášho vlastného systému
+                      </h4>
+                      <span className="text-sm font-semibold text-foreground">100 € – 300 € jednorazovo</span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Máte už vlastné CRM alebo špecifický softvér? Bez problémov ho prepojíme s Risali.app, aby ste mali všetko na jednom mieste. Cena závisí od technickej náročnosti.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -712,25 +721,36 @@ function Reviews() {
     { name: "Lucia P.", role: "Majiteľka eventovej agentúry", text: "Spolupráca s Patrikom bola jednoducho perfektná. Náš nový web je nielen krásny a responzívny, ale vďaka prepojeniu na Ecomail a SuperFaktúru mi ušetril asi polovicu zbytočnej administratívy. Od tvorby cenových ponúk až po faktúry – všetko je teraz oveľa jednoduchšie. Odkedy sme web spustili, výrazne sa nám zvýšil počet dopytov. Patrik komunikuje na jednotku, zmeny zapracoval neuveriteľne rýchlo a za výbornú cenu. Maximálna spokojnosť, odporúčam každému podnikateľovi!", stars: 5 },
   ];
   return (
-    <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
+    <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Reálne referencie od podnikateľov, ktorým weby pomáhajú zarábať.">
       <div className="grid gap-5 md:grid-cols-3">
-        {reviews.map((r) => (
-          <div key={r.name} className="glass rounded-2xl p-6">
-            <div className="flex gap-0.5">
-              {Array.from({ length: r.stars }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" />)}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground">"{r.text}"</p>
-            <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">
-                {r.name.charAt(0)}
+        {reviews.map((r) => {
+          const initials = r.name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+          return (
+            <div key={r.name} className="glass rounded-2xl p-6">
+              <div className="flex gap-0.5">
+                {Array.from({ length: r.stars }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" />)}
               </div>
-              <div>
-                <div className="text-sm font-semibold text-foreground">{r.name}</div>
-                <div className="text-xs text-muted-foreground">{r.role}</div>
+              <p className="mt-4 text-sm leading-relaxed text-foreground">"{r.text}"</p>
+              <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">
+                <div className="relative">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-glow-cyan via-primary to-glow-violet text-sm font-bold text-white shadow-lg ring-2 ring-white/10">
+                    {initials}
+                  </div>
+                  <div className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary ring-2 ring-background" title="Overený klient">
+                    <Check className="h-2.5 w-2.5 text-primary-foreground" strokeWidth={4} />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                    {r.name}
+                    <span className="text-[10px] font-medium uppercase tracking-wider text-primary">· overený</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground">{r.role}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
