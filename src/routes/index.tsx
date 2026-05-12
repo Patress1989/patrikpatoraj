@@ -712,25 +712,36 @@ function Reviews() {
     { name: "Lucia P.", role: "Majiteľka eventovej agentúry", text: "Spolupráca s Patrikom bola jednoducho perfektná. Náš nový web je nielen krásny a responzívny, ale vďaka prepojeniu na Ecomail a SuperFaktúru mi ušetril asi polovicu zbytočnej administratívy. Od tvorby cenových ponúk až po faktúry – všetko je teraz oveľa jednoduchšie. Odkedy sme web spustili, výrazne sa nám zvýšil počet dopytov. Patrik komunikuje na jednotku, zmeny zapracoval neuveriteľne rýchlo a za výbornú cenu. Maximálna spokojnosť, odporúčam každému podnikateľovi!", stars: 5 },
   ];
   return (
-    <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Ukážkové referencie">
+    <Section eyebrow="Recenzie" title={<>Čo hovoria <span className="gradient-text">moji klienti</span></>} subtitle="Reálne referencie od podnikateľov, ktorým weby pomáhajú zarábať.">
       <div className="grid gap-5 md:grid-cols-3">
-        {reviews.map((r) => (
-          <div key={r.name} className="glass rounded-2xl p-6">
-            <div className="flex gap-0.5">
-              {Array.from({ length: r.stars }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" />)}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground">"{r.text}"</p>
-            <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-sm font-bold text-primary">
-                {r.name.charAt(0)}
+        {reviews.map((r) => {
+          const initials = r.name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+          return (
+            <div key={r.name} className="glass rounded-2xl p-6">
+              <div className="flex gap-0.5">
+                {Array.from({ length: r.stars }).map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" />)}
               </div>
-              <div>
-                <div className="text-sm font-semibold text-foreground">{r.name}</div>
-                <div className="text-xs text-muted-foreground">{r.role}</div>
+              <p className="mt-4 text-sm leading-relaxed text-foreground">"{r.text}"</p>
+              <div className="mt-5 flex items-center gap-3 border-t border-white/5 pt-4">
+                <div className="relative">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-glow-cyan via-primary to-glow-violet text-sm font-bold text-white shadow-lg ring-2 ring-white/10">
+                    {initials}
+                  </div>
+                  <div className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary ring-2 ring-background" title="Overený klient">
+                    <Check className="h-2.5 w-2.5 text-primary-foreground" strokeWidth={4} />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                    {r.name}
+                    <span className="text-[10px] font-medium uppercase tracking-wider text-primary">· overený</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground">{r.role}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
