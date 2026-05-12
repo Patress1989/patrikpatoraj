@@ -561,9 +561,9 @@ function Pricing() {
                   <div className="mt-1 text-xs text-muted-foreground">jednorazovo · plné vlastníctvo</div>
                 </div>
 
-                <ul className="mt-6 flex-1 space-y-2.5 border-t border-white/5 pt-6">
+                <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-foreground">
+                    <li key={f} className="flex items-start gap-2.5 text-[15px] leading-snug text-foreground md:text-sm">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       {f}
                     </li>
