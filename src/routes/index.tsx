@@ -476,6 +476,7 @@ function Pricing() {
       highlight: false,
       features: [
         "Jednoduchá správa obsahu webu",
+        "Prehľadné štatistiky návštevnosti",
         "Základný prehľad kontaktov a dopytov",
         "Prístup do aplikácie Risali.app bez záväzkov",
         "Ideálne na vyskúšanie systému",
