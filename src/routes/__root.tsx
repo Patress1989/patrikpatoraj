@@ -43,6 +43,7 @@ export const Route = createRootRoute({
       { name: "twitter:description", content: "Moderné webstránky na mieru. Rýchly vývoj už za 3–7 dní. Rýchle, výkonné a cenovo dostupné weby pre moderné podnikanie." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1UsyXvl6qoMxZwH2urgkv3DeEbs1/social-images/social-1776701490248-náhľadový_obrázok_patrikpatoraj.sk.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1UsyXvl6qoMxZwH2urgkv3DeEbs1/social-images/social-1776701490248-náhľadový_obrázok_patrikpatoraj.sk.webp" },
+      { name: "google-site-verification", content: "n5gYbrW8T6kwmqHr3Odh-wjtJMDGvf1wESANNk57A5M" },
     ],
     links: [
       {
