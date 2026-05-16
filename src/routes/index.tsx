@@ -8,15 +8,61 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+const FAQ_ITEMS = [
+  { q: "Komu patrí web po odovzdaní?", a: "100 % vám. Dostávate plný prístup k celému projektu aj všetkým účtom (web, dáta, e-maily). Nie ste nijako závislí odo mňa a viete kedykoľvek pokračovať s kýmkoľvek iným." },
+  { q: "Na čom je môj web postavený?", a: "Používam to najmodernejšie, čo dnes existuje — rovnaké technológie, na akých bežia svetové aplikácie. Pre vás to znamená bleskovú rýchlosť, bezpečnosť a to, že váš web vydrží roky bez zastarávania. O technické detaily sa vôbec nemusíte starať, postarám sa o všetko ja." },
+  { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si jednoduché veci (texty, fotky, ceny) viete meniť sami v pár klikoch. Ak máte mesačnú správu, jednoduché zmeny urobím do 24 hodín, zložitejšie do 48 hodín." },
+  { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
+  { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
+  { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { title: "Patrik Patoraj — Moderné weby na mieru" },
       { name: "description", content: "Moderný a rýchly web, ktorý za vás predáva. Hotový do 7 dní, za zlomok ceny agentúry. Bez komplikácií, bez technických starostí." },
-      { property: "og:title", content: "Patrik Patoraj — Moderné weby na mieru, ktoré vám prinesú klientov" },
+      { property: "og:title", content: "Patrik Patoraj — Moderné weby na mieru" },
       { property: "og:description", content: "Web, ktorý vyzerá profesionálne, načíta sa pod 1 sekundu a mení návštevníkov na platiacich klientov. Hotový za pár dní." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://patrikpatoraj.sk/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://patrikpatoraj.sk/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Patrik Patoraj",
+          url: "https://patrikpatoraj.sk/",
+          logo: "https://patrikpatoraj.sk/logo-patrikpatoraj.webp",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Patrik Patoraj",
+          url: "https://patrikpatoraj.sk/",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((it) => ({
+            "@type": "Question",
+            name: it.q,
+            acceptedAnswer: { "@type": "Answer", text: it.a },
+          })),
+        }),
+      },
     ],
   }),
   component: HomePage,
@@ -865,14 +911,7 @@ function Urgency() {
 
 /* =================== FAQ =================== */
 function FAQ() {
-  const items = [
-    { q: "Komu patrí web po odovzdaní?", a: "100 % vám. Dostávate plný prístup k celému projektu aj všetkým účtom (web, dáta, e-maily). Nie ste nijako závislí odo mňa a viete kedykoľvek pokračovať s kýmkoľvek iným." },
-    { q: "Na čom je môj web postavený?", a: "Používam to najmodernejšie, čo dnes existuje — rovnaké technológie, na akých bežia svetové aplikácie. Pre vás to znamená bleskovú rýchlosť, bezpečnosť a to, že váš web vydrží roky bez zastarávania. O technické detaily sa vôbec nemusíte starať, postarám sa o všetko ja." },
-    { q: "Ako rýchle sú úpravy obsahu po odovzdaní?", a: "Pri všetkých balíkoch si jednoduché veci (texty, fotky, ceny) viete meniť sami v pár klikoch. Ak máte mesačnú správu, jednoduché zmeny urobím do 24 hodín, zložitejšie do 48 hodín." },
-    { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
-    { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
-    { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
-  ];
+  const items = FAQ_ITEMS;
   return (
     <section id="faq" className="relative py-20 md:py-[52px]">
       <div className="mx-auto max-w-3xl px-6">

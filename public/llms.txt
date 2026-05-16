@@ -1,0 +1,18 @@
+# Patrik Patoraj
+
+> Moderné a rýchle weby na mieru pre podnikateľov a malé firmy. Hotový web do 7 dní, profesionálna kvalita za zlomok ceny agentúry.
+
+Patrik Patoraj navrhuje a vyvíja moderné responzívne weby, e-shopy a online systémy. Weby sú postavené na najnovších technológiách (TanStack Start, React), bežia bleskovo rýchlo a sú optimalizované pre konverzie a SEO. K dispozícii je tiež online AI kurz a mesačné predplatné systému Risali.app na správu obsahu.
+
+## Pages
+
+- [Domov](/): Hlavná stránka s ponukou, cenníkom, referenciami a FAQ.
+- [Cenová ponuka zdarma](/formular): Formulár na získanie nezáväznej ukážky a cenovej ponuky do 24 hodín.
+- [Objednávka](/objednavka): Online objednávka balíkov tvorby webu s platbou cez Stripe.
+- [AI kurz](/kurz): Online kurz "AI pre každého" — 7 modulov, praktické cvičenia, doživotný prístup.
+- [Pomôcka](/pomocka): Praktická pomôcka pre klientov.
+
+## Optional
+
+- [Obchodné podmienky](/obchodne-podmienky): VOP pre objednávku služieb.
+- [GDPR](/gdpr): Spracovanie osobných údajov.
