@@ -114,7 +114,7 @@ function FormularPage() {
       const uploaded: string[] = [];
       for (const file of toUpload) {
         const ext = file.name.split(".").pop() || "jpg";
-        const path = `${crypto.randomUUID()}.${ext}`;
+        const path = `submissions/${crypto.randomUUID()}.${ext}`;
         const { error: upErr } = await supabase.storage
           .from("project-photos")
           .upload(path, file, { contentType: file.type, upsert: false });
