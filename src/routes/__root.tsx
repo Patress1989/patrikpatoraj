@@ -69,6 +69,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="sk">
       <head>
         <HeadContent />
+        <script async src="http://localhost:3000/risali.js?site=patrikpatoraj"></script>
       </head>
       <body>
         <noscript>
