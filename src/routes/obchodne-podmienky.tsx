@@ -33,7 +33,7 @@ function ObchodnePodmienkyPage() {
           </div>
 
           <div className="mt-8 space-y-6 text-muted-foreground">
-            <p className="text-base">Posledná aktualizácia: 22. 4. 2026</p>
+            <p className="text-base">Posledná aktualizácia: 25. 5. 2026</p>
 
             <section className="glass rounded-2xl p-6">
               <h2 className="text-xl font-semibold text-foreground">1. Identifikácia poskytovateľa</h2>
@@ -50,7 +50,7 @@ function ObchodnePodmienkyPage() {
             <section className="glass rounded-2xl p-6">
               <h2 className="text-xl font-semibold text-foreground">2. Technologický stack</h2>
               <p className="mt-3 text-base leading-relaxed">
-                Zhotoviteľ poskytuje služby v oblasti digitálneho vývoja s využitím platforiem <strong className="text-foreground">Lovable, GitHub a Supabase</strong>. Objednávateľ berie na vedomie, že dielo je závislé na týchto platformách tretích strán a Zhotoviteľ nezodpovedá za ich výpadky, zmeny cenníkov ani ukončenie poskytovania služieb.
+                Zhotoviteľ poskytuje služby v oblasti digitálneho vývoja s využitím platforiem <strong className="text-foreground">Lovable, GitHub a Supabase</strong>, doplnených o vlastnú aplikáciu <strong className="text-foreground">Risali.app</strong>. Objednávateľ berie na vedomie, že dielo je závislé na platformách tretích strán a Zhotoviteľ nezodpovedá za ich výpadky, zmeny cenníkov ani ukončenie poskytovania služieb.
               </p>
             </section>
 
@@ -81,37 +81,45 @@ function ObchodnePodmienkyPage() {
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">5. Platobné modely a vlastníctvo</h2>
-              <ol className="mt-3 list-inside list-decimal space-y-2 text-base leading-relaxed">
-                <li>
-                  <strong className="text-foreground">Predplatné (39 €/mes. + 99 € aktivácia):</strong> Web zostáva po celú dobu trvania predplatného majetkom Zhotoviteľa. Objednávateľ má právo web aktívne využívať v rozsahu služby.
-                </li>
-                <li>
-                  <strong className="text-foreground">Jednorazová kúpa (Základný 284 €, Štandardný 984 €, Prémiový od 1 500 €):</strong> Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
-                </li>
-              </ol>
+              <h2 className="text-xl font-semibold text-foreground">5. Webové balíky — jednorazová platba a vlastníctvo</h2>
+              <p className="mt-3 text-base leading-relaxed">
+                Webové balíky sú jednorazové dielo dodané do plného vlastníctva Objednávateľa po úhrade dohodnutej ceny:
+              </p>
+              <ul className="mt-3 list-inside list-disc space-y-2 text-base leading-relaxed">
+                <li><strong className="text-foreground">Profesionálna vizitka — 590 €:</strong> firemná prezentácia (do 6 podstránok), responzívny dizajn, základné SEO, zberný formulár, technické spustenie.</li>
+                <li><strong className="text-foreground">Zarábajúci automat — 1 390 €:</strong> všetko z balíka Profesionálna vizitka + databáza kontaktov, jednoduchý systém na úpravu obsahu, napojenie na fakturáciu (SuperFaktúra/iDoklad), e-mailový marketing (Ecomail/SmartEmailing) a platobnú bránu.</li>
+                <li><strong className="text-foreground">Systém na mieru — od 2 900 €:</strong> individuálny vývoj webovej aplikácie, klientske zóny, AI funkcie, automatizácie a prioritná podpora. Presná cena podľa rozsahu zadania.</li>
+              </ul>
               <p className="mt-4 text-base leading-relaxed">
-                Zhotoviteľ nie je platiteľom DPH. Všetky ceny uvedené v cenníku alebo v individuálnej cenovej ponuke sú konečné. V prípade, ak sa Zhotoviteľ v priebehu trvania zmluvného vzťahu stane platiteľom DPH, k dohodnutej cene bude pripočítaná DPH v zákonnej výške.
+                Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
+              </p>
+              <p className="mt-3 text-base leading-relaxed">
+                Zhotoviteľ nie je platiteľom DPH. Všetky ceny v cenníku alebo individuálnej ponuke sú konečné. Ak sa Zhotoviteľ stane platiteľom DPH, k dohodnutej cene bude pripočítaná DPH v zákonnej výške.
               </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">6. Odkup diela z predplatného</h2>
+              <h2 className="text-xl font-semibold text-foreground">6. Risali.app — mesačné predplatné</h2>
               <p className="mt-3 text-base leading-relaxed">
-                Objednávateľ má právo kedykoľvek prejsť z modelu predplatného na model vlastníctva po doplatení plnej sumy zvoleného balíka (napr. <strong className="text-foreground">284 €</strong> pri Základnom balíku).
+                Risali.app je vlastná aplikácia Zhotoviteľa na správu obsahu webu, kontaktov, objednávok a napojení. Poskytuje sa formou mesačného predplatného <strong className="text-foreground">bez viazanosti</strong>:
               </p>
-              <p className="mt-3 text-base leading-relaxed italic">
-                Predošlé mesačné platby sa <strong className="not-italic text-foreground">nezapočítavajú</strong> do kúpnej ceny — predstavujú odplatu za poskytnutý servis, hosting a údržbu.
+              <ul className="mt-3 list-inside list-disc space-y-2 text-base leading-relaxed">
+                <li><strong className="text-foreground">Free — 0 €:</strong> základná správa obsahu, štatistiky návštevnosti, prehľad kontaktov a dopytov.</li>
+                <li><strong className="text-foreground">Štandard — 19 € / mesačne:</strong> kompletný prístup do Risali.app, dashboard, napojenie na SuperFaktúru a Ecomail, konverzia obrázkov do .webp, správa SEO a GEO, aktualizácie webu v cene.</li>
+                <li><strong className="text-foreground">Pro — 49 € / mesačne:</strong> všetko zo Štandardu + individuálne prispôsobenie funkcií, pokročilé automatizácie, technický dohľad a prioritná podpora.</li>
+              </ul>
+              <p className="mt-4 text-base leading-relaxed">
+                Predplatné Risali.app je nezávislé od vlastníctva webu — Objednávateľ ho môže používať bez ohľadu na to, či vlastní zdrojový kód, alebo nie. Zrušiť predplatné je možné kedykoľvek ku koncu zúčtovacieho obdobia; už uhradené mesačné platby sa nevracajú.
               </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">7. Servis a technické úpravy</h2>
+              <h2 className="text-xl font-semibold text-foreground">7. Doplnková služba — napojenie vlastného systému</h2>
               <p className="mt-3 text-base leading-relaxed">
-                V rámci balíka <strong className="text-foreground">Web bez starostí (39 €/mes.)</strong> je zahrnutých <strong className="text-foreground">5 technických úprav mesačne</strong> (zmeny textov, fotiek, drobné úpravy sekcií). Nevyčerpané úpravy sa neprenášajú do nasledujúceho mesiaca.
+                Na žiadosť Objednávateľa Zhotoviteľ zabezpečí napojenie vlastného CRM alebo iného softvéru na Risali.app. Cena tejto jednorazovej služby je <strong className="text-foreground">100 € – 300 €</strong> podľa technickej náročnosti a je odsúhlasená vopred.
               </p>
               <p className="mt-3 text-base leading-relaxed">
-                Úpravy nad rámec balíka, ako aj rozšírenia funkcionality, sú účtované podľa aktuálnej hodinovej sadzby Zhotoviteľa po vzájomnom odsúhlasení rozsahu.
+                Úpravy nad rámec dohodnutého rozsahu balíka alebo predplatného sa účtujú podľa aktuálnej hodinovej sadzby Zhotoviteľa po vzájomnom odsúhlasení.
               </p>
             </section>
 
