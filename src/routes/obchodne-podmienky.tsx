@@ -102,12 +102,6 @@ function ObchodnePodmienkyPage() {
               <p className="mt-4 text-base leading-relaxed">
                 Predplatné Risali.app je nezávislé od vlastníctva webu — Objednávateľ ho môže používať bez ohľadu na to, či vlastní zdrojový kód, alebo nie. Zrušiť predplatné je možné kedykoľvek ku koncu zúčtovacieho obdobia; už uhradené mesačné platby sa nevracajú.
               </p>
-              <p className="mt-3 text-base leading-relaxed">
-                <strong className="text-foreground">Platobné podmienky:</strong> Vopred sa hradí <strong className="text-foreground">30 % záloha</strong>, na základe ktorej sa začína na projekte pracovať. Záloha je <strong className="text-foreground">nevratná</strong>. O začatí prác na projekte je klient informovaný e-mailom. Zvyšná časť <strong className="text-foreground">70 %</strong> sa hradí po odovzdaní projektu a 100 % spokojnosti zákazníka.
-              </p>
-              <p className="mt-3 text-base leading-relaxed">
-                <strong className="text-foreground">Úpravy po odovzdaní:</strong> Po odovzdaní projektu sú jednoduché úpravy v cene <strong className="text-foreground">do 14 dní</strong> od odovzdania diela.
-              </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
