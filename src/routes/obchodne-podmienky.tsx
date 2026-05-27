@@ -59,17 +59,8 @@ function ObchodnePodmienkyPage() {
               <p className="mt-3 text-base leading-relaxed">
                 Pre odovzdanie webu do plného vlastníctva je Objednávateľ povinný vytvoriť si a udržiavať účty na platformách <strong className="text-foreground">GitHub</strong> (zdrojový kód) a <strong className="text-foreground">Supabase</strong> (databáza, ak je súčasťou balíka). Bez vytvorenia týchto prístupov nie je možné dielo technicky odovzdať.
               </p>
-              <p className="mt-3 text-base leading-relaxed">
-                Pre vizuálnu správu a rýchle úpravy webu cez AI rozhranie odporúčame vytvoriť konto v platforme Lovable cez pozývací odkaz:{" "}
-                <a
-                  href="https://lovable.dev/invite/SPBXBVT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline break-all"
-                >
-                  https://lovable.dev/invite/SPBXBVT
-                </a>
-                .
+              <p className="mt-3 text-base leading-relaxed text-white">
+                Pre vizuálnu správu a rýchle úpravy webu sa využíva aplikácia Risali.app.
               </p>
             </section>
 
