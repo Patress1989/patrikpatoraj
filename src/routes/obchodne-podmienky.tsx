@@ -85,6 +85,12 @@ function ObchodnePodmienkyPage() {
                 Autorské práva a kontrola nad zdrojovým kódom prechádzajú na Objednávateľa <strong className="text-foreground">až po 100 % uhradení dohodnutej ceny</strong>. Dovtedy je dielo výhradným majetkom Risali s.r.o.
               </p>
               <p className="mt-3 text-base leading-relaxed">
+                <strong className="text-foreground">Platobné podmienky:</strong> Vopred sa hradí <strong className="text-foreground">30 % záloha</strong>, na základe ktorej sa začína na projekte pracovať. Záloha je <strong className="text-foreground">nevratná</strong>. O začatí prác na projekte je Objednávateľ informovaný e-mailom. Zvyšná časť <strong className="text-foreground">70 %</strong> sa hradí po odovzdaní projektu a 100 % spokojnosti Objednávateľa.
+              </p>
+              <p className="mt-3 text-base leading-relaxed">
+                <strong className="text-foreground">Úpravy po odovzdaní:</strong> Po odovzdaní projektu má Objednávateľ nárok na jednoduché úpravy v cene diela <strong className="text-foreground">do 14 dní</strong> od odovzdania.
+              </p>
+              <p className="mt-3 text-base leading-relaxed">
                 Zhotoviteľ nie je platiteľom DPH. Všetky ceny v cenníku alebo individuálnej ponuke sú konečné. Ak sa Zhotoviteľ stane platiteľom DPH, k dohodnutej cene bude pripočítaná DPH v zákonnej výške.
               </p>
             </section>
