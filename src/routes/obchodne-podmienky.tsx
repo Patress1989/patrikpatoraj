@@ -116,7 +116,7 @@ function ObchodnePodmienkyPage() {
                 Na žiadosť Objednávateľa Zhotoviteľ zabezpečí napojenie vlastného CRM alebo iného softvéru na Risali.app. Cena tejto jednorazovej služby je <strong className="text-foreground">100 € – 300 €</strong> podľa technickej náročnosti a je odsúhlasená vopred.
               </p>
               <p className="mt-3 text-base leading-relaxed">
-                Úpravy nad rámec dohodnutého rozsahu balíka alebo predplatného sa účtujú podľa aktuálnej hodinovej sadzby Zhotoviteľa po vzájomnom odsúhlasení.
+                Úpravy nad rámec dohodnutého rozsahu balíka alebo predplatného sa účtujú hodinovou sadzbou <strong className="text-foreground">40 € / hodina</strong> po vzájomnom odsúhlasení rozsahu prác.
               </p>
             </section>
 
