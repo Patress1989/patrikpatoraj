@@ -48,26 +48,26 @@ function ObchodnePodmienkyPage() {
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">2. Technologický stack</h2>
+              <h2 className="text-xl font-semibold text-foreground">2. Technológie a vlastníctvo („digitálny trezor“)</h2>
               <p className="mt-3 text-base leading-relaxed">
-                Zhotoviteľ poskytuje služby v oblasti digitálneho vývoja s využitím platforiem <strong className="text-foreground">Lovable, GitHub a Supabase</strong>, doplnených o vlastnú aplikáciu <strong className="text-foreground">Risali.app</strong>. Objednávateľ berie na vedomie, že dielo je závislé na platformách tretích strán a Zhotoviteľ nezodpovedá za ich výpadky, zmeny cenníkov ani ukončenie poskytovania služieb.
+                Zhotoviteľ stavia weby pomocou moderných technológií a umelej inteligencie. Zdrojový kód a databáza Objednávateľa sú od prvého dňa uložené vo <strong className="text-foreground">vlastných účtoch Objednávateľa</strong> (úložisko kódu a databáza), aby bol projekt <strong className="text-foreground">100 % majetkom Objednávateľa</strong> a nezávislý od Zhotoviteľa.
+              </p>
+              <p className="mt-3 text-base leading-relaxed">
+                Pre jednoduchú správu obsahu (texty, fotky, ceny, SEO) sa využíva vlastná aplikácia Zhotoviteľa <strong className="text-foreground">Risali.app</strong>. Objednávateľ berie na vedomie, že časti diela závisia od služieb tretích strán a Zhotoviteľ nezodpovedá za ich výpadky, zmeny cenníkov ani ukončenie poskytovania.
               </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">3. Povinná súčinnosť</h2>
+              <h2 className="text-xl font-semibold text-foreground">3. Povinná súčinnosť Objednávateľa</h2>
               <p className="mt-3 text-base leading-relaxed">
-                Pre odovzdanie webu do plného vlastníctva je Objednávateľ povinný vytvoriť si a udržiavať účty na platformách <strong className="text-foreground">GitHub</strong> (zdrojový kód) a <strong className="text-foreground">Supabase</strong> (databáza, ak je súčasťou balíka). Bez vytvorenia týchto prístupov nie je možné dielo technicky odovzdať.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-white">
-                Pre vizuálnu správu a rýchle úpravy webu sa využíva aplikácia Risali.app.
+                Pre odovzdanie webu do plného vlastníctva je Objednávateľ povinný vytvoriť si a udržiavať bezplatné účty pre <strong className="text-foreground">úložisko zdrojového kódu</strong> a <strong className="text-foreground">databázu</strong> (ak je súčasťou balíka). Konkrétne platformy odporučí Zhotoviteľ. Bez týchto prístupov nie je možné dielo technicky odovzdať.
               </p>
             </section>
 
             <section className="glass rounded-2xl p-6">
-              <h2 className="text-xl font-semibold text-foreground">4. Charakter AI kódu</h2>
+              <h2 className="text-xl font-semibold text-foreground">4. Spôsob vývoja</h2>
               <p className="mt-3 text-base leading-relaxed">
-                Zdrojový kód diela je generovaný za pomoci umelej inteligencie. Zhotoviteľ <strong className="text-foreground">garantuje funkčnosť diela podľa dohodnutej špecifikácie</strong>, nezodpovedá však za estetickú štruktúru zdrojového kódu.
+                Dielo je vyvíjané s pomocou moderných nástrojov a umelej inteligencie, čo umožňuje rýchle dodanie a okamžité úpravy. Zhotoviteľ <strong className="text-foreground">garantuje funkčnosť diela podľa dohodnutej špecifikácie</strong>, výkon a bezpečnosť na úrovni dohodnutej v ponuke; nezodpovedá za vnútornú estetickú štruktúru zdrojového kódu.
               </p>
             </section>
 
