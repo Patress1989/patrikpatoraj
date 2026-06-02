@@ -94,7 +94,14 @@ function FormularPage() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>(INITIAL_DATA);
 
-  // Load draft from localStorage on mount
+  const fetchInquiriesCount = useServerFn(getInquiriesCount);
+  const { data: inquiriesData } = useQuery({
+    queryKey: ["inquiries-count"],
+    queryFn: () => fetchInquiriesCount(),
+    staleTime: 60_000,
+  });
+  const inquiriesCount = inquiriesData?.count ?? 27;
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
