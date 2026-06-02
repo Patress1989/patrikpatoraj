@@ -20,7 +20,7 @@ export function SiteFooter() {
               <div className="text-lg font-bold text-foreground">Patrik Patoraj</div>
             </div>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">
-              Moderné weby a aplikácie postavené na platforme Lovable. Rýchlo, profesionálne a za zlomok ceny agentúry.
+              Moderné weby a aplikácie na mieru postavené cez najmodernejšie technológie vrátane AI. Rýchlo, profesionálne a za zlomok ceny agentúry.
             </p>
             <Link
               to="/formular"
