@@ -22,11 +22,10 @@ colors:
   primary: '#1f8dff'
   secondary: '#182230'
   background: '#08121f'
-  custom_color_9wke: '#ffffff'
-  custom_farba_z_webu_2_b33k: '#36caf1'
-  custom_farba_z_webu_4_sqij: '#ffedd4'
-  custom_farba_z_webu_7_lhi9: '#8e51ff'
-  custom_farba_z_webu_8_wpke: '#1c2530'
+  custom_farba_z_webu_1_0din: '#ffffff'
+  custom_farba_z_webu_2_lf56: '#36caf1'
+  custom_farba_z_webu_7_0hlk: '#8e51ff'
+  custom_farba_z_webu_8_ro0c: '#000000'
 fonts:
   body: Inter
   heading: Inter
