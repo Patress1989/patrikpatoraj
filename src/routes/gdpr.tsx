@@ -93,13 +93,12 @@ function GdprPage() {
               <ul className="mt-3 list-inside list-disc space-y-1.5 text-base leading-relaxed">
                 <li>Supabase / PostgreSQL (databázové riešenia a ukladanie dát)</li>
                 <li>Make.com (automatizácia procesov a prepojenie systémov)</li>
-                <li>Stripe, Inc. (spracovanie platieb za balíky a služby)</li>
                 <li>Ecomail.cz s.r.o. / Mailchimp (nástroje na e-mailovú komunikáciu)</li>
                 <li>Meta Platforms, Inc. (analýza návštevnosti a reklama)</li>
                 <li>Google Ireland Ltd. (Google Analytics, Google Search Console)</li>
               </ul>
               <p className="mt-3 text-base leading-relaxed">
-                Údaje spracúvame primárne v EÚ. Pri niektorých cloudových službách (Stripe, Meta) môže dochádzať k prenosu do USA, ktorý je zabezpečený v súlade s Data Privacy Framework.
+                Údaje spracúvame primárne v EÚ. Pri niektorých cloudových službách (napr. Meta) môže dochádzať k prenosu do USA, ktorý je zabezpečený v súlade s Data Privacy Framework.
               </p>
             </section>
 
