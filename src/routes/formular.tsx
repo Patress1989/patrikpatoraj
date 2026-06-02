@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Zap, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/formular")({
   head: () => ({
@@ -541,7 +541,7 @@ function FormularPage() {
                 </button>
               ) : (
                 <button type="button" onClick={submit} disabled={submitting} className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold disabled:opacity-60">
-                  {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Odosielam...</>) : (<>Pošlite mi moju ukážku zdarma <Sparkles className="h-4 w-4" /></>)}
+                  {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Odosielam...</>) : (<>Pošlite mi moju ukážku zdarma <Zap className="h-4 w-4 fill-current" /></>)}
                 </button>
               )}
             </div>
