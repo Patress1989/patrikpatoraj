@@ -19,6 +19,7 @@ import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as ApiFormEmailsRouteImport } from './routes/api/form-emails'
+import { Route as ApiBriefEmailsRouteImport } from './routes/api/brief-emails'
 import { Route as AdminResetPasswordRouteImport } from './routes/admin.reset-password'
 import { Route as AdminCrmLoginRouteImport } from './routes/admin.crm-login'
 import { Route as AdminCrmRouteImport } from './routes/admin.crm'
@@ -77,6 +78,11 @@ const ApiFormEmailsRoute = ApiFormEmailsRouteImport.update({
   path: '/api/form-emails',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiBriefEmailsRoute = ApiBriefEmailsRouteImport.update({
+  id: '/api/brief-emails',
+  path: '/api/brief-emails',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminResetPasswordRoute = AdminResetPasswordRouteImport.update({
   id: '/admin/reset-password',
   path: '/admin/reset-password',
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
   '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/api/brief-emails': typeof ApiBriefEmailsRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
   '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/api/brief-emails': typeof ApiBriefEmailsRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/admin/crm': typeof AdminCrmRoute
   '/admin/crm-login': typeof AdminCrmLoginRoute
   '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/api/brief-emails': typeof ApiBriefEmailsRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/admin/crm'
     | '/admin/crm-login'
     | '/admin/reset-password'
+    | '/api/brief-emails'
     | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/admin/crm'
     | '/admin/crm-login'
     | '/admin/reset-password'
+    | '/api/brief-emails'
     | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/admin/crm'
     | '/admin/crm-login'
     | '/admin/reset-password'
+    | '/api/brief-emails'
     | '/api/form-emails'
     | '/email/unsubscribe'
     | '/lovable/email/suppression'
@@ -246,6 +258,7 @@ export interface RootRouteChildren {
   AdminCrmRoute: typeof AdminCrmRoute
   AdminCrmLoginRoute: typeof AdminCrmLoginRoute
   AdminResetPasswordRoute: typeof AdminResetPasswordRoute
+  ApiBriefEmailsRoute: typeof ApiBriefEmailsRoute
   ApiFormEmailsRoute: typeof ApiFormEmailsRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
@@ -326,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFormEmailsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/brief-emails': {
+      id: '/api/brief-emails'
+      path: '/api/brief-emails'
+      fullPath: '/api/brief-emails'
+      preLoaderRoute: typeof ApiBriefEmailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/reset-password': {
       id: '/admin/reset-password'
       path: '/admin/reset-password'
@@ -390,6 +410,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminCrmRoute: AdminCrmRoute,
   AdminCrmLoginRoute: AdminCrmLoginRoute,
   AdminResetPasswordRoute: AdminResetPasswordRoute,
+  ApiBriefEmailsRoute: ApiBriefEmailsRoute,
   ApiFormEmailsRoute: ApiFormEmailsRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
