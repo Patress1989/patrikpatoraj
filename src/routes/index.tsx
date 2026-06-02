@@ -1025,9 +1025,15 @@ function FinalCTA() {
 }
 
 /* =================== Section helpers =================== */
-import balonovysvetImg from "@/assets/projects/balonovysvet.webp";
-import mammotion1Img from "@/assets/projects/mammotion1.webp";
-import charismaImg from "@/assets/projects/charisma.webp";
+import balonovysvet600 from "@/assets/projects/balonovysvet-600.webp";
+import balonovysvet1200 from "@/assets/projects/balonovysvet-1200.webp";
+import balonovysvet1920 from "@/assets/projects/balonovysvet-1920.webp";
+import mammotion600 from "@/assets/projects/mammotion1-600.webp";
+import mammotion1200 from "@/assets/projects/mammotion1-1200.webp";
+import mammotion1920 from "@/assets/projects/mammotion1-1920.webp";
+import charisma600 from "@/assets/projects/charisma-600.webp";
+import charisma1200 from "@/assets/projects/charisma-1200.webp";
+import charisma1920 from "@/assets/projects/charisma-1920.webp";
 
 function Portfolio() {
   const projects = [
