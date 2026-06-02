@@ -894,12 +894,12 @@ import patrikPhoto from "@/assets/patrik-patoraj-photo.webp";
 function Authority() {
   const paragraphs = [
     "Volám sa Patrik a v online svete sa pohybujem už viac ako 6 rokov. Počas pôsobenia ako externý dodávateľ pre veľkú firmu a správe webu pre rodinný biznis mojej manželky som na vlastnej koži pocítil frustráciu, ktorú zažíva väčšina podnikateľov.",
-    "Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil Lovable, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.",
+    "Vidím predražené faktúry od agentúr za jednoduché weby a chaos v desiatkach platforiem potrebných na bežné fungovanie. Keď som objavil silu moderných technológií, pravidlá hry sa zmenili. Pochopil som, že 99 % potrieb moderného webu dokážem vyriešiť za zlomok času a ceny, ktoré si pýtajú klasické agentúry.",
     "Moja efektivita nie je len teória – v priebehu jediného mesiaca som dokázal vytvoriť desiatky plne funkčných webov. Mojím cieľom je priniesť túto efektivitu aj vám.",
   ];
 
   return (
-    <Section eyebrow="O mne" title={<>Patrik Patoraj — <span className="gradient-text">Lovable Expert</span></>}>
+    <Section eyebrow="O mne" title={<>Patrik Patoraj — <span className="gradient-text">Web Expert</span></>}>
       <div className="glass-strong mx-auto max-w-5xl rounded-3xl p-6 md:p-12">
         <div className="grid gap-8 md:grid-cols-[260px_1fr] md:items-start md:gap-12">
           <div className="relative mx-auto aspect-square w-48 shrink-0 overflow-hidden rounded-3xl bg-gradient-to-br from-primary/40 to-violet-500/40 shadow-lg ring-1 ring-primary/20 select-none md:w-full">
