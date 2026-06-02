@@ -1,0 +1,1 @@
+ALTER TABLE public.web_briefs ADD COLUMN IF NOT EXISTS email_sent_at timestamptz;

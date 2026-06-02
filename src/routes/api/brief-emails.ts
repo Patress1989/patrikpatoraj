@@ -147,15 +147,35 @@ export const Route = createFileRoute('/api/brief-emails')({
         }
 
         const briefId: string | undefined = body.briefId
-        const data = body.data ?? body
-        const recipientEmail: string | undefined = data?.email
-        const name: string | undefined = data?.name
-
-        if (!recipientEmail || !name) {
-          return Response.json({ error: 'Missing required fields' }, { status: 400 })
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+        if (!briefId || !uuidRegex.test(briefId)) {
+          return Response.json({ error: 'Invalid briefId' }, { status: 400 })
         }
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey)
+
+        // Atomically claim the brief (verifies existence + prevents replay)
+        const { data: claimed, error: claimError } = await supabase
+          .from('web_briefs')
+          .update({ email_sent_at: new Date().toISOString() })
+          .eq('id', briefId)
+          .is('email_sent_at', null)
+          .select('*')
+          .maybeSingle()
+
+        if (claimError || !claimed) {
+          return Response.json({ error: 'Brief not found or already processed' }, { status: 404 })
+        }
+
+        // Use email/name from DB row — never trust client-supplied recipient
+        const data: any = claimed
+        const recipientEmail = claimed.email
+        const name = claimed.name
+
+        if (!recipientEmail || !name) {
+          return Response.json({ error: 'Brief missing required fields' }, { status: 400 })
+        }
+
         const results: Record<string, any> = {}
 
         for (const templateName of ['client-brief-confirmation', 'admin-new-brief']) {
