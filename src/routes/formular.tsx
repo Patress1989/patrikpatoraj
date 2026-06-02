@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Zap, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/formular")({
   head: () => ({
