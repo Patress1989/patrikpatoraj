@@ -288,7 +288,7 @@ function FormularPage() {
               Vyplnenie zaberie 2 minúty. Do 24 hodín vám pošleme ukážku konceptu a cenovú ponuku.
             </p>
             <p className="mt-3 text-xs text-muted-foreground">
-              ✓ Už som pomohol 40+ malým firmám získať klientov cez web
+              ✓ Už som pomohol 27+ malým firmám získať klientov cez web
             </p>
           </div>
 
