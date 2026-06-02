@@ -290,6 +290,7 @@ export type Database = {
           deadline: string | null
           email: string
           email_provider_current: string | null
+          email_sent_at: string | null
           email_switch_resend: boolean | null
           existing_site_issues: string | null
           existing_site_url: string | null
@@ -349,6 +350,7 @@ export type Database = {
           deadline?: string | null
           email: string
           email_provider_current?: string | null
+          email_sent_at?: string | null
           email_switch_resend?: boolean | null
           existing_site_issues?: string | null
           existing_site_url?: string | null
@@ -408,6 +410,7 @@ export type Database = {
           deadline?: string | null
           email?: string
           email_provider_current?: string | null
+          email_sent_at?: string | null
           email_switch_resend?: boolean | null
           existing_site_issues?: string | null
           existing_site_url?: string | null
