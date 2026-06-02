@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
@@ -10,30 +10,27 @@ export const Route = createFileRoute("/formular")({
   head: () => ({
     meta: [
       { title: "Bezplatná ukážka — Patrik Patoraj" },
-      { name: "description", content: "Vyplňte krátky formulár a do 48 hodín dostanete ukážku konceptu zdarma." },
+      { name: "description", content: "Vyplňte krátky formulár a do 24 hodín dostanete ukážku konceptu zdarma." },
       { property: "og:title", content: "Bezplatná ukážka projektu" },
-      { property: "og:description", content: "Krátky 4-krokový formulár — odpoveď do 48 hodín." },
+      { property: "og:description", content: "Krátky 3-krokový formulár — odpoveď do 24 hodín." },
     ],
   }),
   component: FormularPage,
 });
 
 const STEPS = [
-  { n: 1, label: "Meno" },
-  { n: 2, label: "Kontakt" },
-  { n: 3, label: "Projekt" },
-  { n: 4, label: "Súhlas" },
+  { n: 1, label: "O projekte" },
+  { n: 2, label: "Vaše údaje" },
+  { n: 3, label: "Hotovo" },
 ];
 
+const BUSINESS_CHIPS = ["Barber", "Fitness", "Estetika", "Reštaurácia", "Remeslá", "E-shop", "Iné"];
+
+const DRAFT_KEY = "formular_draft_v1";
+
 const schemas = {
+  // Step 1: project
   step1: z.object({
-    name: z.string().trim().min(2, "Zadajte aspoň 2 znaky").max(100, "Maximálne 100 znakov"),
-  }),
-  step2: z.object({
-    email: z.string().trim().email("Neplatný email").max(255),
-    phone: z.string().trim().min(6, "Zadajte platné telefónne číslo").max(30),
-  }),
-  step3: z.object({
     business_area: z.string().trim().min(2, "Zadajte aspoň 2 znaky").max(200),
     company_name: z.string().trim().max(200).optional().or(z.literal("")),
     business_description: z.string().trim().max(1000).optional().or(z.literal("")),
@@ -42,7 +39,20 @@ const schemas = {
     preferred_colors: z.string().trim().max(200).optional().or(z.literal("")),
     existing_website: z.string().trim().max(255).optional().or(z.literal("")),
   }),
-  step4: z.object({
+  // Step 2: contact
+  step2: z.object({
+    name: z.string().trim().min(2, "Zadajte aspoň 2 znaky").max(100, "Maximálne 100 znakov"),
+    email: z.string().trim().email("Neplatný email").max(255),
+    phone: z
+      .string()
+      .trim()
+      .max(30)
+      .optional()
+      .or(z.literal(""))
+      .refine((v) => !v || v.length >= 6, { message: "Zadajte platné telefónne číslo" }),
+  }),
+  // Step 3: gdpr
+  step3: z.object({
     gdpr_consent: z.literal(true, { errorMap: () => ({ message: "Musíte súhlasiť so spracovaním údajov" }) }),
   }),
 };
@@ -62,6 +72,15 @@ type FormData = {
   gdpr_consent: boolean;
 };
 
+const INITIAL_DATA: FormData = {
+  name: "", email: "", phone: "",
+  business_area: "", company_name: "", business_description: "",
+  services_list: "", contact_info: "",
+  preferred_colors: "", existing_website: "",
+  photo_urls: [],
+  gdpr_consent: false,
+};
+
 function FormularPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -70,14 +89,29 @@ function FormularPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
-  const [data, setData] = useState<FormData>({
-    name: "", email: "", phone: "",
-    business_area: "", company_name: "", business_description: "",
-    services_list: "", contact_info: "",
-    preferred_colors: "", existing_website: "",
-    photo_urls: [],
-    gdpr_consent: false,
-  });
+  const [data, setData] = useState<FormData>(INITIAL_DATA);
+
+  // Load draft from localStorage on mount
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as Partial<FormData>;
+      setData((d) => ({ ...d, ...parsed, gdpr_consent: false }));
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  // Autosave draft (without gdpr)
+  useEffect(() => {
+    try {
+      const { gdpr_consent: _g, ...toSave } = data;
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(toSave));
+    } catch {
+      // ignore
+    }
+  }, [data]);
 
   const update = <K extends keyof FormData>(k: K, v: FormData[K]) => {
     setData((d) => ({ ...d, [k]: v }));
@@ -136,9 +170,7 @@ function FormularPage() {
 
   const validateStep = (s: number): boolean => {
     let result;
-    if (s === 1) result = schemas.step1.safeParse({ name: data.name });
-    else if (s === 2) result = schemas.step2.safeParse({ email: data.email, phone: data.phone });
-    else if (s === 3) result = schemas.step3.safeParse({
+    if (s === 1) result = schemas.step1.safeParse({
       business_area: data.business_area,
       company_name: data.company_name,
       business_description: data.business_description,
@@ -147,7 +179,12 @@ function FormularPage() {
       preferred_colors: data.preferred_colors,
       existing_website: data.existing_website,
     });
-    else result = schemas.step4.safeParse({ gdpr_consent: data.gdpr_consent });
+    else if (s === 2) result = schemas.step2.safeParse({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+    });
+    else result = schemas.step3.safeParse({ gdpr_consent: data.gdpr_consent });
 
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -157,17 +194,37 @@ function FormularPage() {
       setErrors(fieldErrors);
       return false;
     }
+    setErrors({});
     return true;
   };
 
   const next = () => {
-    if (validateStep(step)) setStep((s) => Math.min(4, s + 1));
+    if (validateStep(step)) setStep((s) => Math.min(3, s + 1));
   };
 
   const prev = () => setStep((s) => Math.max(1, s - 1));
 
+  // Detailnosť ukážky — 6 optional fields → 0..6 → 5 stupňov
+  const optionalFilled = [
+    data.company_name,
+    data.business_description,
+    data.services_list,
+    data.contact_info,
+    data.preferred_colors,
+    data.existing_website,
+  ].filter((v) => v && v.trim().length > 0).length;
+
+  const detailLevel = (() => {
+    if (optionalFilled === 0) return { dots: 0, pct: 0 };
+    if (optionalFilled <= 2) return { dots: 1, pct: 20 };
+    if (optionalFilled === 3) return { dots: 2, pct: 40 };
+    if (optionalFilled === 4) return { dots: 3, pct: 60 };
+    if (optionalFilled === 5) return { dots: 4, pct: 80 };
+    return { dots: 5, pct: 100 };
+  })();
+
   const submit = async () => {
-    if (!validateStep(4)) return;
+    if (!validateStep(3)) return;
     setSubmitting(true);
     setSubmitError(null);
 
@@ -181,7 +238,7 @@ function FormularPage() {
           id: submissionId,
           name: data.name,
           email: data.email,
-          phone: data.phone,
+          phone: data.phone || null,
           business_area: data.business_area,
           company_name: data.company_name || null,
           business_description: data.business_description || null,
@@ -195,7 +252,7 @@ function FormularPage() {
 
       if (dbError) throw new Error(dbError.message);
 
-      // 2. Trigger emails (best-effort, don't block on failure)
+      // 2. Trigger emails (best-effort)
       try {
         await fetch('/api/form-emails', {
           method: 'POST',
@@ -205,6 +262,8 @@ function FormularPage() {
       } catch (emailErr) {
         console.warn("Email send failed (submission saved):", emailErr);
       }
+
+      try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
       navigate({ to: "/formular-vyplneny" });
       return;
@@ -227,6 +286,9 @@ function FormularPage() {
             <h1 className="text-3xl font-bold md:text-4xl">Pár otázok a pustíme sa do toho</h1>
             <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
               Vyplnenie zaberie 2 minúty. Do 24 hodín vám pošleme ukážku konceptu a cenovú ponuku.
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">
+              ✓ Už som pomohol 40+ malým firmám získať klientov cez web
             </p>
           </div>
 
@@ -258,35 +320,61 @@ function FormularPage() {
           {/* Card */}
           <div className="glass-strong mt-8 rounded-3xl p-7 md:p-10">
             {step === 1 && (
-              <Step title="Ako sa voláte?" subtitle="Aby vás vedel správne osloviť.">
-                <Field icon={User} label="Meno a priezvisko" required error={errors.name}>
+              <Step
+                title="Povedzte mi o projekte"
+                subtitle="Stačí oblasť podnikania. Čím viac doplníte, tým presnejšiu ukážku pripravím."
+              >
+                <div className="-mt-2 mb-2 flex justify-center">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    <span>Detailnosť ukážky:</span>
+                    <span className="tracking-widest">
+                      {"●".repeat(detailLevel.dots)}{"○".repeat(5 - detailLevel.dots)}
+                    </span>
+                    <span>{detailLevel.pct}%</span>
+                  </div>
+                </div>
+
+                <Field icon={Briefcase} label="Oblasť podnikania" required error={errors.business_area}>
+                  <div className="mb-2">
+                    <p className="mb-1.5 text-xs text-muted-foreground">Rýchla voľba:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {BUSINESS_CHIPS.map((chip) => {
+                        const active = data.business_area === chip;
+                        return (
+                          <button
+                            key={chip}
+                            type="button"
+                            onClick={() => {
+                              if (chip === "Iné") {
+                                update("business_area", "");
+                                const el = document.getElementById("business_area_input") as HTMLInputElement | null;
+                                el?.focus();
+                              } else {
+                                update("business_area", chip);
+                              }
+                            }}
+                            className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                              active
+                                ? "border-primary bg-primary/20 text-primary"
+                                : "border-white/10 bg-white/5 text-foreground hover:bg-primary/10"
+                            }`}
+                          >
+                            {chip}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                   <input
+                    id="business_area_input"
                     type="text"
-                    value={data.name}
-                    onChange={(e) => update("name", e.target.value)}
-                    placeholder="Napr. Ján Novák"
+                    value={data.business_area}
+                    onChange={(e) => update("business_area", e.target.value)}
+                    placeholder="Napr. Barber, Fitness tréner, Fyzioterapeut, Škôlka"
                     className="input-field"
                     autoFocus
                   />
-                </Field>
-              </Step>
-            )}
-
-            {step === 2 && (
-              <Step title="Ako vás zastihneme?" subtitle="Tieto údaje použijeme len na komunikáciu k vášmu projektu.">
-                <Field icon={Mail} label="E-mail" required error={errors.email}>
-                  <input type="email" value={data.email} onChange={(e) => update("email", e.target.value)} placeholder="vas@email.sk" className="input-field" autoFocus />
-                </Field>
-                <Field icon={Phone} label="Telefón" required error={errors.phone}>
-                  <input type="tel" value={data.phone} onChange={(e) => update("phone", e.target.value)} placeholder="+421 ..." className="input-field" />
-                </Field>
-              </Step>
-            )}
-
-            {step === 3 && (
-              <Step title="Povedzte nám o projekte" subtitle={<>Povinná je len oblasť podnikania. <br />Ostatné údaje mi pomôžu urobiť ukážku ZDARMA presne podľa Vaších predstáv, ale doplniť ich môžeme aj neskôr.</>}>
-                <Field icon={Briefcase} label="Oblasť podnikania" required error={errors.business_area}>
-                  <input type="text" value={data.business_area} onChange={(e) => update("business_area", e.target.value)} placeholder="Napr. Barber, Fitness tréner, Fyzioterapeut, Škôlka" className="input-field" autoFocus />
                 </Field>
 
                 <Field icon={Building2} label="Názov firmy / projektu" hint="Voliteľné">
@@ -377,13 +465,38 @@ function FormularPage() {
               </Step>
             )}
 
-            {step === 4 && (
+            {step === 2 && (
+              <Step title="Ako sa voláte a kde vás zastihnem?" subtitle="Tieto údaje použijem len na komunikáciu k vášmu projektu.">
+                <Field icon={User} label="Meno a priezvisko" required error={errors.name}>
+                  <input
+                    type="text"
+                    value={data.name}
+                    onChange={(e) => update("name", e.target.value)}
+                    placeholder="Napr. Ján Novák"
+                    className="input-field"
+                    autoFocus
+                  />
+                </Field>
+                <Field icon={Mail} label="E-mail" required error={errors.email}>
+                  <input type="email" value={data.email} onChange={(e) => update("email", e.target.value)} placeholder="vas@email.sk" className="input-field" />
+                </Field>
+                <Field icon={Phone} label="Telefón" hint="voliteľné — pre rýchlejšiu odpoveď" error={errors.phone}>
+                  <input type="tel" value={data.phone} onChange={(e) => update("phone", e.target.value)} placeholder="+421 ..." className="input-field" />
+                </Field>
+              </Step>
+            )}
+
+            {step === 3 && (
               <Step title="Posledný krok" subtitle="Skontrolujte si zhrnutie a potvrďte súhlas.">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm">
-                  <SummaryRow label="Meno" value={data.name} />
-                  <SummaryRow label="E-mail" value={data.email} />
-                  <SummaryRow label="Telefón" value={data.phone} />
-                  <SummaryRow label="Oblasť" value={data.business_area} />
+                  {data.name && <SummaryRow label="Meno" value={data.name} />}
+                  {data.email && <SummaryRow label="E-mail" value={data.email} />}
+                  {data.phone && <SummaryRow label="Telefón" value={data.phone} />}
+                  {data.business_area && <SummaryRow label="Oblasť" value={data.business_area} />}
+                  {data.company_name && <SummaryRow label="Firma" value={data.company_name} />}
+                  {data.business_description && <SummaryRow label="Popis biznisu" value={data.business_description} />}
+                  {data.services_list && <SummaryRow label="Služby/Cenník" value={data.services_list} />}
+                  {data.contact_info && <SummaryRow label="Kontaktné údaje" value={data.contact_info} />}
                   {data.preferred_colors && <SummaryRow label="Farby" value={data.preferred_colors} />}
                   {data.existing_website && <SummaryRow label="Web" value={data.existing_website} />}
                 </div>
@@ -422,13 +535,13 @@ function FormularPage() {
                 <ArrowLeft className="h-4 w-4" /> Späť
               </button>
 
-              {step < 4 ? (
+              {step < 3 ? (
                 <button type="button" onClick={next} className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold">
                   Pokračovať <ArrowRight className="h-4 w-4" />
                 </button>
               ) : (
                 <button type="button" onClick={submit} disabled={submitting} className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold disabled:opacity-60">
-                  {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Odosielam...</>) : (<>Odoslať dopyt <Check className="h-4 w-4" /></>)}
+                  {submitting ? (<><Loader2 className="h-4 w-4 animate-spin" /> Odosielam...</>) : (<>Pošlite mi moju ukážku zdarma <Sparkles className="h-4 w-4" /></>)}
                 </button>
               )}
             </div>
@@ -481,4 +594,3 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
-
