@@ -238,7 +238,7 @@ function FormularPage() {
           id: submissionId,
           name: data.name,
           email: data.email,
-          phone: data.phone || null,
+          phone: data.phone || "",
           business_area: data.business_area,
           company_name: data.company_name || null,
           business_description: data.business_description || null,
