@@ -8,7 +8,7 @@ Patrik Patoraj navrhuje a vyvíja moderné responzívne weby, e-shopy a online s
 
 - [Domov](/): Hlavná stránka s ponukou, cenníkom, referenciami a FAQ.
 - [Cenová ponuka zdarma](/formular): Formulár na získanie nezáväznej ukážky a cenovej ponuky do 24 hodín.
-- [Objednávka](/objednavka): Online objednávka balíkov tvorby webu s platbou cez Stripe.
+
 - [AI kurz](/kurz): Online kurz "AI pre každého" — 7 modulov, praktické cvičenia, doživotný prístup.
 - [Pomôcka](/pomocka): Praktická pomôcka pre klientov.
 

@@ -11,14 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as PomockaRouteImport } from './routes/pomocka'
-import { Route as ObjednavkaRouteImport } from './routes/objednavka'
 import { Route as ObchodnePodmienkyRouteImport } from './routes/obchodne-podmienky'
 import { Route as KurzRouteImport } from './routes/kurz'
 import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as FormularVyplnenyRouteImport } from './routes/formular-vyplneny'
 import { Route as FormularRouteImport } from './routes/formular'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ObjednavkaDakujemeRouteImport } from './routes/objednavka.dakujeme'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as ApiFormEmailsRouteImport } from './routes/api/form-emails'
 import { Route as AdminResetPasswordRouteImport } from './routes/admin.reset-password'
@@ -37,11 +35,6 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const PomockaRoute = PomockaRouteImport.update({
   id: '/pomocka',
   path: '/pomocka',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ObjednavkaRoute = ObjednavkaRouteImport.update({
-  id: '/objednavka',
-  path: '/objednavka',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObchodnePodmienkyRoute = ObchodnePodmienkyRouteImport.update({
@@ -73,11 +66,6 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
-const ObjednavkaDakujemeRoute = ObjednavkaDakujemeRouteImport.update({
-  id: '/dakujeme',
-  path: '/dakujeme',
-  getParentRoute: () => ObjednavkaRoute,
 } as any)
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   id: '/email/unsubscribe',
@@ -135,7 +123,6 @@ export interface FileRoutesByFullPath {
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
-  '/objednavka': typeof ObjednavkaRouteWithChildren
   '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
@@ -143,7 +130,6 @@ export interface FileRoutesByFullPath {
   '/admin/reset-password': typeof AdminResetPasswordRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/objednavka/dakujeme': typeof ObjednavkaDakujemeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -156,7 +142,6 @@ export interface FileRoutesByTo {
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
-  '/objednavka': typeof ObjednavkaRouteWithChildren
   '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
@@ -164,7 +149,6 @@ export interface FileRoutesByTo {
   '/admin/reset-password': typeof AdminResetPasswordRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/objednavka/dakujeme': typeof ObjednavkaDakujemeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -178,7 +162,6 @@ export interface FileRoutesById {
   '/gdpr': typeof GdprRoute
   '/kurz': typeof KurzRoute
   '/obchodne-podmienky': typeof ObchodnePodmienkyRoute
-  '/objednavka': typeof ObjednavkaRouteWithChildren
   '/pomocka': typeof PomockaRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/crm': typeof AdminCrmRoute
@@ -186,7 +169,6 @@ export interface FileRoutesById {
   '/admin/reset-password': typeof AdminResetPasswordRoute
   '/api/form-emails': typeof ApiFormEmailsRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/objednavka/dakujeme': typeof ObjednavkaDakujemeRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -201,7 +183,6 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/kurz'
     | '/obchodne-podmienky'
-    | '/objednavka'
     | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
@@ -209,7 +190,6 @@ export interface FileRouteTypes {
     | '/admin/reset-password'
     | '/api/form-emails'
     | '/email/unsubscribe'
-    | '/objednavka/dakujeme'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -222,7 +202,6 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/kurz'
     | '/obchodne-podmienky'
-    | '/objednavka'
     | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
@@ -230,7 +209,6 @@ export interface FileRouteTypes {
     | '/admin/reset-password'
     | '/api/form-emails'
     | '/email/unsubscribe'
-    | '/objednavka/dakujeme'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -243,7 +221,6 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/kurz'
     | '/obchodne-podmienky'
-    | '/objednavka'
     | '/pomocka'
     | '/unsubscribe'
     | '/admin/crm'
@@ -251,7 +228,6 @@ export interface FileRouteTypes {
     | '/admin/reset-password'
     | '/api/form-emails'
     | '/email/unsubscribe'
-    | '/objednavka/dakujeme'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -265,7 +241,6 @@ export interface RootRouteChildren {
   GdprRoute: typeof GdprRoute
   KurzRoute: typeof KurzRoute
   ObchodnePodmienkyRoute: typeof ObchodnePodmienkyRoute
-  ObjednavkaRoute: typeof ObjednavkaRouteWithChildren
   PomockaRoute: typeof PomockaRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminCrmRoute: typeof AdminCrmRoute
@@ -293,13 +268,6 @@ declare module '@tanstack/react-router' {
       path: '/pomocka'
       fullPath: '/pomocka'
       preLoaderRoute: typeof PomockaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/objednavka': {
-      id: '/objednavka'
-      path: '/objednavka'
-      fullPath: '/objednavka'
-      preLoaderRoute: typeof ObjednavkaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obchodne-podmienky': {
@@ -343,13 +311,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/objednavka/dakujeme': {
-      id: '/objednavka/dakujeme'
-      path: '/dakujeme'
-      fullPath: '/objednavka/dakujeme'
-      preLoaderRoute: typeof ObjednavkaDakujemeRouteImport
-      parentRoute: typeof ObjednavkaRoute
     }
     '/email/unsubscribe': {
       id: '/email/unsubscribe'
@@ -417,18 +378,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface ObjednavkaRouteChildren {
-  ObjednavkaDakujemeRoute: typeof ObjednavkaDakujemeRoute
-}
-
-const ObjednavkaRouteChildren: ObjednavkaRouteChildren = {
-  ObjednavkaDakujemeRoute: ObjednavkaDakujemeRoute,
-}
-
-const ObjednavkaRouteWithChildren = ObjednavkaRoute._addFileChildren(
-  ObjednavkaRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FormularRoute: FormularRoute,
@@ -436,7 +385,6 @@ const rootRouteChildren: RootRouteChildren = {
   GdprRoute: GdprRoute,
   KurzRoute: KurzRoute,
   ObchodnePodmienkyRoute: ObchodnePodmienkyRoute,
-  ObjednavkaRoute: ObjednavkaRouteWithChildren,
   PomockaRoute: PomockaRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminCrmRoute: AdminCrmRoute,
