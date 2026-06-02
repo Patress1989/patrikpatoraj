@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   Sparkles, ArrowRight, Zap, Database, Layout, Workflow, Shield,
   Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, MessageSquare,
-  ShieldCheck, Eye, Key, Gift,
+  ShieldCheck, Eye, Key, Gift, Globe,
 } from "lucide-react";
 import { useState } from "react";
 
