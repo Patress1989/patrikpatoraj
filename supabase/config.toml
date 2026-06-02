@@ -2,12 +2,3 @@ project_id = "jcjwobbfwrrebbrhqrhy"
 
 [functions.send-form-email]
 verify_jwt = false
-
-[functions.create-checkout]
-verify_jwt = false
-
-[functions.get-stripe-price]
-verify_jwt = false
-
-[functions.payments-webhook]
-verify_jwt = false
