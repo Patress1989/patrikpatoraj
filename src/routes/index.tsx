@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import {
   Sparkles, ArrowRight, Zap, Database, Layout, Workflow, Shield,
   Check, X, Star, Rocket, Crown, ChevronDown, Quote, Clock, Target, Award, Users, Gauge, MessageSquare,
-  ShieldCheck, Eye, Key, Gift,
+  ShieldCheck, Eye, Key, Gift, Globe,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -520,12 +520,16 @@ function Pricing() {
       price: "0 €",
       period: "/ navždy",
       highlight: false,
+      subtitle: "Pre začiatok stačí — všetko podstatné na správu webu",
       features: [
-        { text: "Jednoduchá správa obsahu webu", strong: true },
-        { text: "Prehľadné štatistiky návštevnosti", strong: true },
-        { text: "Základný prehľad kontaktov a dopytov", strong: false },
-        { text: "Prístup do aplikácie Risali.app bez záväzkov", strong: false },
-        { text: "Ideálne na vyskúšanie systému", strong: false },
+        { text: "1 web v cene", strong: true },
+        { text: "Úprava textov a obrázkov priamo na webe — kliknete a píšete", strong: true },
+        { text: "100 MB priestor na obrázky", strong: false },
+        { text: "Vrátenie obsahu späť do 7 dní (ak ste niečo pokazili)", strong: false },
+        { text: "Prehľad návštev na webe", strong: false },
+        { text: "Vidíte kto sa ozval cez formulár", strong: true },
+        { text: "Cookie banner (povinný zákonom)", strong: false },
+        { text: "Bez záväzkov, bez kreditky", strong: true },
       ],
     },
     {
@@ -534,26 +538,43 @@ function Pricing() {
       price: "19 €",
       period: "/ mesačne",
       highlight: false,
+      subtitle: "Pre malé firmy, ktoré chcú spravovať web a kontakty samé",
       features: [
-        { text: "Kompletný prístup do aplikácie Risali.app", strong: false },
-        { text: "Prehľadný dashboard s kontaktmi a objednávkami", strong: true },
-        { text: "Hotové napojenie na SuperFaktúru a Ecomail", strong: true },
-        { text: "Bleskový web: konverzia obrázkov do .webp jedným klikom", strong: false },
-        { text: "Jednoduchá správa SEO a lokálneho (GEO) cielenia", strong: false },
-        { text: "Správa webu a aktualizácie v cene", strong: true },
+        { text: "1 web v cene (každý ďalší web +10 € mesačne)", strong: true },
+        { text: "Všetko z balíka Free, plus:", strong: false },
+        { text: "500 MB priestor na obrázky", strong: false },
+        { text: "Vrátenie obsahu späť do 30 dní", strong: false },
+        { text: "Štatistiky + ktoré stránky ľudí zaujímajú najviac", strong: true },
+        { text: "Evidencia kontaktov — vidíte všetkých záujemcov a v akej fáze ste s nimi (nový / oslovený / dohodnutý / hotový)", strong: true },
+        { text: "Cenník služieb priamo na webe + posielanie cenových ponúk zákazníkom", strong: true },
+        { text: "Úlohy pre tím — kto čo má robiť a dokedy, s pripomienkou pred termínom", strong: true },
+        { text: "2 spolupracovníci v účte", strong: false },
+        { text: "Automatické posielanie kontaktov do Ecomail (newsletter)", strong: true },
+        { text: "Galéria všetkých obrázkov + automatické zmenšenie pre rýchlejší web", strong: false },
+        { text: "Optimalizácia pre Google (lepšia pozícia vo vyhľadávaní)", strong: true },
+        { text: "Týždenný email s prehľadom čo sa na webe deje", strong: false },
+        { text: "Podpora do 3 pracovných dní, 2 úpravy mesačne v cene", strong: true },
       ],
     },
     {
       icon: Sparkles,
       name: "Pro",
-      price: "49 €",
+      price: "59 €",
       period: "/ mesačne",
       highlight: true,
+      subtitle: "Pre firmy, ktoré chcú automaticky obslúžiť záujemcov a rezervácie",
       features: [
-        { text: "Všetko zo Štandard plánu", strong: false },
-        { text: "Individuálne prispôsobenie funkcií pre vašu firmu", strong: true },
-        { text: "Pokročilé automatizácie na pozadí", strong: true },
-        { text: "Technický dohľad nad vašimi dátami a prioritná podpora", strong: true },
+        { text: "1 web v cene (každý ďalší web +10 € mesačne)", strong: true },
+        { text: "Všetko zo Štandardu, plus:", strong: false },
+        { text: "2 GB priestor na obrázky", strong: false },
+        { text: "Vrátenie obsahu späť do 90 dní", strong: false },
+        { text: "Štatistiky + odkiaľ návštevníci prichádzajú a z akých zariadení", strong: true },
+        { text: "Automatické scenáre — napríklad: niekto pošle dopyt → automaticky mu príde uvítací email → po dni vám príde pripomienka mu zavolať", strong: true },
+        { text: "Online rezervácie termínov priamo na webe — zákazník si vyberie čas sám", strong: true },
+        { text: "Automatické odovzdanie produktov do Heureky a Google Shopping (pre e-shopy)", strong: true },
+        { text: "Vystavenie faktúr zo SuperFaktúry priamo z prehľadu kontaktov", strong: true },
+        { text: "10 spolupracovníkov v účte", strong: false },
+        { text: "Prioritná podpora do 24 hodín, 5 úprav mesačne v cene", strong: true },
       ],
     },
   ];
@@ -674,7 +695,10 @@ function Pricing() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
                       <p.icon className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="text-lg font-bold">Plán {p.name}</div>
+                    <div>
+                      <div className="text-lg font-bold">Plán {p.name}</div>
+                      <div className="text-xs text-muted-foreground">{p.subtitle}</div>
+                    </div>
                   </div>
 
                   <div className="mt-6 flex items-baseline gap-2">
@@ -706,8 +730,8 @@ function Pricing() {
               ))}
             </div>
 
-            {/* Doplnková služba */}
-            <div className="mt-8 mx-auto md:max-w-4xl">
+            {/* Doplnkové služby */}
+            <div className="mt-8 grid gap-4 md:grid-cols-2 md:max-w-5xl md:mx-auto">
               <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-white/[0.03] p-5 backdrop-blur-md md:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:items-center">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
@@ -727,6 +751,44 @@ function Pricing() {
                   </div>
                 </div>
               </div>
+
+              <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-white/[0.03] p-5 backdrop-blur-md md:p-6">
+                <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
+                    <Layout className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-primary">Doplnková služba</span>
+                      <h4 className="text-base font-bold text-foreground md:text-lg">
+                        Ďalší web v účte
+                      </h4>
+                      <span className="text-sm font-semibold text-foreground">10 € / web / mes</span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Spravujete viac firiem alebo projektov? Pridajte ich do balíka Štandard alebo Pro za jednotnú cenu 10 € za každý ďalší web mesačne.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Zap className="h-3.5 w-3.5 text-primary/70" /> Začnete na Free
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <ArrowRight className="h-3.5 w-3.5 text-primary/70" /> Prechod na vyšší balík kedykoľvek
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <X className="h-3.5 w-3.5 text-primary/70" /> Zrušenie kedykoľvek
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <Globe className="h-3.5 w-3.5 text-primary/70" /> Vaše dáta v Európe
+              </span>
             </div>
           </div>
         </div>
