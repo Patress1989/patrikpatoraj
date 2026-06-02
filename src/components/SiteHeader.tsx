@@ -22,7 +22,7 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 z-50 w-full">
       <div className="mx-auto max-w-7xl px-4 pt-4">
-        <div className="glass-strong flex items-center justify-between rounded-2xl px-5 py-3">
+        <div className="flex items-center justify-between rounded-2xl px-5 py-3 border border-white/10 backdrop-blur-2xl backdrop-saturate-150" style={{ background: "oklch(0.18 0.03 255 / 0.85)" }}>
           <Link to="/" className="flex items-center gap-2 text-foreground">
             <img
               src={logo}
@@ -64,7 +64,7 @@ export function SiteHeader() {
         </div>
 
         {open && (
-          <div className="glass-strong mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden">
+          <div className="mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden border border-white/10 backdrop-blur-2xl" style={{ background: "oklch(0.18 0.03 255 / 0.92)" }}>
             {navItems.map((item) => (
               <a
                 key={item.hash}
