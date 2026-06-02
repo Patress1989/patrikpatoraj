@@ -9,8 +9,8 @@ import { TEMPLATES, type TemplateEntry } from '@/lib/email-templates/registry'
 const ALLOWED_TEMPLATES = new Set(['client-brief-confirmation', 'admin-new-brief'])
 
 const SITE_NAME = 'Patrik Patoraj'
-const SENDER_DOMAIN = 'notify.patrikpatoraj.sk'
-const FROM_DOMAIN = 'patrikpatoraj.sk'
+const SENDER_DOMAIN = 'notify.mail.patrikpatoraj.sk'
+const FROM_DOMAIN = 'mail.patrikpatoraj.sk'
 
 function redactEmail(email: string | null | undefined): string {
   if (!email) return '***'
