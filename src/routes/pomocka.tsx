@@ -48,8 +48,8 @@ const PAYMENT_GATEWAYS = ["Stripe", "GoPay", "Besteron / Comgate", "TrustPay", "
 const INVOICING_SYSTEMS = ["FAPI", "SuperFaktúra", "iDoklad", "Fakturoid", "KROS / Omega", "Vlastný systém", "Iný", "Žiadny"];
 const EMAIL_PROVIDERS = ["Resend", "Mailchimp", "Mailerlite", "Ecomail", "SmartEmailing", "Brevo (Sendinblue)", "Iný", "Žiadny"];
 const ANALYTICS_TOOLS = ["Google Analytics", "Meta / FB Pixel", "Plausible / Umami", "Hotjar / Clarity", "Iné", "Žiadne"];
-const HOSTING_OPTIONS = ["Lovable Cloud", "Vercel / Netlify", "Vlastný hosting (WebSupport, ...)", "Neviem, navrhnite"];
-const DATA_STORAGE = ["Lovable Cloud (DB)", "Google tabuľky", "Airtable / Notion", "Vlastný systém", "Neviem, navrhnite"];
+const HOSTING_OPTIONS = ["Managed Cloud", "Vercel / Netlify", "Vlastný hosting (WebSupport, ...)", "Neviem, navrhnite"];
+const DATA_STORAGE = ["Cloud databáza", "Google tabuľky", "Airtable / Notion", "Vlastný systém", "Neviem, navrhnite"];
 
 type FormData = {
   name: string; email: string; phone: string; company_name: string;
@@ -537,11 +537,11 @@ function PomockaPage() {
                 <YesNo label="Členská zóna (prihlásenie, obsah pre platiacich)?" value={data.wants_member_area} onChange={(v) => update("wants_member_area", v)} />
                 <YesNo label="Blog / magazín?" value={data.wants_blog} onChange={(v) => update("wants_blog", v)} />
 
-                <Field icon={Database} label="Kde chcete ukladať dáta z formulárov / objednávok?" hint="Odporúčam Lovable Cloud DB — najjednoduchšia integrácia">
+                <Field icon={Database} label="Kde chcete ukladať dáta z formulárov / objednávok?" hint="Odporúčam cloud databázu — najjednoduchšia integrácia">
                   <Choice options={DATA_STORAGE} value={data.data_storage_preference} onChange={(v) => update("data_storage_preference", v)} />
                 </Field>
 
-                <Field icon={Server} label="Preferencia hostingu" hint="Lovable Cloud zahŕňa všetko v jednom">
+                <Field icon={Server} label="Preferencia hostingu" hint="Managed Cloud zahŕňa všetko v jednom">
                   <Choice options={HOSTING_OPTIONS} value={data.hosting_preference} onChange={(v) => update("hosting_preference", v)} />
                 </Field>
               </Section>
