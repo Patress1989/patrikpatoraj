@@ -66,14 +66,14 @@
   --popover: oklch(0.22 0.03 255);
   --popover-foreground: oklch(0.97 0.01 255);
 
-  /* Electric blue primary */
-  --primary: oklch(0.65 0.2 255);              /* ~ #3b82f6 */
+  /* Electric blue primary — lifted to L=0.72 so badges/links hit WCAG AAA (7:1) on dark surface */
+  --primary: oklch(0.72 0.2 255);
   --primary-foreground: oklch(0.99 0 0);
 
   --secondary: oklch(0.25 0.03 255);
   --secondary-foreground: oklch(0.95 0.01 255);
   --muted: oklch(0.26 0.025 255);
-  --muted-foreground: oklch(0.7 0.025 255);
+  --muted-foreground: oklch(0.78 0.025 255); /* AAA contrast 7:1 on bg */
   --accent: oklch(0.28 0.04 255);
   --accent-foreground: oklch(0.97 0.01 255);
   --destructive: oklch(0.62 0.24 27);
