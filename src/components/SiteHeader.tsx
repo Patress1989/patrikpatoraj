@@ -30,7 +30,6 @@ export function SiteHeader() {
               width={32}
               height={32}
               className="h-8 w-8 object-contain"
-              fetchPriority="high"
             />
             <span className="font-bold tracking-tight">Patrik Patoraj</span>
           </Link>

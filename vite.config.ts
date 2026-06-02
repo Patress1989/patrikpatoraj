@@ -6,4 +6,21 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          // Merge all lucide-react icons into ONE chunk instead of 12+ separate
+          // per-icon chunks. Each icon is tiny (~1 KB) so the extra HTTP requests
+          // and JS execution overhead dwarf the bundle savings.
+          manualChunks(id) {
+            if (id.includes("node_modules/lucide-react")) {
+              return "lucide-icons";
+            }
+          },
+        },
+      },
+    },
+  },
+});
