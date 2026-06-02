@@ -251,13 +251,17 @@ function PomockaPage() {
         .single();
       if (error) throw new Error(error.message);
 
-      // Fire-and-forget: send PDF summary to client + admin.
+      // Fire-and-forget: send brief summary to client + admin via Lovable Email.
       // Do not block redirect if email fails.
-      supabase.functions
-        .invoke("send-brief-email", {
-          body: { ...insertPayload, briefId: inserted?.id },
-        })
-        .catch((e) => console.warn("send-brief-email failed:", e));
+      try {
+        await fetch("/api/brief-emails", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ briefId: inserted?.id, data: insertPayload }),
+        });
+      } catch (emailErr) {
+        console.warn("brief email send failed:", emailErr);
+      }
 
       navigate({ to: "/formular-vyplneny" });
     } catch (err) {
