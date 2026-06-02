@@ -730,8 +730,8 @@ function Pricing() {
               ))}
             </div>
 
-            {/* Doplnková služba */}
-            <div className="mt-8 mx-auto md:max-w-4xl">
+            {/* Doplnkové služby */}
+            <div className="mt-8 grid gap-4 md:grid-cols-2 md:max-w-5xl md:mx-auto">
               <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-white/[0.03] p-5 backdrop-blur-md md:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:items-center">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
@@ -751,6 +751,44 @@ function Pricing() {
                   </div>
                 </div>
               </div>
+
+              <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-white/[0.03] p-5 backdrop-blur-md md:p-6">
+                <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/20">
+                    <Layout className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-primary">Doplnková služba</span>
+                      <h4 className="text-base font-bold text-foreground md:text-lg">
+                        Ďalší web v účte
+                      </h4>
+                      <span className="text-sm font-semibold text-foreground">10 € / web / mes</span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Spravujete viac firiem alebo projektov? Pridajte ich do balíka Štandard alebo Pro za jednotnú cenu 10 € za každý ďalší web mesačne.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Zap className="h-3.5 w-3.5 text-primary/70" /> Začnete na Free
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <ArrowRight className="h-3.5 w-3.5 text-primary/70" /> Prechod na vyšší balík kedykoľvek
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <X className="h-3.5 w-3.5 text-primary/70" /> Zrušenie kedykoľvek
+              </span>
+              <span className="hidden md:inline text-white/20">•</span>
+              <span className="inline-flex items-center gap-1.5">
+                <Globe className="h-3.5 w-3.5 text-primary/70" /> Vaše dáta v Európe
+              </span>
             </div>
           </div>
         </div>
