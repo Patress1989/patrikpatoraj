@@ -1041,21 +1041,24 @@ function Portfolio() {
       title: "Balónový svet",
       description: "Profesionálne balónové dekorácie pre eventy po celom Slovensku. Napojenie na EcoMail a Superfakúru",
       url: "https://balonovysvet.eu",
-      image: balonovysvetImg,
+      src: balonovysvet1200,
+      srcSet: `${balonovysvet600} 600w, ${balonovysvet1200} 1200w, ${balonovysvet1920} 1920w`,
       tag: "Služby & Eventy",
     },
     {
       title: "Hattech – Mammotion",
       description: "Autorizovaný predajca robotických kosačiek a bazénových vysávačov Mammotion.",
       url: "https://mammotion1.sk",
-      image: mammotion1Img,
+      src: mammotion1200,
+      srcSet: `${mammotion600} 600w, ${mammotion1200} 1200w, ${mammotion1920} 1920w`,
       tag: "Digitálny katalóg",
     },
     {
       title: "Charisma Experience",
       description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek. Intergrovaný Stirpe, vlastné CMR a napojenie na Superfaktúru.",
       url: "https://charisma.nlp-akademia.sk",
-      image: charismaImg,
+      src: charisma1200,
+      srcSet: `${charisma600} 600w, ${charisma1200} 1200w, ${charisma1920} 1920w`,
       tag: "Vzdelávanie",
     },
   ];
@@ -1077,7 +1080,9 @@ function Portfolio() {
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-muted">
               <img
-                src={p.image}
+                src={p.src}
+                srcSet={p.srcSet}
+                sizes="(max-width: 768px) 600px, (max-width: 1280px) 1200px, 1920px"
                 alt={`Náhľad webu ${p.title}`}
                 width={1200}
                 height={750}
