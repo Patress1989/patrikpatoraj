@@ -4,6 +4,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
+import { getInquiriesCount } from "@/lib/inquiries.functions";
 import { ArrowRight, ArrowLeft, Check, Loader2, Sparkles, Zap, Mail, Phone, Briefcase, Palette, Globe, User, ShieldCheck, Building2, FileText, ListChecks, Contact, ImagePlus, X, Upload } from "lucide-react";
 
 export const Route = createFileRoute("/formular")({
@@ -91,7 +94,14 @@ function FormularPage() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>(INITIAL_DATA);
 
-  // Load draft from localStorage on mount
+  const fetchInquiriesCount = useServerFn(getInquiriesCount);
+  const { data: inquiriesData } = useQuery({
+    queryKey: ["inquiries-count"],
+    queryFn: () => fetchInquiriesCount(),
+    staleTime: 60_000,
+  });
+  const inquiriesCount = inquiriesData?.count ?? 27;
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
@@ -288,7 +298,7 @@ function FormularPage() {
               Vyplnenie zaberie 2 minúty. Do 24 hodín vám pošleme ukážku konceptu a cenovú ponuku.
             </p>
             <p className="mt-3 text-xs text-muted-foreground">
-              ✓ Už som pomohol 27+ malým firmám získať klientov cez web
+              ✓ Už som pomohol {inquiriesCount}+ malým firmám získať klientov cez web
             </p>
           </div>
 
