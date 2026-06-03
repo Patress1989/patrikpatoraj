@@ -103,7 +103,7 @@ function ObchodnePodmienkyPage() {
               <ul className="mt-3 list-inside list-disc space-y-2 text-base leading-relaxed">
                 <li><strong className="text-foreground">Free — 0 €:</strong> základná správa obsahu, štatistiky návštevnosti, prehľad kontaktov a dopytov.</li>
                 <li><strong className="text-foreground">Štandard — 19 € / mesačne:</strong> kompletný prístup do Risali.app, dashboard, napojenie na SuperFaktúru a Ecomail, konverzia obrázkov do .webp, správa SEO a GEO, aktualizácie webu v cene.</li>
-                <li><strong className="text-foreground">Pro — 49 € / mesačne:</strong> všetko zo Štandardu + individuálne prispôsobenie funkcií, pokročilé automatizácie, technický dohľad a prioritná podpora.</li>
+                <li><strong className="text-foreground">Pro — 59 € / mesačne:</strong> všetko zo Štandardu + individuálne prispôsobenie funkcií, pokročilé automatizácie, technický dohľad a prioritná podpora.</li>
               </ul>
               <p className="mt-4 text-base leading-relaxed">
                 Predplatné Risali.app je nezávislé od vlastníctva webu — Objednávateľ ho môže používať bez ohľadu na to, či vlastní zdrojový kód, alebo nie. Zrušiť predplatné je možné kedykoľvek ku koncu zúčtovacieho obdobia; už uhradené mesačné platby sa nevracajú.

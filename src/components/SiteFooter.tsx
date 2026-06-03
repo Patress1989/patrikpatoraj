@@ -69,6 +69,13 @@ export function SiteFooter() {
           <Link to="/pomocka" className="text-muted-foreground transition-colors hover:text-foreground">
             Pomôcka k webu
           </Link>
+          <button
+            type="button"
+            onClick={() => window.__cookieConsentOpen?.()}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Nastavenia cookies
+          </button>
         </div>
       </div>
     </footer>
