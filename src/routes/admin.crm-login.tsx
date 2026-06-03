@@ -36,7 +36,7 @@ function AdminLoginPage() {
         .from("user_roles")
         .select("role")
         .eq("user_id", userData.user.id)
-        .eq("role", "admin")
+        .in("role", ["admin", "viewer"])
         .maybeSingle();
 
       if (cancelled) return;
@@ -75,13 +75,13 @@ function AdminLoginPage() {
       .from("user_roles")
       .select("role")
       .eq("user_id", data.user.id)
-      .eq("role", "admin")
+      .in("role", ["admin", "viewer"])
       .maybeSingle();
 
     setLoading(false);
     if (!roleData) {
       await supabase.auth.signOut();
-      toast.error("Tento účet nemá admin prístup");
+      toast.error("Tento účet nemá prístup do CRM");
       return;
     }
     toast.success("Prihlásenie úspešné");

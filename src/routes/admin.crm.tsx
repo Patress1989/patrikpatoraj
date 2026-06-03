@@ -41,6 +41,7 @@ function CRMPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
+  const [isViewer, setIsViewer] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [briefs, setBriefs] = useState<Brief[]>([]);
   const [selected, setSelected] = useState<Submission | null>(null);
@@ -57,13 +58,14 @@ function CRMPage() {
       .from("user_roles")
       .select("role")
       .eq("user_id", userData.user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (!roleData) {
+      .in("role", ["admin", "viewer"]);
+    if (!roleData || roleData.length === 0) {
       setAuthorized(false);
       setLoading(false);
       return false;
     }
+    const hasAdmin = roleData.some((r) => r.role === "admin");
+    setIsViewer(!hasAdmin);
     setAuthorized(true);
     return true;
   };
@@ -191,10 +193,12 @@ function CRMPage() {
               <RefreshCw className="w-4 h-4 mr-2" />
               Obnoviť
             </Button>
-            <Button size="sm" onClick={exportEcomailCSV}>
-              <Download className="w-4 h-4 mr-2" />
-              Export CSV (Ecomail)
-            </Button>
+            {!isViewer && (
+              <Button size="sm" onClick={exportEcomailCSV}>
+                <Download className="w-4 h-4 mr-2" />
+                Export CSV (Ecomail)
+              </Button>
+            )}
             <Button variant="ghost" size="sm" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
               Odhlásiť
@@ -244,9 +248,11 @@ function CRMPage() {
                           <Button variant="ghost" size="sm" onClick={() => setSelected(s)}>
                             <Eye className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDelete(s.id)}>
-                            <Trash2 className="w-4 h-4 text-destructive" />
-                          </Button>
+                          {!isViewer && (
+                            <Button variant="ghost" size="sm" onClick={() => handleDelete(s.id)}>
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     ))
@@ -293,9 +299,11 @@ function CRMPage() {
                           <Button variant="ghost" size="sm" onClick={() => downloadBriefPdf(b)} title="Stiahnuť PDF">
                             <FileText className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
-                            <Trash2 className="w-4 h-4 text-destructive" />
-                          </Button>
+                          {!isViewer && (
+                            <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     ))
