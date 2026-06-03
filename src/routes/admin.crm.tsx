@@ -248,9 +248,11 @@ function CRMPage() {
                           <Button variant="ghost" size="sm" onClick={() => setSelected(s)}>
                             <Eye className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDelete(s.id)}>
-                            <Trash2 className="w-4 h-4 text-destructive" />
-                          </Button>
+                          {!isViewer && (
+                            <Button variant="ghost" size="sm" onClick={() => handleDelete(s.id)}>
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     ))
