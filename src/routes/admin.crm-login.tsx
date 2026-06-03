@@ -36,7 +36,7 @@ function AdminLoginPage() {
         .from("user_roles")
         .select("role")
         .eq("user_id", userData.user.id)
-        .eq("role", "admin")
+        .in("role", ["admin", "viewer"])
         .maybeSingle();
 
       if (cancelled) return;
