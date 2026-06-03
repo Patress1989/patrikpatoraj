@@ -299,9 +299,11 @@ function CRMPage() {
                           <Button variant="ghost" size="sm" onClick={() => downloadBriefPdf(b)} title="Stiahnuť PDF">
                             <FileText className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
-                            <Trash2 className="w-4 h-4 text-destructive" />
-                          </Button>
+                          {!isViewer && (
+                            <Button variant="ghost" size="sm" onClick={() => handleDeleteBrief(b.id)} title="Vymazať">
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          )}
                         </TableCell>
                       </TableRow>
                     ))
