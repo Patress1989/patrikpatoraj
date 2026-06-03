@@ -71,15 +71,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <script async src="https://app.risali.app/risali.js?site=patrikpatoraj"></script>
       </head>
       <body>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=771300210159010&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
         {children}
         <Scripts />
       </body>
@@ -92,6 +83,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }
