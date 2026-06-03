@@ -41,6 +41,7 @@ function CRMPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
+  const [isViewer, setIsViewer] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [briefs, setBriefs] = useState<Brief[]>([]);
   const [selected, setSelected] = useState<Submission | null>(null);
@@ -57,13 +58,14 @@ function CRMPage() {
       .from("user_roles")
       .select("role")
       .eq("user_id", userData.user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (!roleData) {
+      .in("role", ["admin", "viewer"]);
+    if (!roleData || roleData.length === 0) {
       setAuthorized(false);
       setLoading(false);
       return false;
     }
+    const hasAdmin = roleData.some((r) => r.role === "admin");
+    setIsViewer(!hasAdmin);
     setAuthorized(true);
     return true;
   };
