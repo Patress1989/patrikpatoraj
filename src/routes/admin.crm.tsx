@@ -193,10 +193,12 @@ function CRMPage() {
               <RefreshCw className="w-4 h-4 mr-2" />
               Obnoviť
             </Button>
-            <Button size="sm" onClick={exportEcomailCSV}>
-              <Download className="w-4 h-4 mr-2" />
-              Export CSV (Ecomail)
-            </Button>
+            {!isViewer && (
+              <Button size="sm" onClick={exportEcomailCSV}>
+                <Download className="w-4 h-4 mr-2" />
+                Export CSV (Ecomail)
+              </Button>
+            )}
             <Button variant="ghost" size="sm" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
               Odhlásiť
