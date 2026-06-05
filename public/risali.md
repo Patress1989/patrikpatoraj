@@ -41,5 +41,9 @@ Editovateľné prvky (key + DOM selector). Dashboard ich generuje keď klikneš
 "Pridať blok" v live editore — nepisuj selectory ručne.
 
 ```yaml
-blocks: []
+blocks:
+  - key: h1_f4d4
+    label: Moderný responzívny web na mieru,ktorý m
+    selector: div:nth-of-type(1) > main > section:nth-of-type(1) > div:nth-of-type(3) > h1
+    page: /
 ```
