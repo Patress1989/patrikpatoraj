@@ -1054,12 +1054,12 @@ function Portfolio() {
       tag: "Digitálny katalóg",
     },
     {
-      title: "Charisma Experience",
-      description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek. Intergrovaný Stirpe, vlastné CMR a napojenie na Superfaktúru.",
-      url: "https://charisma.nlp-akademia.sk",
-      src: charisma1200,
-      srcSet: `${charisma600} 600w, ${charisma1200} 1200w, ${charisma1920} 1920w`,
-      tag: "Vzdelávanie",
+      title: "Ratanové ošatky",
+      description: "B2B web pre výrobcu ratanových ošatiek na kysnutie chlebového cesta. Katalóg produktov, dopytový formulár a napojenie na administráciu.",
+      url: "https://ratanoveosatky.com",
+      src: ratanoveosatky1200,
+      srcSet: `${ratanoveosatky600} 600w, ${ratanoveosatky1200} 1200w, ${ratanoveosatky1920} 1920w`,
+      tag: "B2B & Výroba",
     },
   ];
 
