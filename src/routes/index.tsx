@@ -1031,9 +1031,9 @@ import balonovysvet1920 from "@/assets/projects/balonovysvet-1920.webp";
 import mammotion600 from "@/assets/projects/mammotion1-600.webp";
 import mammotion1200 from "@/assets/projects/mammotion1-1200.webp";
 import mammotion1920 from "@/assets/projects/mammotion1-1920.webp";
-import charisma600 from "@/assets/projects/charisma-600.webp";
-import charisma1200 from "@/assets/projects/charisma-1200.webp";
-import charisma1920 from "@/assets/projects/charisma-1920.webp";
+import ratanoveosatky600 from "@/assets/projects/ratanoveosatky-600.webp";
+import ratanoveosatky1200 from "@/assets/projects/ratanoveosatky-1200.webp";
+import ratanoveosatky1920 from "@/assets/projects/ratanoveosatky-1920.webp";
 
 function Portfolio() {
   const projects = [
@@ -1054,12 +1054,12 @@ function Portfolio() {
       tag: "Digitálny katalóg",
     },
     {
-      title: "Charisma Experience",
-      description: "Predajná stránka tréningu charizmy s rezerváciou vstupeniek. Intergrovaný Stirpe, vlastné CMR a napojenie na Superfaktúru.",
-      url: "https://charisma.nlp-akademia.sk",
-      src: charisma1200,
-      srcSet: `${charisma600} 600w, ${charisma1200} 1200w, ${charisma1920} 1920w`,
-      tag: "Vzdelávanie",
+      title: "Ratanové ošatky",
+      description: "B2B web pre výrobcu ratanových ošatiek na kysnutie chlebového cesta. Katalóg produktov, dopytový formulár a napojenie na administráciu.",
+      url: "https://ratanoveosatky.com",
+      src: ratanoveosatky1200,
+      srcSet: `${ratanoveosatky600} 600w, ${ratanoveosatky1200} 1200w, ${ratanoveosatky1920} 1920w`,
+      tag: "B2B & Výroba",
     },
   ];
 
