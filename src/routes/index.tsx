@@ -1031,9 +1031,9 @@ import balonovysvet1920 from "@/assets/projects/balonovysvet-1920.webp";
 import mammotion600 from "@/assets/projects/mammotion1-600.webp";
 import mammotion1200 from "@/assets/projects/mammotion1-1200.webp";
 import mammotion1920 from "@/assets/projects/mammotion1-1920.webp";
-import charisma600 from "@/assets/projects/charisma-600.webp";
-import charisma1200 from "@/assets/projects/charisma-1200.webp";
-import charisma1920 from "@/assets/projects/charisma-1920.webp";
+import ratanoveosatky600 from "@/assets/projects/ratanoveosatky-600.webp";
+import ratanoveosatky1200 from "@/assets/projects/ratanoveosatky-1200.webp";
+import ratanoveosatky1920 from "@/assets/projects/ratanoveosatky-1920.webp";
 
 function Portfolio() {
   const projects = [
