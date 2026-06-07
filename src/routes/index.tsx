@@ -112,7 +112,7 @@ function Hero() {
           Expert na weby · Voľné kapacity tento mesiac
         </div>
 
-        <h1 data-cms-entry="hero" data-cms-field="title" className="animate-fade-up text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+        <h1 data-cms-entry="hero" data-cms-field="title" className="animate-fade-up text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
           Moderný responzívny web na mieru,<br className="hidden md:block" />
           ktorý mení návštevníkov na <span className="gradient-text">platiacich klientov.</span>
         </h1>
