@@ -630,6 +630,9 @@ function Pricing() {
                     <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
                   </div>
                   <div className="mt-1 text-xs text-muted-foreground">jednorazovo · plné vlastníctvo</div>
+                  {(p as any).valueNote && (
+                    <div className="mt-1.5 text-xs text-muted-foreground/70">{(p as any).valueNote}</div>
+                  )}
                 </div>
 
                 <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
