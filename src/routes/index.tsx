@@ -566,6 +566,7 @@ function Pricing() {
       period: "/ mesačne",
       highlight: true,
       subtitle: "Pre firmy, ktoré chcú automaticky obslúžiť záujemcov a rezervácie",
+      infoBanner: "Ak ste si kúpili balík Zarábajúci automat, prvých 12 mesiacov Risali Pro máte v cene.",
       features: [
         { text: "1 web v cene (každý ďalší web +10 € mesačne)", strong: true },
         { text: "Všetko zo Štandardu, plus:", strong: false },
