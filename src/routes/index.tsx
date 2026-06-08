@@ -713,6 +713,11 @@ function Pricing() {
                     <span className="text-sm text-muted-foreground">{p.period}</span>
                   </div>
                   <div className="mt-1 text-xs text-muted-foreground">bez viazanosti</div>
+                  {(p as any).infoBanner && (
+                    <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs text-muted-foreground">
+                      {(p as any).infoBanner}
+                    </div>
+                  )}
 
                   <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
                     {p.features.map((f) => (
