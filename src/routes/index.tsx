@@ -15,6 +15,7 @@ const FAQ_ITEMS = [
   { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
   { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
   { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
+  { q: "Prečo má Zarábajúci automat v cene Risali Pro a Vizitka nie?", a: "Vizitka je webová prezentácia, ktorú si spravujete sami zdarma cez Risali Free (úprava textov, fotiek, návštevy). Zarábajúci automat ide ďalej — web rovno zbiera kontakty, vystavuje faktúry, posiela maily a inkasuje platby. Tieto funkcie sú v Risali Pro a aby ste mali všetko zladené hneď, dávam vám rok Pro v cene. Po roku pokračujete za 59 €/mes alebo 590 €/rok — zrušíte kedykoľvek." },
 ];
 
 export const Route = createFileRoute("/")({
@@ -472,13 +473,14 @@ function Pricing() {
       icon: Layout,
       name: "Profesionálna vizitka",
       price: "590 €",
-      tag: "Pre začínajúcich",
+      tag: "Pre začínajúcich — web + Risali Free zdarma navždy",
       highlight: false,
       features: [
         "Kompletná firemná prezentácia (6 podstránok)",
         "Dokonalé zobrazenie na mobiloch aj počítačoch",
         "Nastavenie pre Google, aby vás klienti ľahko našli",
         "Zberný formulár (dopyty priamo na váš e-mail)",
+        "Úprava textov a fotiek priamo na webe cez Risali Free (zdarma navždy)",
         "Kompletné technické spustenie bez vašich starostí",
       ],
     },
@@ -486,15 +488,16 @@ function Pricing() {
       icon: Rocket,
       name: "Zarábajúci automat",
       price: "1 390 €",
-      tag: "Najobľúbenejšie",
+      tag: "Web + 12 mesiacov Risali Pro v cene + platby kartou",
       highlight: true,
+      valueNote: "Hodnota balíka 1 980 € — ušetríte 590 €",
       features: [
         "Všetko z balíka Profesionálna vizitka",
-        "Bezpečné ukladanie kontaktov a dát od zákazníkov",
-        "Jednoduchý systém na vlastnú úpravu textov a fotiek",
-        "Automatické prepojenie s vašou fakturáciou (SuperFaktúra/iDoklad)",
-        "Integrácia e-mailového marketingu (Ecomail/SmartEmailing)",
-        "Platobná brána pre okamžité platby kartou",
+        "Platobná brána Stripe — zákazník platí kartou priamo na webe",
+        "12 mesiacov Risali Pro v cene (potom 59 €/mes alebo 590 €/rok)",
+        "Kompletné napojenie evidencie kontaktov, SuperFaktúry a Ecomailu (nastavím za vás)",
+        "Online rezervácie termínov alebo objednávky priamo na webe",
+        "Automatické scenáre — uvítací email, pripomienky, follow-upy bežia samé",
       ],
     },
     {
@@ -563,6 +566,7 @@ function Pricing() {
       period: "/ mesačne",
       highlight: true,
       subtitle: "Pre firmy, ktoré chcú automaticky obslúžiť záujemcov a rezervácie",
+      infoBanner: "Ak ste si kúpili balík Zarábajúci automat, prvých 12 mesiacov Risali Pro máte v cene.",
       features: [
         { text: "1 web v cene (každý ďalší web +10 € mesačne)", strong: true },
         { text: "Všetko zo Štandardu, plus:", strong: false },
@@ -626,6 +630,9 @@ function Pricing() {
                     <span className="text-4xl font-extrabold text-foreground">{p.price}</span>
                   </div>
                   <div className="mt-1 text-xs text-muted-foreground">jednorazovo · plné vlastníctvo</div>
+                  {(p as any).valueNote && (
+                    <div className="mt-1.5 text-xs text-muted-foreground/70">{(p as any).valueNote}</div>
+                  )}
                 </div>
 
                 <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
@@ -706,6 +713,11 @@ function Pricing() {
                     <span className="text-sm text-muted-foreground">{p.period}</span>
                   </div>
                   <div className="mt-1 text-xs text-muted-foreground">bez viazanosti</div>
+                  {(p as any).infoBanner && (
+                    <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs text-muted-foreground">
+                      {(p as any).infoBanner}
+                    </div>
+                  )}
 
                   <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-6">
                     {p.features.map((f) => (
