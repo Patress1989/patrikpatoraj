@@ -15,6 +15,7 @@ const FAQ_ITEMS = [
   { q: "Čo ak sa mi koncept ukážky nebude páčiť?", a: "Nič neplatíte. Prvotná ukážka je úplne zdarma a bez záväzkov. Začínate platiť až po odsúhlasení konceptu." },
   { q: "Pracujete iba so slovenskými klientmi?", a: "Nie. Spolupracujem s klientmi z celej EÚ. Komunikácia v slovenčine, češtine alebo angličtine." },
   { q: "Robíte aj e-shopy?", a: "Áno — od jednoduchých produktových stránok po plné e-shopy s online platbami a správou objednávok." },
+  { q: "Prečo má Zarábajúci automat v cene Risali Pro a Vizitka nie?", a: "Vizitka je webová prezentácia, ktorú si spravujete sami zdarma cez Risali Free (úprava textov, fotiek, návštevy). Zarábajúci automat ide ďalej — web rovno zbiera kontakty, vystavuje faktúry, posiela maily a inkasuje platby. Tieto funkcie sú v Risali Pro a aby ste mali všetko zladené hneď, dávam vám rok Pro v cene. Po roku pokračujete za 59 €/mes alebo 590 €/rok — zrušíte kedykoľvek." },
 ];
 
 export const Route = createFileRoute("/")({
